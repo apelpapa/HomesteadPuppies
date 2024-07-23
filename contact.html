@@ -16,23 +16,16 @@
             color: #333;
         }
         header {
-            background-color: rgba(92, 61, 46, 0.8); /* Semi-transparent background */
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
+			background-color: rgba(92, 61, 46, 0.8); /* Semi-transparent background */
+			text-align: center;
+			position: static;
+			width: 100%;
         }
         header .nav-container {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-        }
-        header .nav-container h1 {
-            flex: 1 100%;
         }
         nav {
             display: flex;
@@ -48,13 +41,12 @@
             text-decoration: underline;
         }
         .container {
-            padding: 1px;
-            margin-top: 10px; /* Offset to prevent content overlap */
+			text-align: center;
+			padding: 5px;
         }
-        .section {
-            margin: 20px 0;
+        .section {;
             background-color: white;
-            padding: 20px;
+            padding: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .section h2 {
