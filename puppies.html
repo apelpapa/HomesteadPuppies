@@ -117,6 +117,17 @@
             const days = ageInDays % 7;
             return `${weeks} weeks and ${days} day${days !== 1 ? 's' : ''}`;
         }
+		function whenAvailable(dob) {
+		onst birthDate = new Date(dob);
+            const today = new Date();
+            const ageInMilliseconds = today - birthDate;
+            const ageInDays = Math.floor(ageInMilliseconds / (1000 * 60 * 60 * 24));
+			const daysLeft = 56-ageInDays
+            const weeks = Math.floor(daysLeft / 7);
+            const days = daysLeft % 7;
+            return `${weeks} weeks and ${days} day${days !== 1 ? 's' : ''}`;
+		}	
+		
 
         document.addEventListener("DOMContentLoaded", function() {
             fetch('puppies.json')
@@ -136,6 +147,7 @@
                             <img src="${puppy.image}" alt="${puppy.name}">
                             <p>Breed: ${puppy.breed}</p>
                             <p>Age: ${calculateAge(puppy.dob)}</p>
+							<p>Available to Take Home in: ${whenAvailable(puppy.dob)}</p>
                             <p>Price: ${puppy.price}</p>
 							<p>Description: ${puppy.description}</p>
                         `;
