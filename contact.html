@@ -64,6 +64,33 @@
             text-align: center;
             padding: 10px 0;
         }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #5C3D2E;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #8A6543;
+        }
     </style>
 </head>
 <body>
@@ -83,8 +110,20 @@
         <div class="section" id="contact">
             <h2>Contact Us</h2>
             <p>If you are interested in one of our puppies or have any questions, please reach out to us:</p>
-            <p>Email: info@homesteadpuppies.com</p>
-            <p>Phone: (123) 456-7890</p>
+            <form action="contact.php" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                
+                <input type="submit" value="Submit">
+            </form>
+            <p>Email: apelpapa@gmail.com</p>
+            <p>Phone: 720-833-8083</p>
             <p>Location: Parker, CO</p>
         </div>
     </div>
