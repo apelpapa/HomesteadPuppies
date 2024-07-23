@@ -7,6 +7,11 @@
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<script
+	  src="https://www.paypal.com/sdk/js?client-id=BAAbK7cvbEz2tMrRNY1DZxpu7mtvaobg4QxEwfXYpiXFWC3civ_-HkD9IdiRCu2ullehUvvJuZq31TWbLQ&components=hosted-buttons&enable-funding=venmo&currency=USD" 
+	  crossorigin="anonymous" 
+	  async>
+	</script>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -95,6 +100,14 @@
 	
 </head>
 <body>
+	<script>
+	  document.addEventListener("DOMContentLoaded", (event) => {
+		paypal.HostedButtons({
+		  hostedButtonId: "VKJ8W4MTBEV4A"
+		})
+		.render("#paypal-container-VKJ8W4MTBEV4A")
+	  })
+	</script>
     <header>
         <div class="nav-container">
             <h1><a href="index.html" style="color: white; text-decoration: none;"> <img src="Logo.png" width="90" height="90" alt=""/> </a></h1>
@@ -109,15 +122,8 @@
         <div class="section" id="about">
             <h2>Place Deposit</h2>
             <p>Please Use One of The Links Below to Place a Deposit on One of Our Beautiful Pups. Please only leave a deposit after speaking with us to ensure the pup you want is Available.</p>
+			<p><div id="paypal-container-VKJ8W4MTBEV4A"></div></p>
 		</div>
-		<div class="paypal-container" id="paypal-container-VKJ8W4MTBEV4A"></div>
-        <script src="https://www.paypal.com/sdk/js?client-id=BAAbK7cvbEz2tMrRNY1DZxpu7mtvaobg4QxEwfXYpiXFWC3civ_-HkD9IdiRCu2ullehUvvJuZq31TWbLQ&components=hosted-buttons&enable-funding=venmo&currency=USD"></script>
-        <script>
-            paypal.HostedButtons({
-                hostedButtonId: "VKJ8W4MTBEV4A",
-            }).render("#paypal-container-VKJ8W4MTBEV4A")
-        </script>
-    </div>
     <footer>
         <p>&copy; 2024 Homestead Puppies. All rights reserved.</p>
     </footer>
