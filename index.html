@@ -16,14 +16,14 @@
             color: #333;
         }
         header {
-            background-color: rgba(92, 61, 46, 0.8); /* Semi-transparent background */
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
+    background-color: rgba(92, 61, 46, 0.8); /* Semi-transparent background */
+    color: white;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    left: 0%;
         }
         header .nav-container {
             display: flex;
@@ -32,17 +32,20 @@
             flex-wrap: wrap;
         }
         header .nav-container h1 {
-            flex: 1 100%;
+    flex: 1 100%;
         }
         nav {
             display: flex;
             justify-content: center;
         }
         nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-size: 18px;
+    color: white;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-decoration: none;
+    font-size: 18px;
+    margin-left: 10px;
+    margin-right: 10px;
         }
         nav a:hover {
             text-decoration: underline;
@@ -88,16 +91,14 @@
 <body>
     <header>
         <div class="nav-container">
-            <h1>Homestead Puppies</h1>
+            <h1><a href="index.html" style="color: white; text-decoration: none;"> <img src="Logo.png" width="90" height="90" alt=""/> </a></h1>
             <nav>
                 <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
                 <a href="puppies.html">Available Puppies</a>
                 <a href="contact.html">Contact Us</a>
 				<a href="deposit.html">Deposit</a>
             </nav>
         </div>
-        <!--//<p>Bringing joy to homes, one puppy at a time.</p> -->
     </header>
     <div class="hero" id="home">
         <h1>Welcome to Homestead Puppies</h1>
