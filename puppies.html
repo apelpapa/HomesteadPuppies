@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<script
+	  src="https://www.paypal.com/sdk/js?client-id=BAAbK7cvbEz2tMrRNY1DZxpu7mtvaobg4QxEwfXYpiXFWC3civ_-HkD9IdiRCu2ullehUvvJuZq31TWbLQ&components=hosted-buttons&enable-funding=venmo&currency=USD" 
+	  crossorigin="anonymous" 
+	  async>
+	</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Available Puppies - Homestead Puppies</title>
@@ -84,6 +89,14 @@
     </style>
 </head>
 <body>
+	<script>
+	  document.addEventListener("DOMContentLoaded", (event) => {
+		paypal.HostedButtons({
+		  hostedButtonId: "VKJ8W4MTBEV4A"
+		})
+		.render("#paypal-container-VKJ8W4MTBEV4A")
+	  })
+	</script>
     <header>
         <div class="nav-container">
             <h1>Homestead Puppies</h1>
@@ -154,13 +167,7 @@
 							<p>Available to Take Home ${whenAvailable(puppy.dob)}</p>
                             <p>Price: ${puppy.price}</p>
 							<p>Description: ${puppy.description}</p>
-							<script src="https://www.paypal.com/sdk/js?client-id=BAAbK7cvbEz2tMrRNY1DZxpu7mtvaobg4QxEwfXYpiXFWC3civ_-HkD9IdiRCu2ullehUvvJuZq31TWbLQ&components=hosted-buttons&enable-funding=venmo&currency=USD"></script>
-								<div id="paypal-container-VKJ8W4MTBEV4A"></div>
-								<script>
-								paypal.HostedButtons({
-								hostedButtonId: "VKJ8W4MTBEV4A",
-								}).render("#paypal-container-VKJ8W4MTBEV4A")
-							</script>
+							<div id="paypal-container-VKJ8W4MTBEV4A"></div>
                         `;
                         puppyList.appendChild(puppyCard);
                     });
