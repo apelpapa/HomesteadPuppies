@@ -1,2 +1,0 @@
-# HomesteadPuppies
-Homestead Puppies LLC
