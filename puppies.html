@@ -148,7 +148,7 @@
                         puppyCard.classList.add('puppy-card');
                         puppyCard.innerHTML = `
                             <h3>${puppy.name}</h3>
-                            <img src="${puppy.image}" alt="${puppy.name}">
+                            <img src="${puppy.image}" alt="${puppy.name}" onerror="this.onerror=null;this.src='placeholder.jpg';">
                             <p>Breed: ${puppy.breed}</p>
                             <p>Age: ${calculateAge(puppy.dob)}</p>
 							<p>Available to Take Home in ${whenAvailable(puppy.dob)}</p>
