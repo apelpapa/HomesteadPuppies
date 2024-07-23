@@ -1,16 +1,45 @@
 [
     {
-        "name": "Max",
+        "name": "Test 1",
         "breed": "Shih Tzu",
         "age": "8 weeks",
         "price": "$800",
-        "image": "Puppy1.jpg"
+        "image": "Test1.jpg"
     },
     {
-        "name": "Bella",
+        "name": "Test 2",
         "breed": "King Charles Cavalier",
         "age": "10 weeks",
         "price": "$900",
-        "image": "Puppy2.jpg"
+        "image": "Test2.jpg"
+    },
+    {
+        "name": "Test 3",
+        "breed": "King Charles Cavalier",
+        "age": "10 weeks",
+        "price": "$900",
+        "image": "Test3.jpg"
+    },
+    {
+        "name": "Test 4",
+        "breed": "King Charles Cavalier",
+        "age": "10 weeks",
+        "price": "$900",
+		"description": "TEST DESCRIPTION BLAH BLAH BLAH",
+        "image": "Test4.jpg"
+    },
+    {
+        "name": "Test 5",
+        "breed": "King Charles Cavalier",
+        "age": "10 weeks",
+        "price": "$900",
+        "image": "Test5.jpg"
+    },
+    {
+        "name": "Test 6",
+        "breed": "King Charles Cavalier",
+        "age": "10 weeks",
+        "price": "$900",
+        "image": "Test6.jpg"
     }
 ]
