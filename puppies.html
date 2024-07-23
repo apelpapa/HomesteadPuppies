@@ -126,9 +126,9 @@
             const weeks = Math.floor(daysLeft / 7);
             const days = daysLeft % 7;
 			if (daysLeft < 1){
-				return `now`;
+				return `Now`;
 			}else{
-				return `: ${weeks} weeks and ${days} day${days !== 1 ? 's' : ''}`;
+				return `in ${weeks} weeks and ${days} day${days !== 1 ? 's' : ''}`;
 			}
 		}	
 		
@@ -151,7 +151,7 @@
                             <img src="${puppy.image}" alt="${puppy.name}" onerror="this.onerror=null;this.src='placeholder.jpg';">
                             <p>Breed: ${puppy.breed}</p>
                             <p>Age: ${calculateAge(puppy.dob)}</p>
-							<p>Available to Take Home in ${whenAvailable(puppy.dob)}</p>
+							<p>Available to Take Home ${whenAvailable(puppy.dob)}</p>
                             <p>Price: ${puppy.price}</p>
 							<p>Description: ${puppy.description}</p>
                         `;
