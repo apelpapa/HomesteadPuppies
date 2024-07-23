@@ -154,6 +154,13 @@
 							<p>Available to Take Home ${whenAvailable(puppy.dob)}</p>
                             <p>Price: ${puppy.price}</p>
 							<p>Description: ${puppy.description}</p>
+							<script src="https://www.paypal.com/sdk/js?client-id=BAAbK7cvbEz2tMrRNY1DZxpu7mtvaobg4QxEwfXYpiXFWC3civ_-HkD9IdiRCu2ullehUvvJuZq31TWbLQ&components=hosted-buttons&enable-funding=venmo&currency=USD"></script>
+								<div id="paypal-container-VKJ8W4MTBEV4A"></div>
+								<script>
+								paypal.HostedButtons({
+								hostedButtonId: "VKJ8W4MTBEV4A",
+								}).render("#paypal-container-VKJ8W4MTBEV4A")
+							</script>
                         `;
                         puppyList.appendChild(puppyCard);
                     });
