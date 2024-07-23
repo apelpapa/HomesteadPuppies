@@ -112,9 +112,10 @@
             const birthDate = new Date(dob);
             const today = new Date();
             const ageInMilliseconds = today - birthDate;
-            const ageInDays = ageInMilliseconds / (1000 * 60 * 60 * 24);
-            const ageInWeeks = Math.floor(ageInDays / 7);
-            return `${ageInWeeks} weeks`;
+            const ageInDays = Math.floor(ageInMilliseconds / (1000 * 60 * 60 * 24));
+            const weeks = Math.floor(ageInDays / 7);
+            const days = ageInDays % 7;
+            return `${weeks} weeks and ${days} day${days !== 1 ? 's' : ''}`;
         }
 
         document.addEventListener("DOMContentLoaded", function() {
@@ -136,7 +137,6 @@
                             <p>Breed: ${puppy.breed}</p>
                             <p>Age: ${calculateAge(puppy.dob)}</p>
                             <p>Price: ${puppy.price}</p>
-							<p>Description: ${puppy.description}</p>
                         `;
                         puppyList.appendChild(puppyCard);
                     });
