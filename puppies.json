@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Max",
+        "breed": "Shih Tzu",
+        "age": "8 weeks",
+        "price": "$800",
+        "image": "Puppy1.jpg"
+    },
+    {
+        "name": "Bella",
+        "breed": "King Charles Cavalier",
+        "age": "10 weeks",
+        "price": "$900",
+        "image": "Puppy2.jpg"
+    }
+]
