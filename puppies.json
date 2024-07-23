@@ -10,7 +10,7 @@
     {
         "name": "Test 2",
         "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
+        "dob": "2024-05-06",
         "price": "$4,000",
 		"description": "TEST DESCRIPTION BLAH BLAH BLAH",
         "image": "Test2.jpg"
@@ -18,15 +18,15 @@
     {
         "name": "Test 3",
         "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
+        "dob": "2024-05-23",
         "price": "$4000",
 		"description": "TEST DESCRIPTION BLAH BLAH BLAH",
-        "image": "Test3.jpg"
+        "image": "Test33.jpg"
     },
     {
         "name": "Test 4",
         "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
+        "dob": "2024-05-22",
         "price": "$5000",
 		"description": "TEST DESCRIPTION BLAH BLAH BLAH",
         "image": "Test4.jpg"
@@ -34,15 +34,15 @@
     {
         "name": "Test 5",
         "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
+        "dob": "2024-06-06",
         "price": "$5,555",
 		"description": "TEST DESCRIPTION BLAH BLAH BLAH",
-        "image": "Test5.jpg"
+        "image": "Test51.jpg"
     },
     {
         "name": "Test 6",
         "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
+        "dob": "2024-05-21",
         "price": "$94,6.64",
 		"description": "Why is the dog blue lol",
         "image": "Test6.jpg"
