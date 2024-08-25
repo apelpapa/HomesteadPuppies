@@ -15,5 +15,45 @@
 		"description": "Meet Victoria!",
         "image": "Victoria1.jpg",
 		"images": ["Victoria1.jpg", "Victoria2.jpg", "Victoria3.jpg", "Victoria4.jpg", "Victoria5.jpg", "Victoria6.jpg", "Victoria7.jpg"]
+    }, {
+        "name": "Mila",
+        "breed": "Dachshund",
+        "dob": "2022-07-06",
+		"gender": "Female",
+		"description": "Meet Mila!",
+        "image": "placeholder.jpg",
+		"images": ["placeholder.jpg"]
+    }, {
+        "name": "Bella",
+        "breed": "Golden Retriever",
+        "dob": "2022-07-06",
+		"gender": "Female",
+		"description": "Meet Bella!",
+        "image": "placeholder.jpg",
+		"images": ["placeholder.jpg"]
+    }, {
+        "name": "Charlie",
+        "breed": "Shih Tzu",
+        "dob": "2022-07-06",
+		"gender": "Male",
+		"description": "Meet Charlie!",
+        "image": "placeholder.jpg",
+		"images": ["placeholder.jpg"]
+    }, {
+        "name": "Shih Tzu 1",
+        "breed": "Shih Tzu",
+        "dob": "2022-07-06",
+		"gender": "Female",
+		"description": "Meet XXX!",
+        "image": "placeholder.jpg",
+		"images": ["placeholder.jpg"]
+    }, {
+        "name": "Shih Tzu 2",
+        "breed": "Shih Tzu",
+        "dob": "2022-07-06",
+		"gender": "Female",
+		"description": "Meet XXX!",
+        "image": "placeholder.jpg",
+		"images": ["placeholder.jpg"]
     }
 ]
