@@ -4,62 +4,54 @@
         "breed": "Cavalier King Charles Spaniel",
         "dob": "2024-07-06",
 		"gender": "Male",
-        "price": "$2,500",
-		"description": "Meet Alex – Your New Best Friend!Alex is a stunning male Cavalier King Charles Spaniel, born on July 6, 2024, with a heart full of love and a coat as soft as silk. This little guy is already showing his gentle and affectionate personality, sure to melt your heart from the moment you meet him. His big, expressive eyes and floppy ears are just the beginning of what makes him special. At just a few months old, Alex is full of playful energy and is always ready for an adventure, whether it’s a game of fetch in the backyard or a cozy cuddle session on the couch. He’s a quick learner and eager to please, making him an ideal companion for families, couples, or individuals looking for a loyal friend. Raised in a loving home environment, Alex is well-socialized and comfortable with children and other pets. He’s up to date on all vaccinations, and his health has been carefully monitored to ensure he’s in perfect condition to join his forever home. If you’re looking for a loyal, loving, and joyful addition to your family, Alex is the perfect pup for you!",
-        "image": "Alex (2).png"
+        "mother": "Vickie",
+		"father": "Charles",
+		"description": "Meet Alex – Your New Best Friend! Alex is a stunning male Cavalier King Charles Spaniel, born on July 6, 2024, with a heart full of love and a coat as soft as silk. This little guy is already showing his gentle and affectionate personality, sure to melt your heart from the moment you meet him. His big, expressive eyes and floppy ears are just the beginning of what makes him special. At just a few months old, Alex is full of playful energy and is always ready for an adventure, whether it’s a game of fetch in the backyard or a cozy cuddle session on the couch. He’s a quick learner and eager to please, making him an ideal companion for families, couples, or individuals looking for a loyal friend. Raised in a loving home environment, Alex is well-socialized and comfortable with children and other pets. He’s up to date on all vaccinations, and his health has been carefully monitored to ensure he’s in perfect condition to join his forever home. If you’re looking for a loyal, loving, and joyful addition to your family, Alex is the perfect pup for you!",
+        "image": "Alex (1).jpg",
+		"price": "$2,500",
     },
     {
-        "name": "Alex",
+        "name": "Chloe",
         "breed": "Cavalier King Charles Spaniel",
         "dob": "2024-07-06",
-		"gender": "Male",
-        "price": "$3,500",
-		"description": "This is the real date",
-        "image": "Test1.jpg"
+		"gender": "Female",
+		"mother": "Vickie",
+		"father": "Charles",
+		"description": "Meet Chloe – Your Sweet Companion! Chloe is an adorable female Cavalier King Charles Spaniel, born on July 6, 2024. With her silky coat and expressive eyes, Chloe is the picture of pure charm. She has a gentle and loving nature that is sure to win over anyone who meets her. At just a few months old, Chloe is full of life and curiosity. She loves to explore her surroundings and play with her toys, but she’s also always ready to curl up next to you for some quality cuddle time. Her sweet temperament makes her an ideal companion for families, singles, or anyone looking for a loving and loyal friend. Raised in a caring environment, Chloe is well-socialized and comfortable around children and other pets. She is up to date on all her vaccinations and has been carefully monitored to ensure she is healthy and ready to join her new family. If you’re searching for a joyful and affectionate addition to your home, Chloe is the perfect pup for you!",
+        "image": "Chloe (1).jpg"
+		"price": "$2,500",
     },
-	{
-        "name": "Alex",
+    {
+        "name": "Lily",
         "breed": "Cavalier King Charles Spaniel",
         "dob": "2024-07-06",
-		"gender": "Male",
-        "price": "$3,500",
-		"description": "This is the real date",
-        "image": "Test1.jpg"
+		"gender": "Female",
+		"mother": "Vickie",
+		"father": "Charles",
+		"description": "Meet Lilly – Your Perfect Little Lady! Lilly is a beautiful female Cavalier King Charles Spaniel, born on July 6, 2024. With her bright eyes and silky coat, Lilly is a true beauty, exuding grace and charm wherever she goes. She has a sweet and gentle demeanor, making her an ideal companion for anyone looking for a loyal and affectionate friend. At just a few months old, Lilly is playful and curious, always eager to explore her world. Whether she's playing with her favorite toys or snuggling up for a nap, Lilly is sure to bring joy and happiness into your life. Her calm and loving nature makes her a wonderful fit for families, singles, or anyone seeking a gentle and devoted companion. Raised in a loving home, Lilly is well-socialized and comfortable around children and other pets. She is up to date on all her vaccinations and has been given the best care to ensure she is healthy and ready to find her forever home. If you’re looking for a delightful and affectionate addition to your family, Lilly is the perfect choice!",
+        "image": "Lily (1).jpg"
+		"price": "$2,500",
     },
-	{
-        "name": "Alex",
+    {
+        "name": "Sophia",
         "breed": "Cavalier King Charles Spaniel",
         "dob": "2024-07-06",
-		"gender": "Male",
-        "price": "$3,500",
-		"description": "This is the real date",
-        "image": "Test1.jpg"
+		"gender": "Female",
+		"mother": "Vickie",
+		"father": "Charles",
+		"description": "Meet Sophia – Your Elegant Little Princess! Sophia is an enchanting female Cavalier King Charles Spaniel, born on July 6, 2024. With her soft, luxurious coat and soulful eyes, Sophia is the epitome of grace and beauty. She has a gentle, calm temperament that makes her the perfect companion for anyone looking for a loving and serene presence in their life. At just a few months old, Sophia is full of curiosity and sweetness. She enjoys exploring her surroundings and is always up for a little playtime, but her favorite place is right by your side, enjoying peaceful moments together. Her quiet and loving nature makes her a perfect match for families, couples, or individuals seeking a devoted and affectionate friend. Raised in a warm and nurturing environment, Sophia is well-socialized and comfortable with children and other pets. She is up to date on all vaccinations and has received excellent care to ensure she is in perfect health and ready to join her new family. If you’re in search of an elegant and loving addition to your home, Sophia is the perfect puppy for you!",
+        "image": "Sophia (1).jpg"
+		"price": "$2,500",
     },
-	{
-        "name": "Alex",
+    {
+        "name": "Theo",
         "breed": "Cavalier King Charles Spaniel",
         "dob": "2024-07-06",
 		"gender": "Male",
-        "price": "$3,500",
-		"description": "This is the real date",
-        "image": "Test1.jpg"
-    },
-	{
-        "name": "Alex",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
-		"gender": "Male",
-        "price": "$3,500",
-		"description": "This is the real date",
-        "image": "Test1.jpg"
-    },
-	{
-        "name": "Alex",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
-		"gender": "Male",
-        "price": "$3,500",
-		"description": "This is the real date",
-        "image": "Test1.jpg"
-	}
+		"mother": "Vickie",
+		"father": "Charles",
+		"description": "Meet Theo – Your Playful Little Gentleman! Theo is a charming male Cavalier King Charles Spaniel, born on July 6, 2024. With his bright, expressive eyes and soft, velvety coat, Theo is sure to steal your heart. He has a lively and playful personality, making him a delightful companion for anyone looking for a fun and loving friend. At just a few months old, Theo is full of energy and curiosity. He loves to play and explore, always eager to discover new things and make new friends. Whether it's a game of fetch or a playful romp in the yard, Theo is always ready for an adventure. His friendly and outgoing nature makes him a wonderful fit for families, singles, or anyone who enjoys an active and joyful companion. Raised in a caring home, Theo is well-socialized and comfortable around children and other pets. He is up to date on all vaccinations and has been given the best care to ensure he is healthy and ready to join his forever family. If you’re looking for a lively, loving, and playful addition to your home, Theo is the perfect pup for you!",
+        "image": "Theo (1).jpg"
+		"price": "$2,500",
+    }
 ]
