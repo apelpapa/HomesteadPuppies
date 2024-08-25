@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homestead Puppies</title>
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <style>
@@ -16,10 +16,10 @@
             color: #333;
         }
         header {
-			background-color: rgba(92, 61, 46, 0.8);
-			text-align: center;
-			position: static;
-			width: 100%;
+            background-color: rgba(92, 61, 46, 0.8);
+            text-align: center;
+            position: static;
+            width: 100%;
         }
         header .nav-container {
             display: flex;
@@ -32,34 +32,36 @@
             justify-content: center;
         }
         nav a {
-			color: white;
-			margin-top: 0;
-			margin-bottom: 0;
-			text-decoration: none;
-			font-size: 18px;
-			margin-left: 10px;
-			margin-right: 10px;
+            color: white;
+            margin-top: 0;
+            margin-bottom: 0;
+            text-decoration: none;
+            font-size: 18px;
+            margin-left: 10px;
+            margin-right: 10px;
         }
         nav a:hover {
             text-decoration: underline;
         }
         .hero {
-    background-image: url('Images/Background.jpg');
-        background-size: contain;
-		background-position: center;
-		background-repeat: no-repeat;
-		height: 1792px;
-		max-height: 630px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		color: white;
-		text-align: center;
-<!-- Offset to prevent content overlap -->
+            background-image: url('Images/Background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center; /* Horizontally centers the text */
+            align-items: flex-start; /* Aligns the text at the top */
+            color: white;
+            text-align: center;
+            padding-top: 20px; /* Adds space between the top of the hero section and the text */
         }
         .hero h1 {
             font-size: 3em;
             margin: 0;
+            background-color: rgba(92, 61, 46, 0.7); /* Adds background to the text for readability */
+            padding: 10px 20px;
+            border-radius: 5px;
         }
         .container {
             padding: 20px;
@@ -80,27 +82,38 @@
             text-align: center;
             padding: 10px 0;
         }
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .hero {
+                height: 50vh; /* Adjust the height for smaller screens */
+                padding-top: 10px; /* Adjust padding for smaller screens */
+            }
+            .hero h1 {
+                font-size: 2em;
+                padding: 10px 15px;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="nav-container">
-            <h1><a href="index.html" style="color: white; text-decoration: none;"> <img src="Images/Logo.png" width="90" height="90" alt=""/> </a></h1>
+            <h1><a href="index.html" style="color: white; text-decoration: none;"><img src="Images/Logo.png" width="90" height="90" alt="Homestead Puppies Logo"/> </a></h1>
             <nav>
                 <a href="puppies.html">Available Puppies</a>
                 <a href="contact.html">Contact Us</a>
-				<a href="deposit.html">Deposit</a>
-				<a href="parents.html">Parents</a>
+                <a href="deposit.html">Deposit</a>
+                <a href="parents.html">Parents</a>
             </nav>
         </div>
     </header>
     <div class="hero" id="home">
         <h1>Welcome to Homestead Puppies</h1>
     </div>
-	<div class="container">
+    <div class="container">
         <div class="section" id="about">
             <h2>About Us</h2>
-			<h3> Welcome to Homestead Puppies!</h3>
+            <h3>Welcome to Homestead Puppies!</h3>
             <p>At Homestead Puppies, we are passionate about bringing joy and companionship to families through our lovingly raised puppies. Specializing in Cavalier King Charles Spaniels, Shih Tzus, Dachshunds, and Golden Retrievers, our mission is to provide healthy, happy, and well-socialized puppies that make the perfect addition to any home. Our commitment to quality begins with our careful selection of breeding pairs, ensuring that each puppy inherits the best traits of their breed. We prioritize the health and well-being of our puppies, raising them in a nurturing environment where they receive the attention, love, and early socialization they need to thrive. Whether you're looking for the playful spirit of a Dachshund, the gentle nature of a Cavalier King Charles Spaniel, the loyalty of a Golden Retriever, or the affectionate companionship of a Shih Tzu, Homestead Puppies is here to help you find your new best friend. Thank you for considering Homestead Puppies as your trusted breeder. We look forward to helping you welcome a new furry member to your family!</p>
         </div>
     </div>
