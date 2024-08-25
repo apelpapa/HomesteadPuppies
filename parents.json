@@ -6,7 +6,7 @@
 		"gender": "Male",
 		"description": "Meet Charles!",
         "image": "Charles1.jpg",
-		"images": ["Charles1.jpg", "Charles2.jpg", "Charles3.jpg", "Charles4.jpg", "Charles5.jpg", "Charles6.jpg", "Charles7.jpg", "Charles8.jpg", "Charles9.jpg", "Charles10.jpg", "Charles11.jpg", "Charles12.jpg", "Charles13.jpg", "Charles14.jpg", "Charles15.jpg", "Charles16.jpg", "Charles17.jpg"]
+		"images": ["Charles1.jpg", "Charles2.jpg", "Charles3.jpg", "Charles4.jpg", "Charles5.jpg", "Charles6.jpg", "Charles7.jpg", "Charles8.jpg", "Charles9.jpg"]
     }, {
         "name": "Victoria",
         "breed": "Cavalier King Charles Spaniel",
