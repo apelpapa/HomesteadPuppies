@@ -7,6 +7,7 @@
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -130,37 +131,51 @@
 		
 
         document.addEventListener("DOMContentLoaded", function() {
-            fetch('puppies.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok ' + response.statusText);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const puppyList = document.getElementById('puppy-list');
-                    data.forEach(puppy => {
-                        const puppyCard = document.createElement('div');
-                        puppyCard.classList.add('puppy-card');
-                        puppyCard.innerHTML = `
-                            <h3>${puppy.name}</h3>
-                            <img src="Images/Current/${puppy.image}" alt="${puppy.name}" onerror="this.onerror=null;this.src='placeholder.jpg';">
-                            <p>Breed: ${puppy.breed}</p>
+			fetch('puppies.json')
+				.then(response => {
+					if (!response.ok) {
+						throw new Error('Network response was not ok ' + response.statusText);
+					}
+					return response.json();
+				})
+				.then(data => {
+					const puppyList = document.getElementById('puppy-list');
+					data.forEach(puppy => {
+						const puppyCard = document.createElement('div');
+						puppyCard.classList.add('puppy-card');
+						
+						// Build the Lightbox gallery for each puppy
+						let galleryHtml = '';
+						puppy.images.forEach((image, index) => {
+							galleryHtml += `
+								<a href="Images/Current/${image}" data-lightbox="${puppy.name}" data-title="${puppy.name} - Image ${index + 1}">
+									${index === 0 ? `<img src="Images/Current/${image}" alt="${puppy.name}" onerror="this.onerror=null;this.src='placeholder.jpg';">` : ''}
+								</a>
+							`;
+						});
+
+						puppyCard.innerHTML = `
+							<h3>${puppy.name}</h3>
+							<div class="puppy-gallery">
+								${galleryHtml}
+							</div>
+							<p>Breed: ${puppy.breed}</p>
 							<p>Gender: ${puppy.gender}</p>
 							<p>Mother: ${puppy.mother}</p>
 							<p>Father: ${puppy.father}</p>
-                            <p>Age: ${calculateAge(puppy.dob)}</p>
+							<p>Age: ${calculateAge(puppy.dob)}</p>
 							<p>Available to Take Home ${whenAvailable(puppy.dob)}</p>
-                            <p>Price: ${puppy.price}</p>
+							<p>Price: ${puppy.price}</p>
 							<p>Description: ${puppy.description}</p>
-                        `;
-                        puppyList.appendChild(puppyCard);
-                    });
-                })
-                .catch(error => {
-                    console.error('There has been a problem with your fetch operation:', error);
-                });
-        });
+						`;
+						puppyList.appendChild(puppyCard);
+					});
+				})
+				.catch(error => {
+					console.error('There has been a problem with your fetch operation:', error);
+				});
+		});
     </script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 </body>
 </html>
