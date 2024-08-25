@@ -146,6 +146,9 @@
                             <h3>${puppy.name}</h3>
                             <img src="Images/Current/${puppy.image}" alt="${puppy.name}" onerror="this.onerror=null;this.src='placeholder.jpg';">
                             <p>Breed: ${puppy.breed}</p>
+							<p>Gender: ${puppy.gender}</p>
+							<p>Mother: ${puppy.mother}</p>
+							<p>Father: ${puppy.father}</p>
                             <p>Age: ${calculateAge(puppy.dob)}</p>
 							<p>Available to Take Home ${whenAvailable(puppy.dob)}</p>
                             <p>Price: ${puppy.price}</p>
