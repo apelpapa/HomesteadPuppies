@@ -1,154 +1,64 @@
 [
 	{
-        "name": "Test 1",
+        "name": "Alex",
         "breed": "Cavalier King Charles Spaniel",
         "dob": "2024-07-06",
+		"gender": "Male",
+        "price": "$2,500",
+		"description": "Meet Alex – Your New Best Friend!Alex is a stunning male Cavalier King Charles Spaniel, born on July 6, 2024, with a heart full of love and a coat as soft as silk. This little guy is already showing his gentle and affectionate personality, sure to melt your heart from the moment you meet him. His big, expressive eyes and floppy ears are just the beginning of what makes him special. At just a few months old, Alex is full of playful energy and is always ready for an adventure, whether it’s a game of fetch in the backyard or a cozy cuddle session on the couch. He’s a quick learner and eager to please, making him an ideal companion for families, couples, or individuals looking for a loyal friend. Raised in a loving home environment, Alex is well-socialized and comfortable with children and other pets. He’s up to date on all vaccinations, and his health has been carefully monitored to ensure he’s in perfect condition to join his forever home. If you’re looking for a loyal, loving, and joyful addition to your family, Alex is the perfect pup for you!",
+        "image": "Alex (2).png"
+    },
+    {
+        "name": "Alex",
+        "breed": "Cavalier King Charles Spaniel",
+        "dob": "2024-07-06",
+		"gender": "Male",
         "price": "$3,500",
 		"description": "This is the real date",
         "image": "Test1.jpg"
     },
-    {
-        "name": "Test 1",
+	{
+        "name": "Alex",
         "breed": "Cavalier King Charles Spaniel",
         "dob": "2024-07-06",
+		"gender": "Male",
         "price": "$3,500",
 		"description": "This is the real date",
         "image": "Test1.jpg"
     },
-    {
-        "name": "Test 1",
+	{
+        "name": "Alex",
         "breed": "Cavalier King Charles Spaniel",
         "dob": "2024-07-06",
+		"gender": "Male",
         "price": "$3,500",
 		"description": "This is the real date",
         "image": "Test1.jpg"
     },
-    {
-        "name": "Test 1",
+	{
+        "name": "Alex",
         "breed": "Cavalier King Charles Spaniel",
         "dob": "2024-07-06",
+		"gender": "Male",
         "price": "$3,500",
 		"description": "This is the real date",
         "image": "Test1.jpg"
     },
-    {
-        "name": "Test 1",
+	{
+        "name": "Alex",
         "breed": "Cavalier King Charles Spaniel",
         "dob": "2024-07-06",
+		"gender": "Male",
         "price": "$3,500",
 		"description": "This is the real date",
         "image": "Test1.jpg"
     },
-    {
-        "name": "Test 1",
+	{
+        "name": "Alex",
         "breed": "Cavalier King Charles Spaniel",
         "dob": "2024-07-06",
+		"gender": "Male",
         "price": "$3,500",
 		"description": "This is the real date",
         "image": "Test1.jpg"
-    },
-    {
-        "name": "Test 1",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
-        "price": "$3,500",
-		"description": "This is the real date",
-        "image": "Test1.jpg"
-    },
-    {
-        "name": "Test 1",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
-        "price": "$3,500",
-		"description": "This is the real date",
-        "image": "Test1.jpg"
-    },
-    {
-        "name": "Test 1",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
-        "price": "$3,500",
-		"description": "This is the real date",
-        "image": "Test1.jpg"
-    },
-    {
-        "name": "Test 1",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
-        "price": "$3,500",
-		"description": "This is the real date",
-        "image": "Test1.jpg"
-    },
-    {
-        "name": "Test 1",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
-        "price": "$3,500",
-		"description": "This is the real date",
-        "image": "Test1.jpg"
-    },
-    {
-        "name": "Test 1",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
-        "price": "$3,500",
-		"description": "This is the real date",
-        "image": "Test1.jpg"
-    },
-    {
-        "name": "Test 1",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
-        "price": "$3,500",
-		"description": "This is the real date",
-        "image": "Test1.jpg"
-    },
-    {
-        "name": "Test 1",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
-        "price": "$3,500",
-		"description": "This is the real date",
-        "image": "Test1.jpg"
-    },
-    {
-        "name": "Test 1",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
-        "price": "$3,500",
-		"description": "This is the real date",
-        "image": "Test1.jpg"
-    },
-    {
-        "name": "Test 1",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
-        "price": "$3,500",
-		"description": "This is the real date",
-        "image": "Test1.jpg"
-    },
-    {
-        "name": "Test 1",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
-        "price": "$3,500",
-		"description": "This is the real date",
-        "image": "Test1.jpg"
-    },
-    {
-        "name": "Test 1",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
-        "price": "$3,500",
-		"description": "This is the real date",
-        "image": "Test1.jpg"
-    },
-    {
-        "name": "Test 1",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
-        "price": "$3,500",
-		"description": "This is the real date",
-        "image": "Test1.jpg"
-    }
-]
+		}
