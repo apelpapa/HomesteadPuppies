@@ -5,15 +5,15 @@
         "dob": "2022-07-06",
 		"gender": "Male",
 		"description": "Meet Charles!",
-        "image": "Alex1.jpg",
-		"images": ["Alex1.jpg", "Alex2.jpg", "Alex3.jpg", "Alex4.jpg", "Alex5.jpg", "Alex6.jpg", "Alex7.jpg", "Alex8.jpg"]
+        "image": "Charles1.jpg",
+		"images": ["Charles1.jpg", "Charles2.jpg", "Charles3.jpg", "Charles4.jpg", "Charles5.jpg", "Charles6.jpg", "Charles7.jpg", "Charles8.jpg", "Charles9.jpg", "Charles10.jpg", "Charles11.jpg", "Charles12.jpg", "Charles13.jpg", "Charles14.jpg", "Charles15.jpg", "Charles16.jpg", "Charles17.jpg"]
     }, {
-        "name": "Vickie",
+        "name": "Victoria",
         "breed": "Cavalier King Charles Spaniel",
         "dob": "2022-07-06",
 		"gender": "Female",
-		"description": "Meet Vickie!",
-        "image": "Alex1.jpg",
-		"images": ["Alex1.jpg", "Alex2.jpg", "Alex3.jpg", "Alex4.jpg", "Alex5.jpg", "Alex6.jpg", "Alex7.jpg", "Alex8.jpg"]
+		"description": "Meet Victoria!",
+        "image": "Victoria1.jpg",
+		"images": ["Victoria1.jpg", "Victoria2.jpg", "Victoria3.jpg", "Victoria4.jpg", "Victoria5.jpg", "Victoria6.jpg", "Victoria7.jpg"]
     }
 ]
