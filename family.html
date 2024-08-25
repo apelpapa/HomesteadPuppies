@@ -86,9 +86,9 @@
             <h1><a href="index.html" style="color: white; text-decoration: none;"> <img src="Images/Logo.png" width="90" height="90" alt="Homestead Puppies Logo"/> </a></h1>
             <nav>
                 <a href="index.html">Home</a>
+				<a href="puppies.html">Available Puppies</a>
                 <a href="contact.html">Contact Us</a>
                 <a href="deposit.html">Deposit</a>
-				<a href="parents.html">Parents</a>
             </nav>
         </div>
         <!--<p>Bringing joy to homes, one puppy at a time.</p>-->
@@ -105,33 +105,18 @@
         <p>&copy; 2024 Homestead Puppies. All rights reserved.</p>
     </footer>
     <script>
-        function calculateAge(dob) {
+		function calculateAge(dob) {
             const birthDate = new Date(dob);
             const today = new Date();
             const ageInMilliseconds = today - birthDate;
             const ageInDays = Math.floor(ageInMilliseconds / (1000 * 60 * 60 * 24));
             const weeks = Math.floor(ageInDays / 7);
-            const days = ageInDays % 7;
-            return `${weeks} weeks and ${days} day${days !== 1 ? 's' : ''}`;
+            const years = ageInDays % 365;
+            return `${years} years old`;
         }
-
-        function whenAvailable(dob) {
-            const birthDate = new Date(dob);
-            const today = new Date();
-            const ageInMilliseconds = today - birthDate;
-            const ageInDays = Math.floor(ageInMilliseconds / (1000 * 60 * 60 * 24));
-            const daysLeft = 56 - ageInDays;
-            const weeks = Math.floor(daysLeft / 7);
-            const days = daysLeft % 7;
-            if (daysLeft < 1) {
-                return `Now`;
-            } else {
-                return `in ${weeks} weeks and ${days} day${days !== 1 ? 's' : ''}`;
-            }
-        }
-
+	
         document.addEventListener("DOMContentLoaded", function() {
-            fetch('puppies.json')
+            fetch('parents.json')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok ' + response.statusText);
@@ -161,11 +146,7 @@
                             </div>
                             <p>Breed: ${puppy.breed}</p>
                             <p>Gender: ${puppy.gender}</p>
-                            <p>Mother: ${puppy.mother}</p>
-                            <p>Father: ${puppy.father}</p>
                             <p>Age: ${calculateAge(puppy.dob)}</p>
-                            <p>Available to Take Home ${whenAvailable(puppy.dob)}</p>
-                            <p>Price: ${puppy.price}</p>
                             <p>Description: ${puppy.description}</p>
                         `;
                         puppyList.appendChild(puppyCard);
