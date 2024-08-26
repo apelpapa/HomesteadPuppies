@@ -21,8 +21,8 @@
         "dob": "2022-10-15",
 		"gender": "Female",
 		"description": "Meet Victoria!",
-        "image": "Victoria1.jpg",
-		"images": ["Victoria1.jpg", "Victoria2.jpg", "Victoria3.jpg", "Victoria4.jpg", "Victoria5.jpg", "Victoria6.jpg", "Victoria7.jpg"]
+        "image": "placeholder.jpg",
+		"images": ["placeholder.jpg"]
     }, {
         "name": "Mila",
         "breed": "Dachshund",
