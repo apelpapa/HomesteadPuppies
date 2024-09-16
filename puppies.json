@@ -12,51 +12,15 @@
 		"price": "$1,800"
     },
     {
-        "name": "Chloe",
+        "name": "Penny",
         "breed": "Cavalier King Charles Spaniel",
         "dob": "2024-07-06",
 		"gender": "Female",
 		"mother": "Victoria",
 		"father": "Charles",
-		"description": "Chloe is an irresistibly cute Cavalier King Charles Spaniel puppy, born on July 6th. With her gentle demeanor and sparkling eyes, she's all set to steal your heart! Chloe is AKC registered and fully vaccinated, ready to find her forever home filled with love and cuddles. Don’t wait to bring this little darling into your life! Text 720-833-8083 for more details and to meet precious Chloe!",
-        "image": "Chloe1.jpg",
-		"images": ["Chloe1.jpg", "Chloe2.jpg", "Chloe3.jpg", "Chloe4.jpg", "Chloe5.jpg", "Chloe6.jpg", "Chloe7.jpg", "Chloe8.jpg"], 
-		"price": "$1,800"
-    },
-    {
-        "name": "Lily",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
-		"gender": "Female",
-		"mother": "Victoria",
-		"father": "Charles",
-		"description": "Lily is an utterly charming Cavalier King Charles Spaniel puppy, born on July 6th. With her sweet, expressive eyes and a heart full of affection, she's ready to bring endless joy to your life! Lily is AKC registered and has received all her vaccinations, so she’s all set to cuddle up in her forever home. Don’t miss out on this little lovebug! Text 720-833-8083 for more details and to meet the lovely Lily!",
-        "image": "Lily1.jpg",
-		"images": ["Lily1.jpg", "Lily2.jpg", "Lily3.jpg", "Lily4.jpg", "Lily5.jpg", "Lily6.jpg", "Lily7.jpg", "Lily8.jpg", "Lily9.jpg", "Lily10.jpg", "Lily11.jpg", "Lily12.jpg"],
-		"price": "$1,800"
-    },
-    {
-        "name": "Sophia",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
-		"gender": "Female",
-		"mother": "Victoria",
-		"father": "Charles",
-		"description": "Sophia is an absolutely precious Cavalier King Charles Spaniel puppy, born on July 6th. With her soft, velvety ears and a heart full of love, she's ready to become your new best friend! Sophia is AKC registered and has received all her vaccinations, so she’s all set to snuggle into her forever home. Don’t let this little sweetheart slip away! Text 720-833-8083 for more details and to meet darling Sophia!",
-        "image": "Sophia1.jpg",
-		"images": ["Sophia1.jpg", "Sophia2.jpg", "Sophia3.jpg", "Sophia4.jpg", "Sophia5.jpg", "Sophia6.jpg", "Sophia7.jpg"],
-		"price": "$1,800"
-    },
-    {
-        "name": "Theo",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
-		"gender": "Male",
-		"mother": "Victoria",
-		"father": "Charles",
-		"description": "Theo is an absolutely adorable Cavalier King Charles Spaniel puppy, born on July 6th. With his big, soulful eyes and gentle nature, he's ready to melt your heart! Theo is AKC registered and has received all his vaccinations, so he's all set to join his forever family. Don’t miss out on this little bundle of joy! Text 720-833-8083 for more details and to meet sweet Theo!",
-        "image": "Theo1.jpg",
-		"images": ["Theo1.jpg", "Theo2.jpg", "Theo3.jpg", "Theo4.jpg", "Theo5.jpg", "Theo6.jpg"],
+		"description": "Penny is an absolutely adorable Cavalier King Charles Spaniel puppy, born on July 6th. With her big, soulful eyes and gentle nature, she's ready to melt your heart! Penny is AKC registered and has received all his vaccinations, so she's all set to join her forever family. Don’t miss out on this little bundle of joy! Text 720-833-8083 for more details and to meet sweet Penny!",
+        "image": ,
+		"images": ,
 		"price": "$1,800"
     }
 ]
