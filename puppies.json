@@ -10,17 +10,5 @@
         "image": "Alex1.jpg",
 		"images": ["Alex1.jpg", "Alex2.jpg", "Alex3.jpg", "Alex4.jpg", "Alex5.jpg", "Alex6.jpg", "Alex7.jpg", "Alex8.jpg"],
 		"price": "$1,800"
-    },
-    {
-        "name": "Penny",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-07-06",
-		"gender": "Female",
-		"mother": "Victoria",
-		"father": "Charles",
-		"description": "Penny is an absolutely adorable Cavalier King Charles Spaniel puppy, born on July 6th. With her big, soulful eyes and gentle nature, she's ready to melt your heart! Penny is AKC registered and has received all his vaccinations, so she's all set to join her forever family. Don’t miss out on this little bundle of joy! Text 720-833-8083 for more details and to meet sweet Penny!",
-        "image": "placeholder.jpg",
-		"images": ["placeholder.jpg"],
-		"price": "$1,800"
     }
 ]
