@@ -8,7 +8,7 @@
 		"father": "Charlie",
 		"description": "Need Description",
         "image": "Bobby1.jpg",
-		"images": ["Bobby1.jpg", "Bobby2.jpg", "Bobby3.jpg", "Bobby4.jpg", "Bobby5.jpg", "Bobby6.jpg", "Bobby7.jpg", "Bobby8.jpg"],
+		"images": ["Bobby1.jpg"],
 		"price": "$1,800"
     }
 	
