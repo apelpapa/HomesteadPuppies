@@ -7,8 +7,8 @@
         "mother": "Priscilla",
 		"father": "Charlie",
 		"description": "Need Description",
-        "image": "Bobby1.jpg",
-		"images": ["Bobby1.jpg"],
+        "image": "Bobby1.JPG",
+		"images": ["Bobby1.JPG"],
 		"price": "$1,800"
     }
 	
