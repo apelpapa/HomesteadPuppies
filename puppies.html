@@ -88,7 +88,7 @@
                 <a href="index.html">Home</a>
                 <a href="contact.html">Contact Us</a>
                 <a href="deposit.html">Deposit</a>
-				<a href="parents.html">Parents</a>
+                <a href="parents.html">Parents</a>
             </nav>
         </div>
         <!--<p>Bringing joy to homes, one puppy at a time.</p>-->
@@ -96,6 +96,12 @@
     <div class="container">
         <div class="section" id="puppies">
             <h2>Available Puppies</h2>
+            <label for="breed-filter">Filter by Breed:</label>
+            <select id="breed-filter">
+                <option value="All">All</option>
+                <option value="Shih Tzu">Shih Tzu</option>
+                <option value="Cavalier King Charles Spaniel">Cavalier King Charles Spaniel</option>
+            </select>
             <div class="puppies" id="puppy-list">
                 <!-- Puppy cards will be inserted here dynamically -->
             </div>
@@ -130,7 +136,43 @@
             }
         }
 
+        function displayPuppies(puppies) {
+            const puppyList = document.getElementById('puppy-list');
+            puppyList.innerHTML = ''; // Clear existing puppies
+            puppies.forEach(puppy => {
+                const puppyCard = document.createElement('div');
+                puppyCard.classList.add('puppy-card');
+                
+                // Build the Lightbox gallery for each puppy
+                let galleryHtml = '';
+                puppy.images.forEach((image, index) => {
+                    galleryHtml += `
+                        <a href="Images/Current/${image}" data-lightbox="${puppy.name}" data-title="${puppy.name} - Image ${index + 1}">
+                            ${index === 0 ? `<img src="Images/Current/${image}" alt="${puppy.name}" onerror="this.onerror=null;this.src='placeholder.jpg';">` : ''}
+                        </a>
+                    `;
+                });
+
+                puppyCard.innerHTML = `
+                    <h3>${puppy.name}</h3>
+                    <div class="puppy-gallery">
+                        ${galleryHtml}
+                    </div>
+                    <p>Breed: ${puppy.breed}</p>
+                    <p>Gender: ${puppy.gender}</p>
+                    <p>Mother: ${puppy.mother}</p>
+                    <p>Father: ${puppy.father}</p>
+                    <p>Age: ${calculateAge(puppy.dob)}</p>
+                    <p>Available to Take Home ${whenAvailable(puppy.dob)}</p>
+                    <p>Price: ${puppy.price}</p>
+                    <p>Description: ${puppy.description}</p>
+                `;
+                puppyList.appendChild(puppyCard);
+            });
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
+            let allPuppies = [];
             fetch('puppies.json')
                 .then(response => {
                     if (!response.ok) {
@@ -139,41 +181,18 @@
                     return response.json();
                 })
                 .then(data => {
-                    const puppyList = document.getElementById('puppy-list');
-                    data.forEach(puppy => {
-                        const puppyCard = document.createElement('div');
-                        puppyCard.classList.add('puppy-card');
-                        
-                        // Build the Lightbox gallery for each puppy
-                        let galleryHtml = '';
-                        puppy.images.forEach((image, index) => {
-                            galleryHtml += `
-                                <a href="Images/Current/${image}" data-lightbox="${puppy.name}" data-title="${puppy.name} - Image ${index + 1}">
-                                    ${index === 0 ? `<img src="Images/Current/${image}" alt="${puppy.name}" onerror="this.onerror=null;this.src='placeholder.jpg';">` : ''}
-                                </a>
-                            `;
-                        });
-
-                        puppyCard.innerHTML = `
-                            <h3>${puppy.name}</h3>
-                            <div class="puppy-gallery">
-                                ${galleryHtml}
-                            </div>
-                            <p>Breed: ${puppy.breed}</p>
-                            <p>Gender: ${puppy.gender}</p>
-                            <p>Mother: ${puppy.mother}</p>
-                            <p>Father: ${puppy.father}</p>
-                            <p>Age: ${calculateAge(puppy.dob)}</p>
-                            <p>Available to Take Home ${whenAvailable(puppy.dob)}</p>
-                            <p>Price: ${puppy.price}</p>
-                            <p>Description: ${puppy.description}</p>
-                        `;
-                        puppyList.appendChild(puppyCard);
-                    });
+                    allPuppies = data;
+                    displayPuppies(allPuppies);
                 })
                 .catch(error => {
                     console.error('There has been a problem with your fetch operation:', error);
                 });
+
+            document.getElementById('breed-filter').addEventListener('change', function() {
+                const selectedBreed = this.value;
+                const filteredPuppies = selectedBreed === 'All' ? allPuppies : allPuppies.filter(puppy => puppy.breed === selectedBreed);
+                displayPuppies(filteredPuppies);
+            });
         });
     </script>
     <script src="Images/lightbox2/js/lightbox-plus-jquery.js"></script>
