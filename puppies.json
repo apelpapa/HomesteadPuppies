@@ -60,18 +60,6 @@
 		"price": "$2,000"
     },
 	{
-        "name": "Kimmy",
-        "breed": "Shih Tzu",
-        "dob": "2024-09-04",
-		"gender": "Female",
-        "mother": "Priscilla",
-		"father": "Charlie",
-		"description": "Precious Shih Tzu girl, Kimmy, born on 09/04/2024. She’ll be ready to join her forever home on 10/30/2024! Meet her now and place a deposit to reserve this sweet and playful pup. Perfect for any loving family!",
-        "image": "Kimmy1.JPG",
-		"images": ["Kimmy1.JPG", "Kimmy2.JPG", "Kimmy3.JPG", "Kimmy4.JPG", "Kimmy5.JPG", "Kimmy6.JPG", "Kimmy7.JPG", "Kimmy8.JPG", "Kimmy9.JPG", "Kimmy10.JPG", "Kimmy11.JPG"],
-		"price": "$950"
-    },
-	{
         "name": "Parker",
         "breed": "Cavalier King Charles Spaniel",
         "dob": "2024-09-04",
