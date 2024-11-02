@@ -24,18 +24,6 @@
 		"price": "$1,800"
     },
 	{
-        "name": "Danny",
-        "breed": "Shih Tzu",
-        "dob": "2024-09-04",
-		"gender": "Male",
-        "mother": "Priscilla",
-		"father": "Charlie",
-		"description": "Playful Shih Tzu boy, Danny, born on 09/04/2024. He’ll be ready to join his new family on 10/30/2024! Come meet him now and place a deposit to bring this lovable pup home. Perfect for a warm and loving family!",
-        "image": "Danny1.JPG",
-		"images": ["Danny1.JPG", "Danny2.JPG", "Danny3.JPG", "Danny4.JPG", "Danny5.JPG", "Danny6.JPG", "Danny7.JPG", "Danny8.JPG", "Danny9.JPG"],
-		"price": "$950"
-    },
-	{
         "name": "Garrett",
         "breed": "Cavalier King Charles Spaniel",
         "dob": "2024-09-04",
@@ -69,18 +57,6 @@
 		"description": "Adorable Shih Tzu girl, Pear, born on 09/04/2024. She’ll be ready to go to her new home on 10/30/2024! Meet her now and place a deposit to reserve this sweet little companion. A perfect addition to any loving family!",
         "image": "Pear1.JPG",
 		"images": ["Pear1.JPG", "Pear2.JPG", "Pear3.JPG", "Pear4.JPG", "Pear5.JPG", "Pear6.JPG", "Pear7.JPG", "Pear8.JPG", "Pear9.JPG", "Pear10.JPG", "Pear11.JPG", "Pear12.JPG", "Pear13.JPG"],
-		"price": "$950"
-    },
-	{
-        "name": "Princess",
-        "breed": "Shih Tzu",
-        "dob": "2024-09-04",
-		"gender": "Female",
-        "mother": "Priscilla",
-		"father": "Charlie",
-		"description": "Darling Shih Tzu girl, Princess, born on 09/04/2024. She’ll be ready to go to her new home on 10/30/2024! Meet her now and place a deposit to make her your own. A perfect little bundle of joy for any loving home!",
-        "image": "Princess1.JPG",
-		"images": ["Princess1.JPG", "Princess2.JPG", "Princess3.JPG", "Princess4.JPG", "Princess5.JPG", "Princess6.JPG", "Princess7.JPG", "Princess8.JPG", "Princess9.JPG", "Princess10.JPG"],
 		"price": "$950"
     },
 	{
