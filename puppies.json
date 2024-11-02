@@ -21,7 +21,7 @@
 		"description": "Handsome Cavalier King Charles Spaniel boy, Bryant, born on 09/04/2024. He'll be ready to go to his new home on 10/30/2024! You can meet him now and place a deposit to make him yours. A perfect addition to any family!",
         "image": "Bryant1.JPG",
 		"images": ["Bryant1.JPG", "Bryant2.JPG", "Bryant3.JPG", "Bryant4.JPG", "Bryant5.JPG", "Bryant6.JPG", "Bryant7.JPG", "Bryant8.JPG", "Bryant9.JPG", "Bryant10.JPG", "Bryant11.JPG", "Bryant12.JPG"],
-		"price": "$2,000"
+		"price": "$1,800"
     },
 	{
         "name": "Coco",
@@ -57,7 +57,7 @@
 		"description": "Adorable Cavalier King Charles Spaniel boy, Garrett, born on 09/04/2024. He’ll be ready to go home on 10/30/2024! Meet him now and place a deposit to secure this sweet little companion for your family.",
         "image": "Garrett1.JPG",
 		"images": ["Garrett1.JPG", "Garrett2.JPG", "Garrett3.JPG", "Garrett4.JPG", "Garrett5.JPG", "Garrett6.JPG", "Garrett7.JPG", "Garrett8.JPG", "Garrett9.JPG", "Garrett10.JPG"],
-		"price": "$2,000"
+		"price": "$1,800"
     },
 	{
         "name": "Parker",
@@ -69,7 +69,7 @@
 		"description": "Handsome Cavalier King Charles Spaniel boy, Parker, born on 09/04/2024. He’ll be ready to go home on 10/30/2024! Meet this sweet pup now and place a deposit to bring him into your family. A perfect companion awaits!",
         "image": "Parker1.JPG",
 		"images": ["Parker1.JPG", "Parker2.JPG", "Parker3.JPG", "Parker4.JPG", "Parker5.JPG", "Parker6.JPG", "Parker7.JPG", "Parker8.JPG", "Parker9.JPG", "Parker10.JPG", "Parker11.JPG"],
-		"price": "$2,000"
+		"price": "$1,800"
     },
 	{
         "name": "Pear",
@@ -106,18 +106,5 @@
         "image": "Pumpkin1.JPG",
 		"images": ["Pumpkin1.JPG", "Pumpkin2.JPG", "Pumpkin3.JPG", "Pumpkin4.JPG", "Pumpkin5.JPG", "Pumpkin6.JPG", "Pumpkin7.JPG", "Pumpkin8.JPG", "Pumpkin9.JPG", "Pumpkin10.JPG", "Pumpkin11.JPG", "Pumpkin12.JPG", "Pumpkin13.JPG", "Pumpkin14.JPG", "Pumpkin15.JPG", "Pumpkin16.JPG", "Pumpkin17.JPG", "Pumpkin18.JPG", "Pumpkin19.JPG", "Pumpkin20.JPG", "Pumpkin21.JPG"],
 		"price": "$950"
-    },
-	{
-        "name": "Sadie",
-        "breed": "Shih Tzu",
-        "dob": "2024-09-04",
-		"gender": "Female",
-        "mother": "Priscilla",
-		"father": "Charlie",
-		"description": "Lovely Shih Tzu girl, Saide, born on 09/04/2024. She’ll be ready to go to her new home on 10/30/2024! Meet her now and place a deposit to secure this sweet and playful companion. A perfect addition to any loving family!",
-        "image": "Sadie1.JPG",
-		"images": ["Sadie1.JPG", "Sadie2.JPG", "Sadie3.JPG", "Sadie4.JPG", "Sadie5.JPG", "Sadie6.JPG", "Sadie7.JPG", "Sadie8.JPG"],
-		"price": "$950"
     }
-	
 ]
