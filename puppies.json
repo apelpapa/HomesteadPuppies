@@ -24,18 +24,6 @@
 		"price": "$1,800"
     },
 	{
-        "name": "Coco",
-        "breed": "Shih Tzu",
-        "dob": "2024-09-04",
-		"gender": "Female",
-        "mother": "Priscilla",
-		"father": "Charlie",
-		"description": "Adorable Shih Tzu girl, Coco, born on 09/04/2024. She'll be ready to join her new family on 10/30/2024! Meet her now and place a deposit to make her yours. A perfect little companion waiting for her forever home!",
-        "image": "Coco1.JPG",
-		"images": ["Coco1.JPG", "Coco2.JPG", "Coco3.JPG", "Coco4.JPG", "Coco5.JPG", "Coco6.JPG", "Coco7.JPG", "Coco8.JPG", "Coco9.JPG"],
-		"price": "$950"
-    },
-	{
         "name": "Danny",
         "breed": "Shih Tzu",
         "dob": "2024-09-04",
