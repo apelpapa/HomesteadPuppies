@@ -58,17 +58,5 @@
         "image": "Pear1.JPG",
 		"images": ["Pear1.JPG", "Pear2.JPG", "Pear3.JPG", "Pear4.JPG", "Pear5.JPG", "Pear6.JPG", "Pear7.JPG", "Pear8.JPG", "Pear9.JPG", "Pear10.JPG", "Pear11.JPG", "Pear12.JPG", "Pear13.JPG"],
 		"price": "$950"
-    },
-	{
-        "name": "Pumpkin",
-        "breed": "Shih Tzu",
-        "dob": "2024-09-04",
-		"gender": "Female",
-        "mother": "Priscilla",
-		"father": "Charlie",
-		"description": "Sweet Shih Tzu girl, Pumpkin, born on 09/04/2024. She’ll be ready to go home on 10/30/2024! Meet her now and place a deposit to reserve this adorable companion. A perfect addition to any family!",
-        "image": "Pumpkin1.JPG",
-		"images": ["Pumpkin1.JPG", "Pumpkin2.JPG", "Pumpkin3.JPG", "Pumpkin4.JPG", "Pumpkin5.JPG", "Pumpkin6.JPG", "Pumpkin7.JPG", "Pumpkin8.JPG", "Pumpkin9.JPG", "Pumpkin10.JPG", "Pumpkin11.JPG", "Pumpkin12.JPG", "Pumpkin13.JPG", "Pumpkin14.JPG", "Pumpkin15.JPG", "Pumpkin16.JPG", "Pumpkin17.JPG", "Pumpkin18.JPG", "Pumpkin19.JPG", "Pumpkin20.JPG", "Pumpkin21.JPG"],
-		"price": "$950"
     }
 ]
