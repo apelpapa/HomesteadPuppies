@@ -1,62 +1,14 @@
 [
 	{
-        "name": "Bobby",
-        "breed": "Shih Tzu",
-        "dob": "2024-09-04",
-		"gender": "Male",
-        "mother": "Priscilla",
-		"father": "Charlie",
-		"description": "Adorable Shih Tzu boy, born on 09/04/2024. Ready to join his forever home on 10/30/2024! Meet him now and secure your spot with a deposit. Don't miss out on this sweet little companion!",
-        "image": "Bobby1.JPG",
-		"images": ["Bobby1.JPG", "Bobby2.JPG", "Bobby3.JPG", "Bobby4.JPG", "Bobby5.JPG", "Bobby6.JPG", "Bobby7.JPG", "Bobby8.JPG", "Bobby9.JPG", "Bobby10.JPG", "Bobby11.JPG"],
-		"price": "$850"
-    },
-	{
-        "name": "Bryant",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-09-04",
-		"gender": "Male",
-        "mother": "Elizabeth",
-		"father": "Charles",
-		"description": "Handsome Cavalier King Charles Spaniel boy, Bryant, born on 09/04/2024. He'll be ready to go to his new home on 10/30/2024! You can meet him now and place a deposit to make him yours. A perfect addition to any family!",
-        "image": "Bryant1.JPG",
-		"images": ["Bryant1.JPG", "Bryant2.JPG", "Bryant3.JPG", "Bryant4.JPG", "Bryant5.JPG", "Bryant6.JPG", "Bryant7.JPG", "Bryant8.JPG", "Bryant9.JPG", "Bryant10.JPG", "Bryant11.JPG", "Bryant12.JPG"],
-		"price": "$1,600"
-    },
-	{
-        "name": "Garrett",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-09-04",
-		"gender": "Male",
-        "mother": "Elizabeth",
-		"father": "Charles",
-		"description": "Adorable Cavalier King Charles Spaniel boy, Garrett, born on 09/04/2024. He’ll be ready to go home on 10/30/2024! Meet him now and place a deposit to secure this sweet little companion for your family.",
-        "image": "Garrett1.JPG",
-		"images": ["Garrett1.JPG", "Garrett2.JPG", "Garrett3.JPG", "Garrett4.JPG", "Garrett5.JPG", "Garrett6.JPG", "Garrett7.JPG", "Garrett8.JPG", "Garrett9.JPG", "Garrett10.JPG"],
-		"price": "$1,600"
-    },
-	{
-        "name": "Parker",
-        "breed": "Cavalier King Charles Spaniel",
-        "dob": "2024-09-04",
-		"gender": "Male",
-        "mother": "Elizabeth",
-		"father": "Charles",
-		"description": "Handsome Cavalier King Charles Spaniel boy, Parker, born on 09/04/2024. He’ll be ready to go home on 10/30/2024! Meet this sweet pup now and place a deposit to bring him into your family. A perfect companion awaits!",
-        "image": "Parker1.JPG",
-		"images": ["Parker1.JPG", "Parker2.JPG", "Parker3.JPG", "Parker4.JPG", "Parker5.JPG", "Parker6.JPG", "Parker7.JPG", "Parker8.JPG", "Parker9.JPG", "Parker10.JPG", "Parker11.JPG"],
-		"price": "$1,600"
-    },
-	{
-        "name": "Pear",
-        "breed": "Shih Tzu",
-        "dob": "2024-09-04",
-		"gender": "Female",
-        "mother": "Priscilla",
-		"father": "Charlie",
-		"description": "Adorable Shih Tzu girl, Pear, born on 09/04/2024. She’ll be ready to go to her new home on 10/30/2024! Meet her now and place a deposit to reserve this sweet little companion. A perfect addition to any loving family!",
-        "image": "Pear1.JPG",
-		"images": ["Pear1.JPG", "Pear2.JPG", "Pear3.JPG", "Pear4.JPG", "Pear5.JPG", "Pear6.JPG", "Pear7.JPG", "Pear8.JPG", "Pear9.JPG", "Pear10.JPG", "Pear11.JPG", "Pear12.JPG", "Pear13.JPG"],
+        "name": "None Available",
+        "breed": "None Available",
+        "dob": "2024-12-31",
+		"gender": "",
+        "mother": "",
+		"father": "",
+		"description": "Thank you for your interest but we currently have no avaiable puppies, we are anticipating puppies in February 2024",
+        "image": "",
+		"images": [],
 		"price": "$850"
     }
 ]
