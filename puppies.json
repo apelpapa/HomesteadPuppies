@@ -8,7 +8,7 @@
 		"father": "",
 		"description": "Thank you for your interest but we currently have no avaiable puppies, we are anticipating puppies in February 2024",
         "image": "",
-		"images": [],
-		"price": "$850"
+		"images": [""],
+		"price": ""
     }
 ]
