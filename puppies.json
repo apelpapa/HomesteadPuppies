@@ -1,14 +1,26 @@
 [
 	{
-        "name": "None Available",
-        "breed": "None Available",
-        "dob": "2024-12-31",
+        "name": "Cavalier King Charles Spaniel",
+        "breed": "Cavalier King Charles Spaniel",
+        "dob": "2025-02-28",
 		"gender": "",
         "mother": "",
 		"father": "",
 		"description": "Thank you for your interest but we currently have no avaiable puppies, we are anticipating puppies in February 2024",
-        "image": "",
-		"images": [""],
+        "image": "placeholder.jpg",
+		"images": ["placeholder.jpg"],
+		"price": ""
+    },
+    {
+        "name": "Shih Tzu",
+        "breed": "Shih Tzu",
+        "dob": "2025-02-28",
+		"gender": "",
+        "mother": "",
+		"father": "",
+		"description": "Thank you for your interest but we currently have no avaiable puppies, we are anticipating puppies in February 2024",
+        "image": "placeholder.jpg",
+		"images": ["placeholder.jpg"],
 		"price": ""
     }
 ]
