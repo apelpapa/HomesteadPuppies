@@ -32,4 +32,13 @@
         "image": "Oscar4.JPG",
 		"images": ["Oscar4.JPG","Oscar1.JPG","Oscar2.JPG","Oscar3.JPG"]
     }
+    , {
+        "name": "Pazi",
+        "breed": "Golden Retriever",
+        "dob": "2021-09-21",
+		"gender": "Female",
+		"description": "Meet Pazi!",
+        "image": "placeholder.jpg",
+		"images": ["placeholder.jpg"]
+    }
 ]
