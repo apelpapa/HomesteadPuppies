@@ -20,7 +20,7 @@
 		"father": "Charles",
 		"description": "Rosie is a cheerful social butterfly, quick to win hearts with her lively spirit and wagging tail. Her sweet, expressive face lights up at the sight of new friends—whether they’re people or fellow pups. Loving and quick to cuddle, Rosie also has a playful streak, happily chasing a squeaky toy or performing a quick trick for treats. She seems to embody sunshine in a small, silky package.",
         "image": "King1.JPG",
-		"images": ["King3.JPG", "King2.JPG", "King1.JPG", "King4.JPG", "King5.JPG", "King6.JPG", "King7.JPG", "King8.JPG", "King9.JPG", "King10.JPG"],
+		"images": ["King1.JPG", "King2.JPG", "King3.JPG", "King4.JPG", "King5.JPG", "King6.JPG", "King7.JPG", "King8.JPG", "King9.JPG", "King10.JPG"],
 		"price": "$2,000"
     },{
         "name": "Willow",
@@ -31,7 +31,7 @@
 		"father": "Charles",
 		"description": "Willow carries herself with the serene grace of her namesake. Her temperament is gentle yet attentive, and she easily adapts to the calm rhythms of family life. Though she’s often content to lounge by your side, Willow isn’t shy about joining in for a brisk walk or a lighthearted game. Soft-hearted and steady, she’s the pup you can count on for a comforting presence and unwavering devotion.",
         "image": "King2.JPG",
-		"images": ["King3.JPG", "King2.JPG", "King1.JPG", "King4.JPG", "King5.JPG", "King6.JPG", "King7.JPG", "King8.JPG", "King9.JPG", "King10.JPG"],
+		"images": ["King2.JPG", "King3.JPG", "King1.JPG", "King4.JPG", "King5.JPG", "King6.JPG", "King7.JPG", "King8.JPG", "King9.JPG", "King10.JPG"],
 		"price": "$2,000"
     },{
         "name": "Jasper",
@@ -42,7 +42,7 @@
 		"father": "Charles",
 		"description": "Jasper is an endearingly spirited little gentleman, blending a mischievous sparkle in his eye with a deep well of affection. He’s eager to explore the world, bounding after new adventures in the yard or on a stroll. Yet, for all his curiosity, Jasper remains a sweet-natured companion who can’t resist a good snuggle. His blend of enthusiasm and loyalty makes him a constant source of joy in the home.",
         "image": "King4.JPG",
-		"images": ["King3.JPG", "King2.JPG", "King1.JPG", "King4.JPG", "King5.JPG", "King6.JPG", "King7.JPG", "King8.JPG", "King9.JPG", "King10.JPG"],
+		"images": ["King4.JPG", "King2.JPG", "King1.JPG", "King3.JPG", "King5.JPG", "King6.JPG", "King7.JPG", "King8.JPG", "King9.JPG", "King10.JPG"],
 		"price": "$2,000"
     },
     {
@@ -125,8 +125,8 @@
     "mother": "Pazi",
     "father": "Oscar",
     "description": "The Obsidian Retriever, a stunning new canine creation blending approximately 50% Golden Retriever, 25% German Shepherd, and 25% Rottweiler. This unique heritage gives the Obsidian Retriever its striking beauty, gentle confidence, and endearing cuteness. The Golden Retriever influence imparts a friendly, eager-to-please temperament, while the German Shepherd’s intelligence and keen awareness complement the Rottweiler’s steadfast loyalty and resilience. The result is a devoted companion that excels in both family settings and active lifestyles. Whether romping around the yard in playful bursts of energy or quietly looking after its loved ones, the Obsidian Retriever is sure to win hearts with its balanced blend of affection, protectiveness, and undeniable charm.",
-    "image": "placeholder.jpg",
-    "images": ["ObsidianEach1.JPG", "ObsidianEach2.JPG", "ObsidianEach3.JPG", "ObsidianEach4.JPG", "ObsidianEach5.JPG", "ObsidianEach6.JPG", "ObsidianEach7.JPG", "ObsidianEach8.JPG"],
+    "image": "OnyxTriColor1.JPG",
+    "images": ["OnyxTriColor1.JPG","OnyxTriColor2.JPG","OnyxTriColor3.JPG","OnyxTriColor4.JPG","ObsidianEach1.JPG", "ObsidianEach2.JPG", "ObsidianEach3.JPG", "ObsidianEach4.JPG", "ObsidianEach5.JPG", "ObsidianEach6.JPG", "ObsidianEach7.JPG", "ObsidianEach8.JPG"],
     "price": "$550"
     },
     {
