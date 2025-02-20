@@ -1,24 +1,58 @@
 [
 	{
-        "name": "Cavalier King Charles Spaniel",
+        "name": "Darcy",
         "breed": "Cavalier King Charles Spaniel",
-        "dob": "2025-02-28",
-		"gender": "",
-        "mother": "",
-		"father": "",
-		"description": "Thank you for your interest but we currently have no available puppies, we are anticipating puppies in February 2024",
+        "dob": "2025-01-16",
+		"gender": "Female",
+        "mother": "Elizabeth",
+		"father": "Charles",
+		"description": "Darcy is the picture of quiet confidence and soft elegance. She greets the world with bright, gentle eyes and a calm, reassuring demeanor. While she loves a relaxing day curled up on the couch, Darcy also shows flashes of playfulness when a favorite toy appears. Endlessly patient and tender-hearted, she thrives on close connections with her family, radiating warmth wherever she goes.",
+        "image": "King3.JPG",
+		"images": ["King3.JPG", "King2.JPG", "King1.JPG", "King4.JPG", "King5.JPG", "King6.JPG", "King7.JPG", "King8.JPG", "King9.JPG", "King10.JPG"],
+		"price": "2,000"
+    },
+    {
+        "name": "Rosie",
+        "breed": "Cavalier King Charles Spaniel",
+        "dob": "2025-01-16",
+		"gender": "Female",
+        "mother": "Elizabeth",
+		"father": "Charles",
+		"description": "Rosie is a cheerful social butterfly, quick to win hearts with her lively spirit and wagging tail. Her sweet, expressive face lights up at the sight of new friends—whether they’re people or fellow pups. Loving and quick to cuddle, Rosie also has a playful streak, happily chasing a squeaky toy or performing a quick trick for treats. She seems to embody sunshine in a small, silky package.",
         "image": "placeholder.jpg",
 		"images": ["placeholder.jpg"],
-		"price": ""
+		"price": "2,000"
+    },{
+        "name": "Willow",
+        "breed": "Cavalier King Charles Spaniel",
+        "dob": "2025-01-16",
+		"gender": "Female",
+        "mother": "Elizabeth",
+		"father": "Charles",
+		"description": "Willow carries herself with the serene grace of her namesake. Her temperament is gentle yet attentive, and she easily adapts to the calm rhythms of family life. Though she’s often content to lounge by your side, Willow isn’t shy about joining in for a brisk walk or a lighthearted game. Soft-hearted and steady, she’s the pup you can count on for a comforting presence and unwavering devotion.",
+        "image": "placeholder.jpg",
+		"images": ["placeholder.jpg"],
+		"price": "2,000"
+    },{
+        "name": "Jasper",
+        "breed": "Cavalier King Charles Spaniel",
+        "dob": "2025-01-16",
+		"gender": "Male",
+        "mother": "Elizabeth",
+		"father": "Charles",
+		"description": "Jasper is an endearingly spirited little gentleman, blending a mischievous sparkle in his eye with a deep well of affection. He’s eager to explore the world, bounding after new adventures in the yard or on a stroll. Yet, for all his curiosity, Jasper remains a sweet-natured companion who can’t resist a good snuggle. His blend of enthusiasm and loyalty makes him a constant source of joy in the home.",
+        "image": "placeholder.jpg",
+		"images": ["placeholder.jpg"],
+		"price": "2,000"
     },
     {
         "name": "Shih Tzu",
         "breed": "Shih Tzu",
-        "dob": "2025-02-28",
+        "dob": "2025-03-01",
 		"gender": "",
         "mother": "",
 		"father": "",
-		"description": "Thank you for your interest but we currently have no available puppies, we are anticipating puppies in February 2024",
+		"description": "Thank you for your interest but we currently have no available puppies, we are anticipating puppies in March 2024",
         "image": "placeholder.jpg",
 		"images": ["placeholder.jpg"],
 		"price": ""
