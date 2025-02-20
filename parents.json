@@ -24,44 +24,12 @@
         "image": "placeholder.jpg",
 		"images": ["placeholder.jpg"]
     }, {
-        "name": "Mila",
-        "breed": "Dachshund",
-        "dob": "2024-01-14",
-		"gender": "Female",
-		"description": "Meet Mila!",
-        "image": "placeholder.jpg",
-		"images": ["placeholder.jpg"]
-    }, {
-        "name": "Bella",
-        "breed": "Golden Retriever",
-        "dob": "1999-01-01",
-		"gender": "Female",
-		"description": "Meet Bella!",
-        "image": "placeholder.jpg",
-		"images": ["placeholder.jpg"]
-    }, {
-        "name": "Charlie",
-        "breed": "Shih Tzu",
-        "dob": "1999-01-01",
+        "name": "Oscar",
+        "breed": "German Shepherd - Rottweiler ",
+        "dob": "2020-10-01",
 		"gender": "Male",
-		"description": "Meet Charlie!",
-        "image": "placeholder.jpg",
-		"images": ["placeholder.jpg"]
-    }, {
-        "name": "Shih Tzu 1",
-        "breed": "Shih Tzu",
-        "dob": "1999-01-01",
-		"gender": "Female",
-		"description": "Meet XXX!",
-        "image": "placeholder.jpg",
-		"images": ["placeholder.jpg"]
-    }, {
-        "name": "Shih Tzu 2",
-        "breed": "Shih Tzu",
-        "dob": "1999-01-01",
-		"gender": "Female",
-		"description": "Meet XXX!",
-        "image": "placeholder.jpg",
-		"images": ["placeholder.jpg"]
+		"description": "Meet Oscar!",
+        "image": "Oscar4.JPG",
+		"images": ["Oscar4.JPG","Oscar1.JPG","Oscar2.JPG","Oscar3.JPG"]
     }
 ]
