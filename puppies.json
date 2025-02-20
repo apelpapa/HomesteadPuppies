@@ -9,7 +9,7 @@
 		"description": "Darcy is the picture of quiet confidence and soft elegance. She greets the world with bright, gentle eyes and a calm, reassuring demeanor. While she loves a relaxing day curled up on the couch, Darcy also shows flashes of playfulness when a favorite toy appears. Endlessly patient and tender-hearted, she thrives on close connections with her family, radiating warmth wherever she goes.",
         "image": "King3.JPG",
 		"images": ["King3.JPG", "King2.JPG", "King1.JPG", "King4.JPG", "King5.JPG", "King6.JPG", "King7.JPG", "King8.JPG", "King9.JPG", "King10.JPG"],
-		"price": "$2,000"
+		"price": "$2,200"
     },
     {
         "name": "Rosie",
@@ -138,7 +138,7 @@
     "father": "Oscar",
     "description": "The Obsidian Retriever, a stunning new canine creation blending approximately 50% Golden Retriever, 25% German Shepherd, and 25% Rottweiler. This unique heritage gives the Obsidian Retriever its striking beauty, gentle confidence, and endearing cuteness. The Golden Retriever influence imparts a friendly, eager-to-please temperament, while the German Shepherd’s intelligence and keen awareness complement the Rottweiler’s steadfast loyalty and resilience. The result is a devoted companion that excels in both family settings and active lifestyles. Whether romping around the yard in playful bursts of energy or quietly looking after its loved ones, the Obsidian Retriever is sure to win hearts with its balanced blend of affection, protectiveness, and undeniable charm.",
     "image": "AxelSolid1.JPG",
-    "images": ["AxelSolid1.JPG","AxelSolid2.JPG","AxelSolid3.JPG","AxelSolid4.JPG","AxelSolid5.JPG","AxelSolid6.JPG","ObsidianEach1.JPG", "ObsidianEach2.JPG", "ObsidianEach3.JPG", "ObsidianEach4.JPG", "ObsidianEach5.JPG", "ObsidianEach6.JPG", "ObsidianEach7.JPG", "ObsidianEach8.JPG"],
+    "images": ["AxelSolid1.JPG","AxelSolid2 .JPG","AxelSolid3.JPG","AxelSolid4.JPG","AxelSolid5.JPG","AxelSolid6.JPG","ObsidianEach1.JPG", "ObsidianEach2.JPG", "ObsidianEach3.JPG", "ObsidianEach4.JPG", "ObsidianEach5.JPG", "ObsidianEach6.JPG", "ObsidianEach7.JPG", "ObsidianEach8.JPG"],
     "price": "$550"
     },
     {
