@@ -9,7 +9,7 @@
 		"description": "Darcy is the picture of quiet confidence and soft elegance. She greets the world with bright, gentle eyes and a calm, reassuring demeanor. While she loves a relaxing day curled up on the couch, Darcy also shows flashes of playfulness when a favorite toy appears. Endlessly patient and tender-hearted, she thrives on close connections with her family, radiating warmth wherever she goes.",
         "image": "King3.JPG",
 		"images": ["King3.JPG", "King2.JPG", "King1.JPG", "King4.JPG", "King5.JPG", "King6.JPG", "King7.JPG", "King8.JPG", "King9.JPG", "King10.JPG"],
-		"price": "2,000"
+		"price": "$2,000"
     },
     {
         "name": "Rosie",
@@ -19,9 +19,9 @@
         "mother": "Elizabeth",
 		"father": "Charles",
 		"description": "Rosie is a cheerful social butterfly, quick to win hearts with her lively spirit and wagging tail. Her sweet, expressive face lights up at the sight of new friends—whether they’re people or fellow pups. Loving and quick to cuddle, Rosie also has a playful streak, happily chasing a squeaky toy or performing a quick trick for treats. She seems to embody sunshine in a small, silky package.",
-        "image": "placeholder.jpg",
-		"images": ["placeholder.jpg"],
-		"price": "2,000"
+        "image": "King1.JPG",
+		"images": ["King3.JPG", "King2.JPG", "King1.JPG", "King4.JPG", "King5.JPG", "King6.JPG", "King7.JPG", "King8.JPG", "King9.JPG", "King10.JPG"],
+		"price": "$2,000"
     },{
         "name": "Willow",
         "breed": "Cavalier King Charles Spaniel",
@@ -30,9 +30,9 @@
         "mother": "Elizabeth",
 		"father": "Charles",
 		"description": "Willow carries herself with the serene grace of her namesake. Her temperament is gentle yet attentive, and she easily adapts to the calm rhythms of family life. Though she’s often content to lounge by your side, Willow isn’t shy about joining in for a brisk walk or a lighthearted game. Soft-hearted and steady, she’s the pup you can count on for a comforting presence and unwavering devotion.",
-        "image": "placeholder.jpg",
-		"images": ["placeholder.jpg"],
-		"price": "2,000"
+        "image": "King2.JPG",
+		"images": ["King3.JPG", "King2.JPG", "King1.JPG", "King4.JPG", "King5.JPG", "King6.JPG", "King7.JPG", "King8.JPG", "King9.JPG", "King10.JPG"],
+		"price": "$2,000"
     },{
         "name": "Jasper",
         "breed": "Cavalier King Charles Spaniel",
@@ -41,9 +41,9 @@
         "mother": "Elizabeth",
 		"father": "Charles",
 		"description": "Jasper is an endearingly spirited little gentleman, blending a mischievous sparkle in his eye with a deep well of affection. He’s eager to explore the world, bounding after new adventures in the yard or on a stroll. Yet, for all his curiosity, Jasper remains a sweet-natured companion who can’t resist a good snuggle. His blend of enthusiasm and loyalty makes him a constant source of joy in the home.",
-        "image": "placeholder.jpg",
-		"images": ["placeholder.jpg"],
-		"price": "2,000"
+        "image": "King4.JPG",
+		"images": ["King3.JPG", "King2.JPG", "King1.JPG", "King4.JPG", "King5.JPG", "King6.JPG", "King7.JPG", "King8.JPG", "King9.JPG", "King10.JPG"],
+		"price": "$2,000"
     },
     {
         "name": "Shih Tzu",
@@ -65,9 +65,9 @@
     "mother": "Pazi",
     "father": "Oscar",
     "description": "The Obsidian Retriever, a stunning new canine creation blending approximately 50% Golden Retriever, 25% German Shepherd, and 25% Rottweiler. This unique heritage gives the Obsidian Retriever its striking beauty, gentle confidence, and endearing cuteness. The Golden Retriever influence imparts a friendly, eager-to-please temperament, while the German Shepherd’s intelligence and keen awareness complement the Rottweiler’s steadfast loyalty and resilience. The result is a devoted companion that excels in both family settings and active lifestyles. Whether romping around the yard in playful bursts of energy or quietly looking after its loved ones, the Obsidian Retriever is sure to win hearts with its balanced blend of affection, protectiveness, and undeniable charm.",
-    "image": "placeholder.jpg",
-    "images": ["placeholder.jpg"],
-    "price": "550"
+    "image": "EmberTriColor1.JPG",
+    "images": ["EmberTriColor1.JPG", "EmberTriColor2.JPG", "EmberTriColor3.JPG", "ObsidianEach1.JPG", "ObsidianEach2.JPG", "ObsidianEach3.JPG", "ObsidianEach4.JPG", "ObsidianEach5.JPG", "ObsidianEach6.JPG", "ObsidianEach7.JPG", "ObsidianEach8.JPG"],
+    "price": "$550"
     },
     {
     "name": "Obsidian Retriever Nova",
@@ -77,9 +77,9 @@
     "mother": "Pazi",
     "father": "Oscar",
     "description": "The Obsidian Retriever, a stunning new canine creation blending approximately 50% Golden Retriever, 25% German Shepherd, and 25% Rottweiler. This unique heritage gives the Obsidian Retriever its striking beauty, gentle confidence, and endearing cuteness. The Golden Retriever influence imparts a friendly, eager-to-please temperament, while the German Shepherd’s intelligence and keen awareness complement the Rottweiler’s steadfast loyalty and resilience. The result is a devoted companion that excels in both family settings and active lifestyles. Whether romping around the yard in playful bursts of energy or quietly looking after its loved ones, the Obsidian Retriever is sure to win hearts with its balanced blend of affection, protectiveness, and undeniable charm.",
-    "image": "placeholder.jpg",
-    "images": ["placeholder.jpg"],
-    "price": "550"
+    "image": "NovaTriColor1.JPG",
+    "images": ["NovaTriColor1.JPG","NovaTriColor2.JPG","NovaTriColor3.JPG","NovaTriColor4.JPG","ObsidianEach1.JPG", "ObsidianEach2.JPG", "ObsidianEach3.JPG", "ObsidianEach4.JPG", "ObsidianEach5.JPG", "ObsidianEach6.JPG", "ObsidianEach7.JPG", "ObsidianEach8.JPG"],
+    "price": "$550"
     },
     {
     "name": "Obsidian Retriever Sable",
@@ -89,9 +89,9 @@
     "mother": "Pazi",
     "father": "Oscar",
     "description": "The Obsidian Retriever, a stunning new canine creation blending approximately 50% Golden Retriever, 25% German Shepherd, and 25% Rottweiler. This unique heritage gives the Obsidian Retriever its striking beauty, gentle confidence, and endearing cuteness. The Golden Retriever influence imparts a friendly, eager-to-please temperament, while the German Shepherd’s intelligence and keen awareness complement the Rottweiler’s steadfast loyalty and resilience. The result is a devoted companion that excels in both family settings and active lifestyles. Whether romping around the yard in playful bursts of energy or quietly looking after its loved ones, the Obsidian Retriever is sure to win hearts with its balanced blend of affection, protectiveness, and undeniable charm.",
-    "image": "placeholder.jpg",
-    "images": ["placeholder.jpg"],
-    "price": "550"
+    "image": "SableSolid1.JPG",
+    "images": ["SableSolid1.JPG","SableSolid2.JPG","SableSolid3.JPG","SableSolid4.JPG","SableSolid5.JPG","ObsidianEach1.JPG", "ObsidianEach2.JPG", "ObsidianEach3.JPG", "ObsidianEach4.JPG", "ObsidianEach5.JPG", "ObsidianEach6.JPG", "ObsidianEach7.JPG", "ObsidianEach8.JPG"],
+    "price": "$550"
     },
     {
     "name": "Obsidian Retriever Aurora",
@@ -101,9 +101,9 @@
     "mother": "Pazi",
     "father": "Oscar",
     "description": "The Obsidian Retriever, a stunning new canine creation blending approximately 50% Golden Retriever, 25% German Shepherd, and 25% Rottweiler. This unique heritage gives the Obsidian Retriever its striking beauty, gentle confidence, and endearing cuteness. The Golden Retriever influence imparts a friendly, eager-to-please temperament, while the German Shepherd’s intelligence and keen awareness complement the Rottweiler’s steadfast loyalty and resilience. The result is a devoted companion that excels in both family settings and active lifestyles. Whether romping around the yard in playful bursts of energy or quietly looking after its loved ones, the Obsidian Retriever is sure to win hearts with its balanced blend of affection, protectiveness, and undeniable charm.",
-    "image": "placeholder.jpg",
-    "images": ["placeholder.jpg"],
-    "price": "550"
+    "image": "AuroraSolid1.JPG",
+    "images": ["AuroraSolid1.JPG","AuroraSolid2.JPG","AuroraSolid3.JPG","AuroraSolid4.JPG","AuroraSolid5.JPG","ObsidianEach1.JPG", "ObsidianEach2.JPG", "ObsidianEach3.JPG", "ObsidianEach4.JPG", "ObsidianEach5.JPG", "ObsidianEach6.JPG", "ObsidianEach7.JPG", "ObsidianEach8.JPG"],
+    "price": "$550"
     },
     {
     "name": "Obsidian Retriever Sierra",
@@ -113,9 +113,9 @@
     "mother": "Pazi",
     "father": "Oscar",
     "description": "The Obsidian Retriever, a stunning new canine creation blending approximately 50% Golden Retriever, 25% German Shepherd, and 25% Rottweiler. This unique heritage gives the Obsidian Retriever its striking beauty, gentle confidence, and endearing cuteness. The Golden Retriever influence imparts a friendly, eager-to-please temperament, while the German Shepherd’s intelligence and keen awareness complement the Rottweiler’s steadfast loyalty and resilience. The result is a devoted companion that excels in both family settings and active lifestyles. Whether romping around the yard in playful bursts of energy or quietly looking after its loved ones, the Obsidian Retriever is sure to win hearts with its balanced blend of affection, protectiveness, and undeniable charm.",
-    "image": "placeholder.jpg",
-    "images": ["placeholder.jpg"],
-    "price": "550"
+    "image": "SierraTriColor1.JPG",
+    "images": ["SierraTriColor1.JPG","SierraTriColor2.JPG","SierraTriColor3.JPG","ObsidianEach1.JPG", "ObsidianEach2.JPG", "ObsidianEach3.JPG", "ObsidianEach4.JPG", "ObsidianEach5.JPG", "ObsidianEach6.JPG", "ObsidianEach7.JPG", "ObsidianEach8.JPG"],
+    "price": "$550"
     },
     {
     "name": "Obsidian Retriever Onyx",
@@ -126,8 +126,8 @@
     "father": "Oscar",
     "description": "The Obsidian Retriever, a stunning new canine creation blending approximately 50% Golden Retriever, 25% German Shepherd, and 25% Rottweiler. This unique heritage gives the Obsidian Retriever its striking beauty, gentle confidence, and endearing cuteness. The Golden Retriever influence imparts a friendly, eager-to-please temperament, while the German Shepherd’s intelligence and keen awareness complement the Rottweiler’s steadfast loyalty and resilience. The result is a devoted companion that excels in both family settings and active lifestyles. Whether romping around the yard in playful bursts of energy or quietly looking after its loved ones, the Obsidian Retriever is sure to win hearts with its balanced blend of affection, protectiveness, and undeniable charm.",
     "image": "placeholder.jpg",
-    "images": ["placeholder.jpg"],
-    "price": "550"
+    "images": ["ObsidianEach1.JPG", "ObsidianEach2.JPG", "ObsidianEach3.JPG", "ObsidianEach4.JPG", "ObsidianEach5.JPG", "ObsidianEach6.JPG", "ObsidianEach7.JPG", "ObsidianEach8.JPG"],
+    "price": "$550"
     },
     {
     "name": "Obsidian Retriever Axel",
@@ -137,9 +137,9 @@
     "mother": "Pazi",
     "father": "Oscar",
     "description": "The Obsidian Retriever, a stunning new canine creation blending approximately 50% Golden Retriever, 25% German Shepherd, and 25% Rottweiler. This unique heritage gives the Obsidian Retriever its striking beauty, gentle confidence, and endearing cuteness. The Golden Retriever influence imparts a friendly, eager-to-please temperament, while the German Shepherd’s intelligence and keen awareness complement the Rottweiler’s steadfast loyalty and resilience. The result is a devoted companion that excels in both family settings and active lifestyles. Whether romping around the yard in playful bursts of energy or quietly looking after its loved ones, the Obsidian Retriever is sure to win hearts with its balanced blend of affection, protectiveness, and undeniable charm.",
-    "image": "placeholder.jpg",
-    "images": ["placeholder.jpg"],
-    "price": "550"
+    "image": "OnyxTriColor1.JPG",
+    "images": ["OnyxTriColor1.JPG","OnyxTriColor2.JPG","OnyxTriColor3.JPG","OnyxTriColor4.JPG","ObsidianEach1.JPG", "ObsidianEach2.JPG", "ObsidianEach3.JPG", "ObsidianEach4.JPG", "ObsidianEach5.JPG", "ObsidianEach6.JPG", "ObsidianEach7.JPG", "ObsidianEach8.JPG"],
+    "price": "$550"
     },
     {
     "name": "Obsidian Retriever Orion",
@@ -149,9 +149,9 @@
     "mother": "Pazi",
     "father": "Oscar",
     "description": "The Obsidian Retriever, a stunning new canine creation blending approximately 50% Golden Retriever, 25% German Shepherd, and 25% Rottweiler. This unique heritage gives the Obsidian Retriever its striking beauty, gentle confidence, and endearing cuteness. The Golden Retriever influence imparts a friendly, eager-to-please temperament, while the German Shepherd’s intelligence and keen awareness complement the Rottweiler’s steadfast loyalty and resilience. The result is a devoted companion that excels in both family settings and active lifestyles. Whether romping around the yard in playful bursts of energy or quietly looking after its loved ones, the Obsidian Retriever is sure to win hearts with its balanced blend of affection, protectiveness, and undeniable charm.",
-    "image": "placeholder.jpg",
-    "images": ["placeholder.jpg"],
-    "price": "550"
+    "image": "OrionSolid1.JPG",
+    "images": ["OrionSolid1.JPG","OrionSolid2.JPG","OrionSolid3.JPG","OrionSolid4.JPG","OrionSolid5.JPG","OrionSolid6.JPG","ObsidianEach1.JPG", "ObsidianEach2.JPG", "ObsidianEach3.JPG", "ObsidianEach4.JPG", "ObsidianEach5.JPG", "ObsidianEach6.JPG", "ObsidianEach7.JPG", "ObsidianEach8.JPG"],
+    "price": "$550"
     },
     {
     "name": "Obsidian Retriever Ranger",
@@ -161,9 +161,9 @@
     "mother": "Pazi",
     "father": "Oscar",
     "description": "The Obsidian Retriever, a stunning new canine creation blending approximately 50% Golden Retriever, 25% German Shepherd, and 25% Rottweiler. This unique heritage gives the Obsidian Retriever its striking beauty, gentle confidence, and endearing cuteness. The Golden Retriever influence imparts a friendly, eager-to-please temperament, while the German Shepherd’s intelligence and keen awareness complement the Rottweiler’s steadfast loyalty and resilience. The result is a devoted companion that excels in both family settings and active lifestyles. Whether romping around the yard in playful bursts of energy or quietly looking after its loved ones, the Obsidian Retriever is sure to win hearts with its balanced blend of affection, protectiveness, and undeniable charm.",
-    "image": "placeholder.jpg",
-    "images": ["placeholder.jpg"],
-    "price": "550"
+    "image": "RangerSolid1.JPG",
+    "images": ["RangerSolid1.JPG","RangerSolid2.JPG","RangerSolid3.JPG","RangerSolid4.JPG","RangerSolid5.JPG","ObsidianEach1.JPG", "ObsidianEach2.JPG", "ObsidianEach3.JPG", "ObsidianEach4.JPG", "ObsidianEach5.JPG", "ObsidianEach6.JPG", "ObsidianEach7.JPG", "ObsidianEach8.JPG"],
+    "price": "$550"
     },
     {
     "name": "Obsidian Retriever Titus",
@@ -173,8 +173,8 @@
     "mother": "Pazi",
     "father": "Oscar",
     "description": "The Obsidian Retriever, a stunning new canine creation blending approximately 50% Golden Retriever, 25% German Shepherd, and 25% Rottweiler. This unique heritage gives the Obsidian Retriever its striking beauty, gentle confidence, and endearing cuteness. The Golden Retriever influence imparts a friendly, eager-to-please temperament, while the German Shepherd’s intelligence and keen awareness complement the Rottweiler’s steadfast loyalty and resilience. The result is a devoted companion that excels in both family settings and active lifestyles. Whether romping around the yard in playful bursts of energy or quietly looking after its loved ones, the Obsidian Retriever is sure to win hearts with its balanced blend of affection, protectiveness, and undeniable charm.",
-    "image": "placeholder.jpg",
-    "images": ["placeholder.jpg"],
-    "price": "550"
+    "image": "TitusTriColor1.JPG",
+    "images": ["TitusTriColor1.JPG","TitusTriColor2.JPG","TitusTriColor3.JPG","ObsidianEach1.JPG", "ObsidianEach2.JPG", "ObsidianEach3.JPG", "ObsidianEach4.JPG", "ObsidianEach5.JPG", "ObsidianEach6.JPG", "ObsidianEach7.JPG", "ObsidianEach8.JPG"],
+    "price": "$550"
     }
 ]
