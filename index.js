@@ -15,6 +15,19 @@ app.get("/", (req,res) => {
     res.render("index.ejs")
 })
 
+app.get("/availablePuppies", (req,res)=>{
+    res.render("availablePuppies.ejs")
+})
+
+app.get("/parents", (req,res)=>{
+    res.render("parents.ejs")
+})
+app.get("/deposit", (req,res)=>{
+    res.render("deposit.ejs")
+})
+app.get("/contact", (req,res)=>{
+    res.render("contact.ejs")
+})
 
 app.listen(port,(req,res) =>{
     console.log(`Listening @ ${port}`)

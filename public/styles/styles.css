@@ -1,0 +1,31 @@
+body{
+    font-family: "Montserrat", serif ;
+}
+
+.header-logo{
+    width: 60px;
+}
+
+.header-container{
+    flex-direction: row-reverse;
+}
+
+#navbars-links{
+    flex-direction: row-reverse;
+    align-content: center;
+}
+
+.nav-link{
+    color:black;
+}
+
+.puppy-card{
+    border:solid;
+}
+
+@media (min-width: 992px){
+    .mobile-text{
+        visibility: hidden;
+        width: 0;
+    }
+}
