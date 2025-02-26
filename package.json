@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "axios": "^1.8.0",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  },
+  "name": "homesteadpuppies",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apelpapa/HomesteadPuppies.git"
+  },
+  "author": "Homestead Puppies LLC",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/apelpapa/HomesteadPuppies/issues"
+  },
+  "homepage": "https://github.com/apelpapa/HomesteadPuppies#readme",
+  "description": ""
+}
