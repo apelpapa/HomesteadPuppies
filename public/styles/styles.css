@@ -2,6 +2,10 @@ body{
     font-family: "Montserrat", serif ;
 }
 
+.admin-bar{
+    background-color: #0dcaf0 !important;
+}
+
 .header-logo{
     width: 60px;
 }

@@ -1,0 +1,88 @@
+<%- include("../partials/header.ejs") %>
+<%- include("./adminBar.ejs") %>
+
+
+    <div class="container text-center">
+        <h1>DONT FORGET TO ADD LOGIN AND ENCRYPTION LOL</h1>
+    </div>
+
+    <div class="container text-left col-6">
+
+        <form action="/submitNewPuppy" method="post" enctype="multipart/form-data" class="row g-3 needs-validation"
+            novalidate>
+            <div class="col-md-4">
+                <label for="puppyName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="puppyName" name="puppyName" placeholder="Name" required>
+            </div>
+            <div class="col-md-4">
+                <label for="puppyBreed" class="form-label">Breed</label>
+                <input class="form-control" list="datalistOptions" id="puppyBreed" name="puppyBreed" placeholder="Breed"
+                    required>
+                <datalist id="datalistOptions">
+                    <option value="Cavalier King Charles Spaniel">
+                    <option value="Golden Retriever">
+                    <option value="Shih Tzu">
+                    <option value="Obsidian Retriever">
+                    <option value="Dachshund">
+                </datalist>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label" for="genderSelect"> Gender </label>
+                <select class="form-select" aria-label="Default select example" name="genderSelect" required>
+                    <option selected>Male</option>
+                    <option value="2">Female</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label
+                " for="startDate">Date of Birth</label>
+                <input id="startDate" class="form-control" type="date" required/>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label" for="price">Price </label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control" name="price" placeholder="(Optional)">
+                    <span class="input-group-text">.00</span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label for="puppyMother" class="form-label">Puppy's Mother</label>
+                <input type="text" class="form-control" id="puppyMother" name="puppyMother" placeholder="Mother's Name"
+                    required>
+            </div>
+            <div class="col-md-4">
+                <label for="puppyFather" class="form-label">Puppy's Father</label>
+                <input type="text" class="form-control" id="puppyFather" name="puppyFather" placeholder="Father's Name"
+                    required>
+            </div>
+            <div class="col-md-4">
+                <label for="puppyImageUpload" class="form-label">Image Upload</label>
+                <input class="form-control" type="file" name="puppyImageUpload" multiple>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </form>
+
+        <script>(() => {
+                'use strict'
+
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                const forms = document.querySelectorAll('.needs-validation')
+
+                // Loop over them and prevent submission
+                Array.from(forms).forEach(form => {
+                    form.addEventListener('submit', event => {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+            })()</script>
+
+    </div>
+    <%- include("../partials/footer.ejs") %>
