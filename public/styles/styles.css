@@ -23,6 +23,30 @@ body{
     border:solid;
 }
 
+.card-body > .btn{
+    font-weight: 900;
+}
+
+.card h3{
+    padding-top: 4px;
+}
+
+.list-group .btn{
+    --bs-btn-padding-y: 0;
+    color: #0dcaf0;
+    font-weight: 500;
+    border-top-width: 0;
+}
+
+.list-group-item{
+    padding: 3px;
+}
+
+.puppy-card img{
+    border: solid;
+    max-width: 100%;
+}
+
 @media (min-width: 992px){
     .mobile-text{
         visibility: hidden;

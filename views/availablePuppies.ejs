@@ -1,27 +1,44 @@
 <%- include('./partials/header.ejs'); %>
 
-    <div class="container text-center">
-        <h1>Available Puppies</h1>
-        <div class="container text-center">
-            <div class="row row-cols-2 gx-1">
-                <div class="puppy-card">
-                    <h3>Puppy Name</h3>
-                    <img src="https://picsum.photos/300/200" alt="">
-                    <p>Breed:</p>
-                    <p>Gender:</p>
-                    <p>Mother:</p>
-                    <p>Father:</p>
-                    <p>Age:</p>
-                    <p>Available to Take Home </p>
-                    <p>Price: $</p>
-                    <p>Description: </p>
-                </div>
+  <div class="container text-center">
+    <h1>Available Puppies</h1>
+    <div class="container col-md-8 text-center">
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+
+        <% for(var i=0; i < puppies.length; i++){ %>
+          <div class="col">
+            <div class="card">
+              <h3><%= puppies[i].name %></h3>
+              <img src="https://picsum.photos/300/200" class="card-img-top" alt="...">
+              <div class="card-body">
+                <button type="button" class="btn btn-outline-info"><%= puppies[i].breed %></button>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Gender: <%= puppies[i].gender %></li>
+                  <% const dobInMS = Date.parse(puppies[i].dob)
+                  const todayInMS = Date.now()
+                  var ageInWeeks = Math.floor((todayInMS-dobInMS)/604800000)
+                  var ageInDays = Math.floor(((todayInMS-dobInMS)%604800000)/86400000)
+                  %>
+                  <li class="list-group-item">Age: <%= ageInWeeks %> Weeks and <%= ageInDays %> days</li>
+                  <% if(locals.puppies[i].price){%>
+                  <li class="list-group-item">Price: $<%= puppies[i].price %></li>
+                  <%} else {%>
+                    <li class="list-group-item">Price: Contact</li>
+                    <%}%>
+                  <li class="list-group-item">Mother: <button type="button" class="btn"><%= puppies[i].mother %></button></li>
+                  <li class="list-group-item">Father: <button type="button" class="btn"><%= puppies[i].father %></button></li></li>
+                  </ul>
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-primary" type="button">{Statement About Bringing Me Home}</button>
+                  </div>
               </div>
-              <div class="col">Column</div>
-              <div class="col">Column</div>
-              <div class="col">Column</div>
             </div>
           </div>
-    </div>
+        <% } %>
 
-    <%- include('./partials/footer.ejs'); %>
+
+      </div>
+    </div>
+  </div>
+
+  <%- include('./partials/footer.ejs'); %>
