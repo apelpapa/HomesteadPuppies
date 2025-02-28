@@ -26,7 +26,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 
-const db = new pg.Pool({ connectionString: process.env.PGPOOL, ssl:{require:true, rejectUnauthorized:false} });
+const db = new pg.Client({
+  ssl: true,
+});
 
 db.connect();
 
@@ -39,11 +41,11 @@ app.get("/adminHome", (req, res) => {
 });
 
 app.get("/addPuppy", (req, res) => {
-    res.render("./admin/addPuppy.ejs");
+  res.render("./admin/addPuppy.ejs");
 });
 
 app.get("/addParent", (req, res) => {
-    res.render("./admin/addParent.ejs");
+  res.render("./admin/addParent.ejs");
 });
 
 app.get("/manageParents", (req, res) => {
@@ -55,8 +57,10 @@ app.get("/managePuppies", (req, res) => {
 });
 
 app.get("/availablePuppies", async (req, res) => {
-  const result = await db.query("SELECT * FROM puppies");
-  const puppies = result.rows;
+  const availableResult = await db.query("SELECT * FROM puppies");
+  const puppies = availableResult.rows;
+  const imageResult = await db.query("SELECT * FROM puppyimages");
+  const images = imageResult.rows;
   res.render("availablePuppies.ejs", { puppies: puppies });
 });
 
@@ -70,13 +74,29 @@ app.get("/contact", (req, res) => {
   res.render("contact.ejs");
 });
 
-app.post("/submitNewPuppy", upload.array("puppyImageUpload"), async (req, res) => {
-    const newPuppy = req.body
-    const result = db.query("INSERT INTO puppies (name, breed, gender, dob, mother, father,")
-//STOP HERE BECAUSE I REALIZED REQ.BODY DIDNT GIVE ME DOB
-
-    //console.log(req.files); // This should contain the uploaded file information
-    console.log(newPuppy.puppyName); // This should contain the form data
+app.post(
+  "/submitNewPuppy",
+  upload.array("puppyImageUpload"),
+  async (req, res) => {
+    const newPuppy = req.body;
+    const akcRegistrable = newPuppy.akcRegistrable === "true" ? true : false;
+    await db.query(
+      "INSERT INTO puppies (name, breed, gender, dob, price, mother, father, akcRegistrable) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)",
+      [
+        newPuppy.puppyName,
+        newPuppy.puppyBreed,
+        newPuppy.genderSelect,
+        newPuppy.dob,
+        newPuppy.price,
+        newPuppy.puppyMother,
+        newPuppy.puppyFather,
+        akcRegistrable,
+      ]);
+      for(var i=0; i<req.files.length; i++){
+      await db.query(
+        "INSERT INTO puppyimages (imageid, puppyid) SELECT $1, id FROM puppies WHERE name = $2", [req.files[i].filename, newPuppy.puppyName]
+      )
+    }
     res.send("Upload Great Success");
   }
 );
