@@ -59,9 +59,9 @@ app.get("/managePuppies", (req, res) => {
 app.get("/availablePuppies", async (req, res) => {
   const availableResult = await db.query("SELECT * FROM puppies");
   const puppies = availableResult.rows;
-  const imageResult = await db.query("SELECT * FROM puppyimages");
-  const images = imageResult.rows;
-  res.render("availablePuppies.ejs", { puppies: puppies });
+  const imageURLsResult = await db.query("SELECT * FROM puppyimages");
+  const imageURLs = imageURLsResult.rows;
+  res.render("availablePuppies.ejs", { puppies: puppies, imageURLs : imageURLs});
 });
 
 app.get("/parents", (req, res) => {
