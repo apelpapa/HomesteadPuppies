@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import pg from "pg";
 import env from "dotenv";
 import multer from "multer";
+import { log } from "console";
 
 env.config();
 const app = express();
@@ -52,8 +53,12 @@ app.get("/manageParents", (req, res) => {
   res.render("./admin/manageParents.ejs");
 });
 
-app.get("/managePuppies", (req, res) => {
-  res.render("./admin/managePuppies.ejs");
+app.get("/managePuppies", async (req, res) => {
+  const availableResult = await db.query("SELECT * FROM puppies");
+  const puppies = availableResult.rows;
+  const imageURLsResult = await db.query("SELECT * FROM puppyimages");
+  const imageURLs = imageURLsResult.rows;
+  res.render("./admin/managePuppies.ejs", { puppies: puppies, imageURLs : imageURLs});
 });
 
 app.get("/availablePuppies", async (req, res) => {
@@ -74,12 +79,32 @@ app.get("/contact", (req, res) => {
   res.render("contact.ejs");
 });
 
+app.post("/updatePuppy", async (req,res) => {
+  const currentDBPuppyRecord = await db.query("SELECT * FROM puppies WHERE id = $1", [req.body.id])
+  console.log(currentDBPuppyRecord.rows);
+  const id = req.body.id;
+  const name = req.body.puppyName
+  const breed = req.body.puppyBreed
+  const gender = req.body.genderSelect
+  const dob = req.body.dob
+  const mother = req.body.puppyMother
+  const father = req.body.puppyFather
+  const akcRegistrable = req.body.akcRegistrable
+  const price = req.body.price
+  const soldStatus = req.body.soldStatus
+  console.log(id, name, breed, gender, dob, mother, father, akcRegistrable, price, soldStatus)
+  
+await db.query("UPDATE puppies SET name = $2, breed = $3, gender = $4, dob = $5, mother = $6, father = $7, akcregistrable = $8, price = $9, sold = $10 WHERE id=$1", [id, name, breed, gender, dob, mother, father, akcRegistrable, price, soldStatus])
+  res.redirect("/managePuppies")
+})
+
 app.post(
   "/submitNewPuppy",
   upload.array("puppyImageUpload"),
   async (req, res) => {
     const newPuppy = req.body;
     const akcRegistrable = newPuppy.akcRegistrable === "true" ? true : false;
+    const price = newPuppy.price ? newPuppy.price : 0
     await db.query(
       "INSERT INTO puppies (name, breed, gender, dob, price, mother, father, akcRegistrable) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)",
       [
@@ -87,7 +112,7 @@ app.post(
         newPuppy.puppyBreed,
         newPuppy.genderSelect,
         newPuppy.dob,
-        newPuppy.price,
+        price,
         newPuppy.puppyMother,
         newPuppy.puppyFather,
         akcRegistrable,
