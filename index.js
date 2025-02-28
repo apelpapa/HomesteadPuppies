@@ -26,8 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 
-const db = new pg.Client({
-});
+const db = new pg.Pool({ connectionString: process.env.PGPOOL, ssl:{require:true, rejectUnauthorized:false} });
 
 db.connect();
 
