@@ -6,10 +6,16 @@ import env from "dotenv";
 import multer from "multer";
 import multerS3 from "multer-s3";
 import {S3Client} from "@aws-sdk/client-s3"
+import bcrypt from "bcrypt";
+import passport from "passport";
+import { Strategy } from "passport-local";
+import session from "express-session";
+
 
 env.config();
 const app = express();
 const port = process.env.SERVER_PORT;
+const salRounds = 20;
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const s3 = new S3Client()
@@ -27,6 +33,18 @@ const upload = multer({
   })
 })
 
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
@@ -39,33 +57,6 @@ db.connect();
 
 app.get("/", (req, res) => {
   res.render("index.ejs");
-});
-
-app.get("/adminHome", (req, res) => {
-  res.render("./admin/adminHome.ejs");
-});
-
-app.get("/addPuppy", (req, res) => {
-  res.render("./admin/addPuppy.ejs");
-});
-
-app.get("/addParent", (req, res) => {
-  res.render("./admin/addParent.ejs");
-});
-
-app.get("/manageParents", (req, res) => {
-  res.render("./admin/manageParents.ejs");
-});
-
-app.get("/managePuppies", async (req, res) => {
-  const availableResult = await db.query("SELECT * FROM puppies");
-  const puppies = availableResult.rows;
-  const imageURLsResult = await db.query("SELECT * FROM puppyimages");
-  const imageURLs = imageURLsResult.rows;
-  res.render("./admin/managePuppies.ejs", {
-    puppies: puppies,
-    imageURLs: imageURLs,
-  });
 });
 
 app.get("/availablePuppies", async (req, res) => {
@@ -87,6 +78,74 @@ app.get("/deposit", (req, res) => {
 });
 app.get("/contact", (req, res) => {
   res.render("contact.ejs");
+});
+
+app.get("/login", (req,res) =>{
+  res.render("login.ejs")
+})
+
+app.get("/logout", (req,res) =>  {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+})
+
+
+
+//NEEDS ADMIN
+
+app.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/adminHome",
+    failureRedirect: "/login",
+  })
+);
+
+app.get("/adminHome", (req, res) => {
+  if(req.isAuthenticated()){
+  res.render("./admin/adminHome.ejs");
+  } else {
+    res.redirect("/login")
+  }
+});
+
+app.get("/addPuppy", (req, res) => {
+  if(req.isAuthenticated()){
+    res.render("./admin/addPuppy.ejs");
+    } else {
+      res.redirect("/login")
+    }
+});
+
+app.get("/addParent", (req, res) => {
+  if(req.isAuthenticated()){
+    res.render("./admin/addParent.ejs");
+    } else {
+      res.redirect("/login")
+    }
+});
+
+app.get("/manageParents", (req, res) => {
+  if(req.isAuthenticated()){
+    res.render("./admin/manageParents.ejs");
+    } else {
+      res.redirect("/login")
+    }
+});
+
+app.get("/managePuppies", async (req, res) => {
+  const availableResult = await db.query("SELECT * FROM puppies");
+  const puppies = availableResult.rows;
+  const imageURLsResult = await db.query("SELECT * FROM puppyimages");
+  const imageURLs = imageURLsResult.rows;
+  res.render("./admin/managePuppies.ejs", {
+    puppies: puppies,
+    imageURLs: imageURLs,
+  });
 });
 
 app.post("/updatePuppy", async (req, res) => {
@@ -164,6 +223,48 @@ app.post("/submitNewPuppy", upload.array("puppyImageUpload"), async (req, res) =
     res.redirect("/availablePuppies");
   }
 );
+
+
+
+passport.use(
+  new Strategy(async function verify(username, password, cb) {
+    try {
+      const result = await db.query("SELECT * FROM users WHERE username = $1 ", [
+        username,
+      ]);
+      if (result.rows.length > 0) {
+        const user = result.rows[0];
+        const storedHashedPassword = user.password;
+        bcrypt.compare(password, storedHashedPassword, (err, valid) => {
+          if (err) {
+            //Error with password check
+            console.error("Error comparing passwords:", err);
+            return cb(err);
+          } else {
+            if (valid) {
+              //Passed password check
+              return cb(null, user);
+            } else {
+              //Did not pass password check
+              return cb(null, false);
+            }
+          }
+        });
+      } else {
+        return cb("User not found");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  })
+);
+
+passport.serializeUser((user, cb) => {
+  cb(null, user);
+});
+passport.deserializeUser((user, cb) => {
+  cb(null, user);
+});
 
 app.listen(port, (req, res) => {
   console.log(`Listening @ ${port}`);
