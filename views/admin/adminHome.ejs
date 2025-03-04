@@ -1,4 +1,10 @@
 <%- include("../partials/header.ejs") %>
 <%- include("./adminBar.ejs") %>
 
+<div class="container">
+  <form action="/logout" method="get">
+    <button type="submit" class="btn btn-primary">Logout</button>
+  </form>
+</div>
+
 <%- include("../partials/footer.ejs") %>
