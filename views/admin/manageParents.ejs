@@ -68,14 +68,12 @@
                 </div>
                 <div class="col">
                   <label for="parentBreed" class="form-label">Breed</label>
-                  <input class="form-control" list="datalistOptions" id="parentBreed" name="parentBreed" placeholder="Breed" value=<%= parents[i].breed %> required>
-                  <datalist id="datalistOptions">
-                    <option value="Cavalier King Charles Spaniel">
-                    <option value="Golden Retriever">
-                    <option value="Shih Tzu">
-                    <option value="Obsidian Retriever">
-                    <option value="Dachshund">
-                  </datalist>
+                  <select class="form-select" name="breedFilter" id="breedFilter">
+            <option>All Breeds</option>
+            <% for(var j = 0; j < breeds.length; j++) { %>
+            <option value="<%= breeds[j].breed %>" <%=  locals.breedFilter == breeds[j].breed ? 'selected' : '' %> ><%= breeds[j].breed %></option>
+            <% } %>
+          </select>
                 </div>
                 <div class="col">
                   <label class="form-label" for="genderSelect"> Gender </label>

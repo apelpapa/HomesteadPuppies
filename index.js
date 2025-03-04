@@ -230,13 +230,16 @@ app.get("/manageBreeds", async (req,res) =>{
 
 app.get("/manageParents", async (req, res) => {
   if (req.isAuthenticated()) {
-    const results = await db.query("SELECT * FROM parents WHERE parentid > 0 ORDER BY parentid ASC");
-    const parents = results.rows;
+    const parentResults = await db.query("SELECT * FROM parents WHERE parentid > 0 ORDER BY parentid ASC");
+    const parents = parentResults.rows;    
     const imageURLsResult = await db.query("SELECT * FROM parentimages");
     const imageURLs = imageURLsResult.rows;
+    const breedResults = await db.query("SELECT * FROM breeds ORDER BY breed ASC")
+    const breeds = breedResults.rows
     res.render("./admin/manageParents.ejs", {
       parents: parents,
       imageURLs: imageURLs,
+      breeds:breeds,
     });
   } else {
     res.redirect("/login");
@@ -249,9 +252,18 @@ app.get("/managePuppies", async (req, res) => {
     const puppies = availableResult.rows;
     const imageURLsResult = await db.query("SELECT * FROM puppyimages");
     const imageURLs = imageURLsResult.rows;
+    const breedResults = await db.query("SELECT * FROM breeds ORDER BY breed ASC")
+    const breeds = breedResults.rows
+    const motherResults = await db.query("SELECT name FROM parents WHERE gender = 'Female' ORDER BY name ASC")
+    const mothers = motherResults.rows
+    const fatherResults = await db.query("SELECT name FROM parents WHERE gender = 'Male' ORDER BY name ASC")
+    const fathers = fatherResults.rows
     res.render("./admin/managePuppies.ejs", {
       puppies: puppies,
       imageURLs: imageURLs,
+      breeds:breeds,
+      mothers:mothers,
+      fathers:fathers
     });
   } else {
     res.redirect("/login");
