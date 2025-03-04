@@ -60,7 +60,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/availablePuppies", async (req, res) => {
-  const availableResult = await db.query("SELECT * FROM puppies");
+  const availableResult = await db.query("SELECT * FROM puppies ORDER BY puppies ASC");
   const puppies = availableResult.rows;
   const imageURLsResult = await db.query("SELECT * FROM puppyimages");
   const imageURLs = imageURLsResult.rows;
@@ -70,12 +70,21 @@ app.get("/availablePuppies", async (req, res) => {
   });
 });
 
-app.get("/parents", (req, res) => {
-  res.render("parents.ejs");
+app.get("/parents", async (req, res) => {
+  const availableResult = await db.query("SELECT * FROM parents ORDER BY parentid ASC");
+  const parents = availableResult.rows;
+  const imageURLsResult = await db.query("SELECT * FROM parentimages");
+  const imageURLs = imageURLsResult.rows;
+  res.render("parents.ejs", {
+    parents: parents,
+    imageURLs: imageURLs,
+  });
 });
+
 app.get("/deposit", (req, res) => {
   res.render("deposit.ejs");
 });
+
 app.get("/contact", (req, res) => {
   res.render("contact.ejs");
 });
@@ -95,7 +104,7 @@ app.get("/logout", (req, res) => {
   });
 });
 
-//NEEDS ADMIN
+//REGISTER
 
 // app.post("/register", async (req, res) => {
 //   const username = req.body.username;
@@ -128,9 +137,7 @@ app.get("/logout", (req, res) => {
 //   }
 // });
 
-app.post(
-  "/login",
-  passport.authenticate("local", {
+app.post("/login", passport.authenticate("local", {
     successRedirect: "/adminHome",
     failureRedirect: "/login",
   })
@@ -160,9 +167,26 @@ app.get("/addParent", (req, res) => {
   }
 });
 
-app.get("/manageParents", (req, res) => {
+app.get("/manageBreeds", async (req,res) =>{
+  if(req.isAuthenticated()){
+    const results = await db.query("SELECT * FROM breeds ORDER BY breed ASC")
+    const breeds = results.rows
+    res.render("./admin/manageBreeds.ejs", { breeds:breeds } )
+  } else {
+    res.redirect("/login")
+  }
+})
+
+app.get("/manageParents", async (req, res) => {
   if (req.isAuthenticated()) {
-    res.render("./admin/manageParents.ejs");
+    const results = await db.query("SELECT * FROM parents ORDER BY parentid ASC");
+    const parents = results.rows;
+    const imageURLsResult = await db.query("SELECT * FROM parentimages");
+    const imageURLs = imageURLsResult.rows;
+    res.render("./admin/manageParents.ejs", {
+      parents: parents,
+      imageURLs: imageURLs,
+    });
   } else {
     res.redirect("/login");
   }
@@ -170,7 +194,7 @@ app.get("/manageParents", (req, res) => {
 
 app.get("/managePuppies", async (req, res) => {
   if (req.isAuthenticated()) {
-    const availableResult = await db.query("SELECT * FROM puppies");
+    const availableResult = await db.query("SELECT * FROM puppies ORDER BY id ASC");
     const puppies = availableResult.rows;
     const imageURLsResult = await db.query("SELECT * FROM puppyimages");
     const imageURLs = imageURLsResult.rows;
@@ -182,6 +206,54 @@ app.get("/managePuppies", async (req, res) => {
     res.redirect("/login");
   }
 });
+
+app.post("/deletePuppyImage", async (req,res) =>{
+  if (req.isAuthenticated()){
+    await db.query("DELETE FROM puppyimages WHERE imageid = $1", [req.body.photoDeleteID])
+    res.redirect("/managePuppies")
+  }else {
+    res.redirect("/login")
+  }
+})
+
+app.post("/deleteParentImage", async (req,res) =>{
+  if (req.isAuthenticated()){
+    await db.query("DELETE FROM parentimages WHERE imageid = $1", [req.body.photoDeleteID])
+    res.redirect("/manageParents")
+  }else {
+    res.redirect("/login")
+  }
+})
+
+app.post("/deletePuppy", async (req, res) => {
+  if (req.isAuthenticated()) {
+    await db.query("DELETE FROM puppyImages WHERE puppyid=$1", [req.body.id])
+    await db.query("DELETE FROM puppies WHERE id=$1",[req.body.id])
+    res.redirect("/managePuppies");
+  } else {
+    res.redirect("/login");
+  }
+});
+
+app.post("/deleteParent", async (req, res) => {
+  if (req.isAuthenticated()) {
+    await db.query("DELETE FROM parentImages WHERE parentid=$1", [req.body.parentid])
+    await db.query("DELETE FROM parents WHERE parentid=$1",[req.body.parentid])
+    res.redirect("/manageParents");
+  } else {
+    res.redirect("/login");
+  }
+});
+
+app.post("/deleteBreed", async (req,res) =>{
+  if(req.isAuthenticated()){
+  await db.query("DELETE FROM breeds WHERE breed = $1", [req.body.breedName])
+    res.redirect("/manageBreeds")
+  } else {
+    res.redirect("/login")
+  }
+})
+
 
 app.post("/updatePuppy", async (req, res) => {
   if (req.isAuthenticated()) {
@@ -220,20 +292,82 @@ app.post("/updatePuppy", async (req, res) => {
   }
 });
 
-app.post("/deletePuppy", async (req, res) => {
+app.post("/addPuppyImages", upload.array("puppyImageUpload"), async (req, res) => {
   if (req.isAuthenticated()) {
-    await db.query("DELETE FROM puppyImages WHERE puppyid=$1", [req.body.id])
-    await db.query("DELETE FROM puppies WHERE id=$1",[req.body.id])
-    res.redirect("/managePuppies");
+    const newPuppy = req.body;
+
+    for (var i = 0; i < req.files.length; i++) {
+      await db.query(
+        "INSERT INTO puppyimages (imageid, puppyid) SELECT $1, id FROM puppies WHERE name = $2",
+        [req.files[i].key, newPuppy.puppyName]
+      );
+    }
+    res.redirect("/managePuppies")
+  } else {
+    res.redirect("/login")
+  }
+})
+
+app.post("/addParentImages", upload.array("parentImageUpload"), async (req, res) => {
+  if (req.isAuthenticated()) {
+    const newParent = req.body;
+
+    for (var i = 0; i < req.files.length; i++) {
+      await db.query(
+        "INSERT INTO parentimages (imageid, parentid) SELECT $1, parentid FROM parents WHERE name = $2",
+        [req.files[i].key, newParent.parentName]
+      );
+    }
+    res.redirect("/manageParents")
+  } else {
+    res.redirect("/login")
+  }
+})
+
+app.post("/updateParent", async (req, res) => {
+  if (req.isAuthenticated()) {
+    const currentDBPuppyRecord = await db.query(
+      "SELECT * FROM puppies WHERE id = $1",
+      [req.body.id]
+    );
+    const parentid = req.body.parentid;
+    const name = req.body.parentName;
+    const breed = req.body.parentBreed;
+    const gender = req.body.genderSelect;
+    const dob = req.body.dob;
+    const akcRegistered = req.body.akcRegistered;
+    const championBloodline = req.body.championBloodline;
+    const description = req.body.parentDescription;
+
+    await db.query(
+      "UPDATE parents SET name = $2, breed = $3, gender = $4, dob = $5, akcregistered = $6, description = $7, championbloodline = $8 WHERE parentid=$1",
+      [
+        parentid,
+        name,
+        breed,
+        gender,
+        dob,
+        akcRegistered,
+        description,
+        championBloodline
+      ]
+    );
+    res.redirect("/manageParents");
   } else {
     res.redirect("/login");
   }
 });
 
-app.post(
-  "/submitNewPuppy",
-  upload.array("puppyImageUpload"),
-  async (req, res) => {
+app.post("/submitNewBreed", async (req,res) =>{
+  if(req.isAuthenticated()){
+    await db.query("INSERT INTO breeds VALUES ($1)", [req.body.breedName])
+    res.redirect("/manageBreeds")
+  } else {
+    res.redirect("/login")
+  }
+})
+
+app.post("/submitNewPuppy", upload.array("puppyImageUpload"), async (req, res) => {
     if (req.isAuthenticated()) {
       const newPuppy = req.body;
       const akcRegistrable = newPuppy.akcRegistrable === "true" ? true : false;
@@ -257,11 +391,40 @@ app.post(
           [req.files[i].key, newPuppy.puppyName]
         );
       }
-      res.redirect("/availablePuppies");
+      res.redirect("/managePuppies");
     } else {
       res.redirect("/login");
     }
   }
+);
+
+app.post("/submitNewParent", upload.array("parentImageUpload"), async (req, res) => {
+  if (req.isAuthenticated()) {
+    const newParent = req.body;
+    const akcRegistered = newParent.akcRegistered === "true" ? true : false;
+    const price = newParent.price ? newParent.price : 0;
+    await db.query(
+      "INSERT INTO parents (name, breed, gender, dob, akcRegistered, description) VALUES ($1,$2,$3,$4,$5,$6)",
+      [
+        newParent.parentName,
+        newParent.parentBreed,
+        newParent.genderSelect,
+        newParent.dob,
+        akcRegistered,
+        newParent.descriptionTextBox
+      ]
+    );
+    for (var i = 0; i < req.files.length; i++) {
+      await db.query(
+        "INSERT INTO parentimages (imageid, parentid) SELECT $1, parentid FROM parents WHERE name = $2",
+        [req.files[i].key, newParent.parentName]
+      );
+    }
+    res.redirect("/manageParents");
+  } else {
+    res.redirect("/login");
+  }
+}
 );
 
 passport.use(
