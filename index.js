@@ -230,7 +230,7 @@ app.get("/manageBreeds", async (req,res) =>{
 
 app.get("/manageParents", async (req, res) => {
   if (req.isAuthenticated()) {
-    const results = await db.query("SELECT * FROM parents ORDER BY parentid ASC");
+    const results = await db.query("SELECT * FROM parents WHERE parentid > 0 ORDER BY parentid ASC");
     const parents = results.rows;
     const imageURLsResult = await db.query("SELECT * FROM parentimages");
     const imageURLs = imageURLsResult.rows;
