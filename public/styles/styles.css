@@ -21,6 +21,11 @@ body{
     margin-top: 5px;
 }
 
+#filter-bar{
+    background-color: #407487 !important;
+    border-radius: 10px;
+}
+
 .header-logo{
     width: 60px;
 }

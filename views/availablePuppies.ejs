@@ -2,10 +2,34 @@
 
 <div class="container text-center">
   <h1>Available Puppies</h1>
-  <div class="container col-md-8 text-center">
+
+  <div class="container col-10">
+    <nav class="navbar bg-body-tertiary" id="filter-bar">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Filters</span>
+        <form class="d-flex align-items-center gap-3" action="/filterPuppies" method="post">
+          <select class="form-select" name="breedFilter" id="breedFilter">
+            <option>All Breeds</option>
+            <% for(var i = 0; i < breeds.length; i++) { %>
+            <option value="<%= breeds[i].breed %>" <%=  locals.breedFilter == breeds[i].breed ? 'selected' : '' %> ><%= breeds[i].breed %></option>
+            <% } %>
+          </select>
+          <select class="form-select" name="genderFilter" id="genderFilter">
+            <option>All Genders</option>
+            <option value="Male" <%=  locals.genderFilter == 'Male' ? 'selected' : '' %> >Male</option>
+            <option value="Female" <%= locals.genderFilter == 'Female' ? 'selected' : '' %>>Female</option>
+          </select>
+          <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+      </div>
+    </nav>
+  </div>
+
+
+  <div class="container col-md-8 text-center pt-2">
     <div class="row row-cols-1 row-cols-md-2 g-4">
 
-      <% for(var i=1; i < puppies.length; i++){ %>
+      <% for(var i=0; i < puppies.length; i++){ %>
       <div class="col">
         <div class="card" id="dog-card">
           <h3><%= puppies[i].name %></h3>
@@ -21,7 +45,7 @@
               filteredURLs.splice(0,1)
               for(var j=0; j < filteredURLs.length; j++){ %>
               <div class="carousel-item">
-                <img src= <%= `https://d3trlmj493rccc.cloudfront.net/${filteredURLs[j].imageid}` %> class="d-block w-100" alt="...">
+                <img src="<%= `https://d3trlmj493rccc.cloudfront.net/${filteredURLs[j].imageid}` %>" class="d-block w-100" alt="...">
               </div>
               <%}%>
             </div>
@@ -51,7 +75,7 @@
                 <%}%>
                   <li class="list-group-item">Mother: <button type="button" class="btn"><%= puppies[i].mother %></button></li>
                 <li class="list-group-item">Father: <button type="button" class="btn"><%= puppies[i].father %></button></li>
-                <li class="list-group-item" ></li>
+                <li class="list-group-item"></li>
               </ul>
               <div class="">
                 <button class="btn btn-primary" type="button">Bring <%= puppies[i].name %> Home</button>

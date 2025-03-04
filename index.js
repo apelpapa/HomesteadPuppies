@@ -60,24 +60,67 @@ app.get("/", (req, res) => {
 });
 
 app.get("/availablePuppies", async (req, res) => {
-  const availableResult = await db.query("SELECT * FROM puppies ORDER BY puppies ASC");
+  const availableResult = await db.query("SELECT * FROM puppies WHERE id > 0 ORDER BY id ASC");
   const puppies = availableResult.rows;
   const imageURLsResult = await db.query("SELECT * FROM puppyimages");
   const imageURLs = imageURLsResult.rows;
+  const breedResults = await db.query("SELECT * FROM breeds ORDER BY breed ASC")
+  const breeds = breedResults.rows
   res.render("availablePuppies.ejs", {
     puppies: puppies,
     imageURLs: imageURLs,
+    breeds:breeds
   });
 });
 
 app.get("/parents", async (req, res) => {
-  const availableResult = await db.query("SELECT * FROM parents ORDER BY parentid ASC");
+  const availableResult = await db.query("SELECT * FROM parents WHERE parentid > 0 ORDER BY parentid ASC");
   const parents = availableResult.rows;
   const imageURLsResult = await db.query("SELECT * FROM parentimages");
   const imageURLs = imageURLsResult.rows;
+  const breedResults = await db.query("SELECT * FROM breeds ORDER BY breed ASC")
+  const breeds = breedResults.rows
   res.render("parents.ejs", {
     parents: parents,
     imageURLs: imageURLs,
+    breeds:breeds
+  });
+});
+
+app.post("/filterPuppies", async (req, res) => {
+  var breedFilter = req.body.breedFilter;
+  var genderFilter = req.body.genderFilter;
+  breedFilter == "All Breeds" ? breedFilter = '%' : null;
+  genderFilter == "All Genders" ? genderFilter = '%' : null;
+  const availableResult = await db.query("SELECT * FROM puppies WHERE id > 0 AND breed LIKE $1 AND gender LIKE $2 ORDER BY id ASC",[breedFilter, genderFilter]);
+  const puppies = availableResult.rows;
+  const imageURLsResult = await db.query("SELECT * FROM puppyimages");
+  const imageURLs = imageURLsResult.rows;
+  const breedResults = await db.query("SELECT * FROM breeds ORDER BY breed ASC")
+  const breeds = breedResults.rows
+  res.render("availablePuppies.ejs", {
+    puppies: puppies,
+    imageURLs: imageURLs,
+    breeds:breeds,
+    breedFilter:breedFilter,
+    genderFilter:genderFilter
+  });
+});
+
+app.post("/filterParents", async (req, res) => {
+  var breedFilter = req.body.breedFilter;
+  breedFilter == "All Breeds" ? breedFilter = '%' : null;
+  const availableResult = await db.query("SELECT * FROM parents WHERE parentid > 0 AND breed LIKE $1 ORDER BY parentid ASC",[breedFilter]);
+  const parents = availableResult.rows;
+  const imageURLsResult = await db.query("SELECT * FROM parentimages");
+  const imageURLs = imageURLsResult.rows;
+  const breedResults = await db.query("SELECT * FROM breeds ORDER BY breed ASC")
+  const breeds = breedResults.rows
+  res.render("parents.ejs", {
+    parents: parents,
+    imageURLs: imageURLs,
+    breeds:breeds,
+    breedFilter:breedFilter
   });
 });
 
@@ -151,17 +194,25 @@ app.get("/adminHome", (req, res) => {
   }
 });
 
-app.get("/addPuppy", (req, res) => {
+app.get("/addPuppy", async (req, res) => {
   if (req.isAuthenticated()) {
-    res.render("./admin/addPuppy.ejs");
+    const breedResults = await db.query("SELECT * FROM breeds ORDER BY breed ASC")
+    const breeds = breedResults.rows
+    const motherResults = await db.query("SELECT name FROM parents WHERE gender = 'Female' ORDER BY name ASC")
+    const mothers = motherResults.rows
+    const fatherResults = await db.query("SELECT name FROM parents WHERE gender = 'Male' ORDER BY name ASC")
+    const fathers = fatherResults.rows
+    res.render("./admin/addPuppy.ejs", {breeds:breeds, mothers:mothers, fathers:fathers});
   } else {
     res.redirect("/login");
   }
 });
 
-app.get("/addParent", (req, res) => {
+app.get("/addParent", async (req, res) => {
   if (req.isAuthenticated()) {
-    res.render("./admin/addParent.ejs");
+    const breedResults = await db.query("SELECT * FROM breeds ORDER BY breed ASC")
+    const breeds = breedResults.rows
+    res.render("./admin/addParent.ejs",{breeds:breeds});
   } else {
     res.redirect("/login");
   }
@@ -194,7 +245,7 @@ app.get("/manageParents", async (req, res) => {
 
 app.get("/managePuppies", async (req, res) => {
   if (req.isAuthenticated()) {
-    const availableResult = await db.query("SELECT * FROM puppies ORDER BY id ASC");
+    const availableResult = await db.query("SELECT * FROM puppies WHERE id > 0 ORDER BY id ASC");
     const puppies = availableResult.rows;
     const imageURLsResult = await db.query("SELECT * FROM puppyimages");
     const imageURLs = imageURLsResult.rows;

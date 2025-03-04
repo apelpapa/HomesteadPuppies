@@ -1,11 +1,29 @@
 <%- include('./partials/header.ejs'); %>
 
 <div class="container text-center">
-  <h1>Available Parents</h1>
-  <div class="container col-md-8 text-center">
+  <h1>Parents</h1>
+
+  <div class="container col-10">
+    <nav class="navbar bg-body-tertiary" id="filter-bar">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Filters</span>
+        <form class="d-flex align-items-center gap-3" action="/filterParents" method="post">
+          <select class="form-select" name="breedFilter" id="breedFilter">
+            <option>All Breeds</option>
+            <% for(var i = 0; i < breeds.length; i++) { %>
+            <option value="<%= breeds[i].breed %>" <%=  locals.breedFilter == breeds[i].breed ? 'selected' : '' %> ><%= breeds[i].breed %></option>
+            <% } %>
+          </select>
+          <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container col-md-8 text-center pt-2">
     <div class="row row-cols-1 row-cols-md-2 g-4">
 
-      <% for(var i=1; i < parents.length; i++){ %>
+      <% for(var i=0; i < parents.length; i++){ %>
       <div class="col">
         <div class="card" id="dog-card">
           <h3><%= parents[i].name %></h3>

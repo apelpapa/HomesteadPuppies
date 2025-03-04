@@ -4,21 +4,24 @@
 <div class="container text-left col-6 pt-2">
     <h2>Add a Puppy</h2>
   <form action="/submitNewPuppy" method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+
     <div class="col-md-4">
       <label for="puppyName" class="form-label">Name</label>
       <input type="text" class="form-control" id="puppyName" name="puppyName" placeholder="Name" required>
     </div>
+
     <div class="col-md-4">
       <label for="puppyBreed" class="form-label">Breed</label>
-      <input class="form-control" list="datalistOptions" id="puppyBreed" name="puppyBreed" placeholder="Breed" required>
-      <datalist id="datalistOptions">
-        <option value="Cavalier King Charles Spaniel">
-        <option value="Golden Retriever">
-        <option value="Shih Tzu">
-        <option value="Obsidian Retriever">
-        <option value="Dachshund">
-      </datalist>
+      <select id="puppyBreed" name="puppyBreed" class="form-select" aria-label="Breed Select" required>
+        <option selected>Select Breed</option>
+
+        <% for(var i=0; breeds.length > i; i++){ %>
+        <option value="<%= breeds[i].breed %>"><%= breeds[i].breed %></option>
+          <%}%>
+
+        </select>
     </div>
+
     <div class="col-md-4">
       <label class="form-label" for="genderSelect"> Gender </label>
       <select class="form-select" aria-label="Default select example" name="genderSelect" required>
@@ -27,11 +30,13 @@
         <option value="Female">Female</option>
       </select>
     </div>
+
     <div class="col-md-4">
       <label class="form-label
                 " for="startDate">Date of Birth</label>
       <input id="startDate" class="form-control" type="date" name="dob" required />
     </div>
+    
     <div class="col-md-4">
       <label class="form-label" for="price">Price </label>
       <div class="input-group mb-3">
@@ -41,12 +46,30 @@
       </div>
     </div>
     <div class="col-md-4">
-      <label for="puppyMother" class="form-label">Puppy's Mother</label>
-      <input type="text" class="form-control" id="puppyMother" name="puppyMother" placeholder="Mother's Name" required>
+
+      <label class="form-label" for="puppyMother"> Mother </label>
+      <select class="form-select" aria-label="Default select example" id="puppyMother" name="puppyMother" required>
+        <option value="">Select Mother</option>
+
+        <% for(var i=0; mothers.length > i; i++){ %>
+          <option value="<%= mothers[i].name %>"><%= mothers[i].name %></option>
+            <%}%>
+
+      </select>
+
     </div>
     <div class="col-md-4">
-      <label for="puppyFather" class="form-label">Puppy's Father</label>
-      <input type="text" class="form-control" id="puppyFather" name="puppyFather" placeholder="Father's Name" required>
+
+      <label class="form-label" for="puppyFather"> Father </label>
+      <select class="form-select" aria-label="Default select example" id="puppyFather" name="puppyFather" required>
+        <option value="">Select Father</option>
+
+        <% for(var i=0; fathers.length > i; i++){ %>
+          <option value="<%= fathers[i].name %>"><%= fathers[i].name %></option>
+            <%}%>
+
+      </select>
+
     </div>
     <div class="col-md-4">
       <label for="puppyImageUpload" class="form-label">Image Upload</label>
