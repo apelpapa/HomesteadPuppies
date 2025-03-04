@@ -188,8 +188,9 @@
             <div class="modal-body">
               <form action="/deletePuppy" method="post" class="row g-3">
                 <div class="col">
-                  <label for="puppyImageUpload" class="form-label">(EDIT)It is recommended to mark puppies as sold and to not delete.</label>
-                  <button type="submit" class="btn btn-danger">Danger</button>
+                  <input type="hidden" name="id" id="id" value= <%= puppies[i].id %> />
+                  <p class="py-1" >(EDIT)It is recommended to mark puppies as sold and to not delete. This is Not Reversible and Will Delete all Images of This Puppy As Well.</p>
+                  <button type="submit" class="btn btn-danger mb-2">DELETE</button>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

@@ -23,8 +23,10 @@
 <div class="container py-5">
 
     <h2>Login</h2>
-    <% if(loginFailed){ %>
-    <h3 style="color:red">Invalid Username and/or Password</h3>
+    <% if(passwordFailed){ %>
+    <h3 style="color:red">Invalid Password</h3>
+    <% } else if(userFailed){ %>
+      <h3 style="color:red">Invalid Username</h3>
     <% } %>
 <form class="col-4" action="/login" method="post" >
     <div class="mb-3 ">

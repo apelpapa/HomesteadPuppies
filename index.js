@@ -15,7 +15,8 @@ env.config();
 const app = express();
 const port = process.env.SERVER_PORT;
 const saltRounds = 15;
-var loginFailed = false;
+var passwordFailed = false;
+var userFailed = false;
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const s3 = new S3Client();
@@ -80,8 +81,9 @@ app.get("/contact", (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-  res.render("login.ejs", {loginFailed:loginFailed});
-  loginFailed = false;
+  res.render("login.ejs", { passwordFailed: passwordFailed, userFailed:userFailed   });
+  passwordFailed = false;
+  userFailed = false;
 });
 
 app.get("/logout", (req, res) => {
@@ -218,35 +220,49 @@ app.post("/updatePuppy", async (req, res) => {
   }
 });
 
-app.post("/submitNewPuppy", upload.array("puppyImageUpload"), async (req, res) => {
+app.post("/deletePuppy", async (req, res) => {
   if (req.isAuthenticated()) {
-    const newPuppy = req.body;
-    const akcRegistrable = newPuppy.akcRegistrable === "true" ? true : false;
-    const price = newPuppy.price ? newPuppy.price : 0;
-    await db.query(
-      "INSERT INTO puppies (name, breed, gender, dob, price, mother, father, akcRegistrable) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)",
-      [
-        newPuppy.puppyName,
-        newPuppy.puppyBreed,
-        newPuppy.genderSelect,
-        newPuppy.dob,
-        price,
-        newPuppy.puppyMother,
-        newPuppy.puppyFather,
-        akcRegistrable,
-      ]
-    );
-    for (var i = 0; i < req.files.length; i++) {
-      await db.query(
-        "INSERT INTO puppyimages (imageid, puppyid) SELECT $1, id FROM puppies WHERE name = $2",
-        [req.files[i].key, newPuppy.puppyName]
-      );
-    }
-    res.redirect("/availablePuppies");
-  }   else {
+    await db.query("DELETE FROM puppyImages WHERE puppyid=$1", [req.body.id])
+    await db.query("DELETE FROM puppies WHERE id=$1",[req.body.id])
+    res.redirect("/managePuppies");
+  } else {
     res.redirect("/login");
   }
 });
+
+app.post(
+  "/submitNewPuppy",
+  upload.array("puppyImageUpload"),
+  async (req, res) => {
+    if (req.isAuthenticated()) {
+      const newPuppy = req.body;
+      const akcRegistrable = newPuppy.akcRegistrable === "true" ? true : false;
+      const price = newPuppy.price ? newPuppy.price : 0;
+      await db.query(
+        "INSERT INTO puppies (name, breed, gender, dob, price, mother, father, akcRegistrable) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)",
+        [
+          newPuppy.puppyName,
+          newPuppy.puppyBreed,
+          newPuppy.genderSelect,
+          newPuppy.dob,
+          price,
+          newPuppy.puppyMother,
+          newPuppy.puppyFather,
+          akcRegistrable,
+        ]
+      );
+      for (var i = 0; i < req.files.length; i++) {
+        await db.query(
+          "INSERT INTO puppyimages (imageid, puppyid) SELECT $1, id FROM puppies WHERE name = $2",
+          [req.files[i].key, newPuppy.puppyName]
+        );
+      }
+      res.redirect("/availablePuppies");
+    } else {
+      res.redirect("/login");
+    }
+  }
+);
 
 passport.use(
   "local",
@@ -270,13 +286,14 @@ passport.use(
               return cb(null, user);
             } else {
               //Did not pass password check
-              loginFailed = true;
+              passwordFailed = true;
               return cb(null, false);
             }
           }
         });
       } else {
-        return cb("User not found");
+        userFailed = true;
+        return cb(null, false);
       }
     } catch (err) {
       console.log(err);
