@@ -21,9 +21,13 @@
     </div> -->
 
 <div class="container py-5">
+
     <h2>Login</h2>
-<form action="/login" method="post" >
-    <div class="mb-3">
+    <% if(loginFailed){ %>
+    <h3 style="color:red">Invalid Username and/or Password</h3>
+    <% } %>
+<form class="col-4" action="/login" method="post" >
+    <div class="mb-3 ">
       <label for="usernameInput" class="form-label">Username: </label>
       <input type="text" name = "username" class="form-control" id="usernameInput" aria-describedby="userHelp">
       <div id="userHelp" class="form-text">Contact Support for Username and Password Issues</div>

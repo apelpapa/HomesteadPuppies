@@ -15,6 +15,7 @@ env.config();
 const app = express();
 const port = process.env.SERVER_PORT;
 const saltRounds = 15;
+var loginFailed = false;
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const s3 = new S3Client();
@@ -79,7 +80,8 @@ app.get("/contact", (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-  res.render("login.ejs");
+  res.render("login.ejs", {loginFailed:loginFailed});
+  loginFailed = false;
 });
 
 app.get("/logout", (req, res) => {
@@ -265,11 +267,10 @@ passport.use(
           } else {
             if (valid) {
               //Passed password check
-              console.log("Password Success");
               return cb(null, user);
             } else {
               //Did not pass password check
-              console.log("Password Invalid");
+              loginFailed = true;
               return cb(null, false);
             }
           }
