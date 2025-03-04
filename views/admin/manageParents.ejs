@@ -68,10 +68,10 @@
                 </div>
                 <div class="col">
                   <label for="parentBreed" class="form-label">Breed</label>
-                  <select class="form-select" name="breedFilter" id="breedFilter">
+                  <select class="form-select" name="parentBreed" id="parentBreed">
             <option>All Breeds</option>
             <% for(var j = 0; j < breeds.length; j++) { %>
-            <option value="<%= breeds[j].breed %>" <%=  locals.breedFilter == breeds[j].breed ? 'selected' : '' %> ><%= breeds[j].breed %></option>
+            <option value="<%= breeds[j].breed %>" <%=  parents[i].breed == breeds[j].breed ? 'selected' : '' %> ><%= breeds[j].breed %></option>
             <% } %>
           </select>
                 </div>
