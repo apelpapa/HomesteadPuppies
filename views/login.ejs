@@ -1,9 +1,43 @@
 <%- include('./partials/header.ejs'); %>
 
-<form action="/login" method="post">
-  <div class="container text-center">
-    <h2>LOGIN</h2>
-  </div>
-</form>
+<!-- <div class="container py-5">
+    <h2>Register</h2>
+    <form action="/register" method="post" >
+        <div class="mb-3">
+          <label for="usernameInput" class="form-label">Username: </label>
+          <input type="text" name = "username" class="form-control" id="usernameInput" aria-describedby="userHelp">
+          <div id="userHelp" class="form-text">Contact Support for Username and Password Issues</div>
+        </div>
+        <div class="mb-3">
+          <label for="passwordInput" class="form-label">Password</label>
+          <input type="password" name = "password" class="form-control" id="passwordInput">
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="loginCheck">
+          <label class="form-check-label" for="loginCheck">Remember Me (Not Working)</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
+    </div> -->
+
+<div class="container py-5">
+    <h2>Login</h2>
+<form action="/login" method="post" >
+    <div class="mb-3">
+      <label for="usernameInput" class="form-label">Username: </label>
+      <input type="text" name = "username" class="form-control" id="usernameInput" aria-describedby="userHelp">
+      <div id="userHelp" class="form-text">Contact Support for Username and Password Issues</div>
+    </div>
+    <div class="mb-3">
+      <label for="passwordInput" class="form-label">Password</label>
+      <input type="password" name = "password" class="form-control" id="passwordInput">
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="loginCheck">
+      <label class="form-check-label" for="loginCheck">Remember Me (Not Working)</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+</div>
 
 <%- include('./partials/footer.ejs'); %>
