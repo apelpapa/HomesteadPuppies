@@ -109,7 +109,7 @@
                   <select class="form-select" aria-label="" id="puppyMother" name="puppyMother" required>
                     <option value="">Select Mother</option>
                     <% for(var j=0; mothers.length > j; j++){ %>
-                    <option value="<%= mothers[j].name %>"><%= mothers[j].name %></option>
+                    <option value="<%= mothers[j].name %>" <%= puppies[i].mother === mothers[j].name ? 'selected' : '' %> ><%= mothers[j].name %></option>
                     <%}%>
                   </select>
                 </div>
@@ -118,7 +118,7 @@
                     <select class="form-select" aria-label="" id="puppyFather" name="puppyFather" required>
                      <option value="">Select Father</option>
                       <% for(var j=0; fathers.length > j; j++){ %>
-                    <option value="<%= fathers[j].name %>"><%= fathers[j].name %></option>
+                    <option value="<%= fathers[j].name %>" <%= puppies[i].father === fathers[j].name ? 'selected' : '' %> ><%= fathers[j].name %></option>
                     <%}%>
                     </select>
                     </div>
