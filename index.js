@@ -132,6 +132,10 @@ app.get("/contact", (req, res) => {
   res.render("contact.ejs");
 });
 
+app.get("/success", (req,res) =>{
+  res.render("success.ejs")
+})
+
 app.get("/login", (req, res) => {
   res.render("login.ejs", { passwordFailed: passwordFailed, userFailed:userFailed   });
   passwordFailed = false;
