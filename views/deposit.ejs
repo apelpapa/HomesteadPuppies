@@ -1,7 +1,13 @@
 <%- include('./partials/header.ejs'); %>
 
-    <div class="container">
+<div class="container d-flex justify-content-center align-items-center pt-5">
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAbK7cvbEz2tMrRNY1DZxpu7mtvaobg4QxEwfXYpiXFWC3civ_-HkD9IdiRCu2ullehUvvJuZq31TWbLQ&components=hosted-buttons&enable-funding=venmo&currency=USD"></script>
+    <div id="paypal-container-VKJ8W4MTBEV4A"></div>
+    <script>
+      paypal.HostedButtons({
+        hostedButtonId: "VKJ8W4MTBEV4A",
+      }).render("#paypal-container-VKJ8W4MTBEV4A")
+    </script>
+</div>
 
-    </div>
-
-    <%- include('./partials/footer.ejs'); %>
+<%- include('./partials/footer.ejs'); %>
