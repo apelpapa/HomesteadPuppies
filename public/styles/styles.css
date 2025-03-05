@@ -1,0 +1,87 @@
+/* Complimentary Colors
+Start Brown: #876540
+Off Blue Dark #407487
+Dark Brown #473E33
+Light Blue #B1D1DC
+Beige #FFEAD4
+*/
+
+body{
+    font-family: "Montserrat", serif ;
+    background-color: #f4f4f4;
+}
+
+.navbar{
+    background-color: #876540 !important;
+}
+
+.admin-bar{
+    background-color: #407487 !important;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+#filter-bar{
+    background-color: #407487 !important;
+    border-radius: 10px;
+}
+
+.header-logo{
+    width: 60px;
+}
+
+.header-container{
+    flex-direction: row-reverse;
+}
+
+#navbars-links{
+    flex-direction: row-reverse;
+    align-content: center;
+}
+
+.nav-link{
+    color:black;
+}
+
+#dog-card{
+    box-shadow: 5px 3px 4px;
+}
+
+#dog-card > div.card-body > button{
+    color: #407487;
+    border: solid #407487 1px;
+    font-weight: 900;
+}
+
+#dog-card > div.card-body{
+    padding-top: 0;
+}
+
+#dog-card > div.card-body > ul > li{
+    padding: 3px;
+}
+
+#dog-card > h3{
+    padding-top: 4px;
+}
+
+#dog-card > div.card-body > ul > li > button{
+    color: #407487;
+    font-weight: 500;
+    border: solid #407487 1px;
+    padding: 0px 3px;
+}
+
+#dog-card .carousel-item img {
+    height: 300px;
+    width: 100%;
+    object-fit: contain;
+  }
+
+
+@media (min-width: 992px){
+    .mobile-text{
+        visibility: hidden;
+        width: 0;
+    }
+}

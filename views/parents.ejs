@@ -1,0 +1,81 @@
+<%- include('./partials/header.ejs'); %>
+
+<div class="container text-center">
+  <h1>Parents</h1>
+
+  <div class="container col-10">
+    <nav class="navbar bg-body-tertiary" id="filter-bar">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Filters</span>
+        <form class="d-flex align-items-center gap-3" action="/filterParents" method="post">
+          <select class="form-select" name="breedFilter" id="breedFilter">
+            <option>All Breeds</option>
+            <% for(var i = 0; i < breeds.length; i++) { %>
+            <option value="<%= breeds[i].breed %>" <%=  locals.breedFilter == breeds[i].breed ? 'selected' : '' %> ><%= breeds[i].breed %></option>
+            <% } %>
+          </select>
+          <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container col-md-8 text-center pt-2">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+
+      <% for(var i=0; i < parents.length; i++){ %>
+      <div class="col">
+        <div class="card" id="dog-card">
+          <h3><%= parents[i].name %></h3>
+          <div id=<%= `${parents[i].name}-carousel` %> class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <% var firstImageIndex = imageURLs.findIndex(finder => finder.parentid === parents[i].parentid) %>
+              <% if(firstImageIndex === -1){firstImageIndex = imageURLs.findIndex(finder => finder.parentid === 0)}; %>
+              <div class="carousel-item active">
+                <img src=<%= `https://d3trlmj493rccc.cloudfront.net/${imageURLs[firstImageIndex].imageid}` %> class="d-block w-100" alt="...">
+              </div>
+
+              <% const filteredURLs = imageURLs.filter(finder => finder.parentid === parents[i].parentid);
+              filteredURLs.splice(0,1)
+              for(var j=0; j < filteredURLs.length; j++){ %>
+              <div class="carousel-item">
+                <img src= <%= `https://d3trlmj493rccc.cloudfront.net/${filteredURLs[j].imageid}` %> class="d-block w-100" alt="...">
+              </div>
+              <%}%>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target=<%= `#${parents[i].name}-carousel` %> data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target=<%= `#${parents[i].name}-carousel` %> data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <div class="card-body">
+              <button type="button" class="btn btn-outline-primary"><%= parents[i].breed %></button>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Gender: <%= parents[i].gender %></li>
+                <% const dobInMS = Date.parse(parents[i].dob)
+                  const todayInMS = Date.now()
+                  var ageInWeeks = Math.floor((todayInMS-dobInMS)/604800000)
+                  var ageInDays = Math.floor(((todayInMS-dobInMS)%604800000)/86400000)
+                  %>
+                <li class="list-group-item">Age: <%= ageInWeeks %> Weeks and <%= ageInDays %> days</li>
+                <% if(parents[i].akcregistered){%>
+                    <li class="list-group-item" >AKC Registered</li>
+                <% } %>
+                <% if(parents[i].championbloodline){%>
+                    <li class="list-group-item" >Champion Bloodline</li>
+                <% } %>
+                <li class="list-group-item" >Description: <%= parents[i].description %></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+  <%- include('./partials/footer.ejs'); %>
