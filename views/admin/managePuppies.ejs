@@ -48,20 +48,20 @@
           <td><%= sold %></td>
           <td><%= filteredURLs.length %></td>
           <td>
-            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target=<%=`#${puppies[i].id}info`%>>
+            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="<%=`#${puppies[i].id}info`%>">
               Edit Info
             </button>
-            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target=<%=`#${puppies[i].id}photo`%>>
+            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="<%=`#${puppies[i].id}photo`%>">
               Edit Photos
             </button>
-            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target=<%=`#${puppies[i].id}delete`%>>
+            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="<%=`#${puppies[i].id}delete`%>">
               DELETE
             </button>
           </td>
         </tr>
       </tbody>
 
-      <div class="modal fade" id=<%=`${puppies[i].id}info`%> data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal fade" id="<%=`${puppies[i].id}info`%>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -70,10 +70,10 @@
             </div>
             <div class="modal-body">
               <form action="/updatePuppy" method="post" class="row g-3">
-                <input type="hidden" name="id" id="id" value=<%= puppies[i].id %> />
+                <input type="hidden" name="id" id="id" value="<%= puppies[i].id %>" />
                 <div class="col">
                   <label for="puppyName" class="form-label">Name</label>
-                  <input type="text" class="form-control" id="puppyName" name="puppyName" placeholder="Name" value=<%= puppies[i].name %> required>
+                  <input type="text" class="form-control" id="puppyName" name="puppyName" placeholder="Name" value="<%= puppies[i].name %>" required>
                 </div>
                 <div class="col">
                   <label for="puppyBreed" class="form-label">Breed</label>
@@ -94,13 +94,13 @@
                 </div>
                 <div class="col">
                   <label class="form-label" for="startDate">Date of Birth</label>
-                  <input id="startDate" class="form-control" type="date" name="dob" value=<%= htmlDate %> required />
+                  <input id="startDate" class="form-control" type="date" name="dob" value="<%= htmlDate %>" required />
                 </div>
                 <div class="col">
                   <label class="form-label" for="price">Price </label>
                   <div class="input-group mb-3">
                     <span class="input-group-text">$</span>
-                    <input type="text" class="form-control" name="price" placeholder="(Optional)" value=<%= puppies[i].price %> required>
+                    <input type="text" class="form-control" name="price" placeholder="(Optional)" value="<%= puppies[i].price %>" required>
                     <span class="input-group-text">.00</span>
                   </div>
                 </div>
@@ -163,7 +163,7 @@
       </div>
   </div>
 
-  <div class="modal fade" id=<%=`${puppies[i].id}photo`%> data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal fade" id="<%=`${puppies[i].id}photo`%>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -175,15 +175,15 @@
             <div class="col">
               <label for="puppyImageUpload" class="form-label">Add Images</label>
               <input class="form-control" type="file" name="puppyImageUpload" multiple>
-              <input type="hidden" name="puppyName" id="puppyName" value=<%= puppies[i].name %>>
+              <input type="hidden" name="puppyName" id="puppyName" value="<%= puppies[i].name %>">
             </div>
             <button type="submit" class="btn btn-primary">Add Photos</button>
           </form>
           <% for(var j = 0; filteredURLs.length > j; j++ ) {%>
           <div class="container position-relative">
             <form action="/deletePuppyImage" method="post">
-              <img src=<%=`https://d3trlmj493rccc.cloudfront.net/${filteredURLs[j].imageid}`%> class="img-thumbnail" alt="...">
-              <input type="hidden" name="photoDeleteID" id="photoDeleteID" value=<%= filteredURLs[j].imageid %>>
+              <img src="<%=`https://d3trlmj493rccc.cloudfront.net/${filteredURLs[j].imageid}`%>" class="img-thumbnail" alt="...">
+              <input type="hidden" name="photoDeleteID" id="photoDeleteID" value="<%= filteredURLs[j].imageid %>">
               <button type="submit" class="btn btn-danger position-absolute bottom-0 end-0 m-1 mx-3">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
                   <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"></path>
@@ -200,7 +200,7 @@
         </div>
       </div>
 
-      <div class="modal fade" id=<%= `${puppies[i].id}delete` %> data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal fade" id="<%= `${puppies[i].id}delete` %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -210,7 +210,7 @@
               <div class="modal-body">
                 <form action="/deletePuppy" method="post" class="row g-3">
                   <div class="col">
-                    <input type="hidden" name="id" id="id" value=<%= puppies[i].id %> />
+                    <input type="hidden" name="id" id="id" value="<%= puppies[i].id %>"/>
                     <p class="py-1">(EDIT)It is recommended to mark puppies as sold and to not delete. This is Not Reversible and Will Delete all Images of This Puppy As Well.</p>
                     <button type="submit" class="btn btn-danger mb-2">DELETE</button>
                   </div>

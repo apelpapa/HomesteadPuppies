@@ -33,7 +33,7 @@
       <div class="col">
         <div class="card" id="dog-card">
           <h3><%= puppies[i].name %></h3>
-          <div id=<%= `${puppies[i].name}-carousel` %> class="carousel slide" data-bs-ride="carousel">
+          <div id="<%= `${puppies[i].name}-carousel` %>" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
               <% var firstImageIndex = imageURLs.findIndex(finder => finder.puppyid === puppies[i].id) %>
               <% if(firstImageIndex === -1){firstImageIndex = imageURLs.findIndex(finder => finder.puppyid === 0)}; %>
@@ -49,11 +49,11 @@
               </div>
               <%}%>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target=<%= `#${puppies[i].name}-carousel` %> data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="<%= `#${puppies[i].name}-carousel` %>" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Previous</span>
               </button>
-              <button class="carousel-control-next" type="button" data-bs-target=<%= `#${puppies[i].name}-carousel` %> data-bs-slide="next">
+              <button class="carousel-control-next" type="button" data-bs-target="<%= `#${puppies[i].name}-carousel` %>" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
               </button>
