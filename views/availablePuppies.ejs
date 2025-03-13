@@ -38,7 +38,7 @@
               <% var firstImageIndex = imageURLs.findIndex(finder => finder.puppyid === puppies[i].id) %>
               <% if(firstImageIndex === -1){firstImageIndex = imageURLs.findIndex(finder => finder.puppyid === 0)}; %>
               <div class="carousel-item active">
-                <img src=<%= `https://d3trlmj493rccc.cloudfront.net/${imageURLs[firstImageIndex].imageid}` %> class="d-block w-100" alt="...">
+                <img src="<%= `https://d3trlmj493rccc.cloudfront.net/${imageURLs[firstImageIndex].imageid}` %>" class="d-block w-100" alt="...">
               </div>
 
               <% const filteredURLs = imageURLs.filter(finder => finder.puppyid === puppies[i].id);
