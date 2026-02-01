@@ -13,7 +13,7 @@ import session from "express-session";
 
 env.config();
 const app = express();
-const port = process.env.SERVER_PORT;
+const port = process.env.SERVER_PORT || 3000;
 const saltRounds = 15;
 var passwordFailed = false;
 var userFailed = false;
