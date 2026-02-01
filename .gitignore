@@ -2,6 +2,7 @@
 .DS_Store
 todo.txt
 notes.txt
+.vscode/
 
 # Logs
 logs
