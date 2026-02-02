@@ -15,7 +15,7 @@
       <select id="puppyBreed" name="puppyBreed" class="form-select" aria-label="Breed Select" required>
         <option selected>Select Breed</option>
 
-        <% for(var i=0; breeds.length > i; i++){ %>
+        <% for(let i=0; breeds.length > i; i++){ %>
         <option value="<%= breeds[i].breed %>"><%= breeds[i].breed %></option>
           <%}%>
 
@@ -51,7 +51,7 @@
       <select class="form-select" aria-label="" id="puppyMother" name="puppyMother" required>
         <option value="">Select Mother</option>
 
-        <% for(var i=0; mothers.length > i; i++){ %>
+        <% for(let i=0; mothers.length > i; i++){ %>
           <option value="<%= mothers[i].name %>"><%= mothers[i].name %></option>
             <%}%>
 
@@ -64,7 +64,7 @@
       <select class="form-select" aria-label="Default select example" id="puppyFather" name="puppyFather" required>
         <option value="">Select Father</option>
 
-        <% for(var i=0; fathers.length > i; i++){ %>
+        <% for(let i=0; fathers.length > i; i++){ %>
           <option value="<%= fathers[i].name %>"><%= fathers[i].name %></option>
             <%}%>
 

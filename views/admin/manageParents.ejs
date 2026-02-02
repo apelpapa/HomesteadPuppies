@@ -19,7 +19,7 @@
       </thead>
 
 
-      <% for(var i = 0; i<parents.length; i++){ 
+      <% for(let i = 0; i<parents.length; i++){ 
     
     const date = new Date(parents[i].dob);
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -70,7 +70,7 @@
                   <label for="parentBreed" class="form-label">Breed</label>
                   <select class="form-select" name="parentBreed" id="parentBreed">
             <option>All Breeds</option>
-            <% for(var j = 0; j < breeds.length; j++) { %>
+            <% for(let j = 0; j < breeds.length; j++) { %>
             <option value="<%= breeds[j].breed %>" <%=  parents[i].breed == breeds[j].breed ? 'selected' : '' %> ><%= breeds[j].breed %></option>
             <% } %>
           </select>
@@ -149,7 +149,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Add Photos</button>
               </form>
-              <% for(var j = 0; filteredURLs.length > j; j++ ) {%>
+              <% for(let j = 0; filteredURLs.length > j; j++ ) {%>
               <div class="container position-relative">
                 <form action="/deleteParentImage" method="post">
                 <img src= "<%=`https://d3trlmj493rccc.cloudfront.net/${filteredURLs[j].imageid}`%>" class="img-thumbnail" alt="...">

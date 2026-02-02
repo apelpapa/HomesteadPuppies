@@ -15,7 +15,7 @@
       <select id="parentBreed" name="parentBreed" class="form-select" aria-label="Breed Select" required>
         <option selected>Select Breed</option>
 
-        <% for(var i=0; breeds.length > i; i++){ %>
+        <% for(let i=0; breeds.length > i; i++){ %>
         <option value="<%= breeds[i].breed %>"><%= breeds[i].breed %></option>
           <%}%>
 

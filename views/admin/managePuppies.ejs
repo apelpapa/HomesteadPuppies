@@ -23,7 +23,7 @@
       </thead>
 
 
-      <% for(var i = 0; i<puppies.length; i++){ 
+      <% for(let i = 0; i<puppies.length; i++){ 
     
     const date = new Date(puppies[i].dob);
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -79,7 +79,7 @@
                   <label for="puppyBreed" class="form-label">Breed</label>
                   <select class="form-select" name="puppyBreed" id="puppyBreed">
                     <option>All Breeds</option>
-                    <% for(var j = 0; j < breeds.length; j++) { %>
+                    <% for(let j = 0; j < breeds.length; j++) { %>
                     <option value="<%= breeds[j].breed %>" <%=  puppies[i].breed == breeds[j].breed ? 'selected' : '' %>><%= breeds[j].breed %></option>
                     <% } %>
                   </select>
@@ -108,7 +108,7 @@
                   <label for="puppyMother" class="form-label">Puppy's Mother</label>
                   <select class="form-select" aria-label="" id="puppyMother" name="puppyMother" required>
                     <option value="">Select Mother</option>
-                    <% for(var j=0; mothers.length > j; j++){ %>
+                    <% for(let j=0; mothers.length > j; j++){ %>
                     <option value="<%= mothers[j].name %>" <%= puppies[i].mother === mothers[j].name ? 'selected' : '' %> ><%= mothers[j].name %></option>
                     <%}%>
                   </select>
@@ -117,7 +117,7 @@
                   <label class="form-label" for="puppyFather"> Father </label>
                     <select class="form-select" aria-label="" id="puppyFather" name="puppyFather" required>
                      <option value="">Select Father</option>
-                      <% for(var j=0; fathers.length > j; j++){ %>
+                      <% for(let j=0; fathers.length > j; j++){ %>
                     <option value="<%= fathers[j].name %>" <%= puppies[i].father === fathers[j].name ? 'selected' : '' %> ><%= fathers[j].name %></option>
                     <%}%>
                     </select>
@@ -179,7 +179,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Add Photos</button>
           </form>
-          <% for(var j = 0; filteredURLs.length > j; j++ ) {%>
+          <% for(let j = 0; filteredURLs.length > j; j++ ) {%>
           <div class="container position-relative">
             <form action="/deletePuppyImage" method="post">
               <img src="<%=`https://d3trlmj493rccc.cloudfront.net/${filteredURLs[j].imageid}`%>" class="img-thumbnail" alt="...">

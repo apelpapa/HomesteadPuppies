@@ -15,14 +15,11 @@ import session from "express-session";
 const envFile = process.env.NODE_ENV === 'development' ? '.env.development' : ".env"
 env.config({path:envFile});
 
-console.log(envFile)
-
-
 const app = express();
 const port = process.env.SERVER_PORT || 3000;
 const saltRounds = 15;
-var passwordFailed = false;
-var userFailed = false;
+let passwordFailed = false;
+let userFailed = false;
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const s3 = new S3Client();
@@ -99,8 +96,8 @@ app.get("/parents", async (req, res) => {
 });
 
 app.post("/filterPuppies", async (req, res) => {
-  var breedFilter = req.body.breedFilter;
-  var genderFilter = req.body.genderFilter;
+  let breedFilter = req.body.breedFilter;
+  let genderFilter = req.body.genderFilter;
   breedFilter == "All Breeds" ? breedFilter = '%' : null;
   genderFilter == "All Genders" ? genderFilter = '%' : null;
   const availableResult = await db.query("SELECT * FROM puppies WHERE id > 0 AND breed LIKE $1 AND gender LIKE $2 ORDER BY id ASC",[breedFilter, genderFilter]);
@@ -119,7 +116,7 @@ app.post("/filterPuppies", async (req, res) => {
 });
 
 app.post("/filterParents", async (req, res) => {
-  var breedFilter = req.body.breedFilter;
+  let breedFilter = req.body.breedFilter;
   breedFilter == "All Breeds" ? breedFilter = '%' : null;
   const availableResult = await db.query("SELECT * FROM parents WHERE parentid > 0 AND breed LIKE $1 ORDER BY parentid ASC",[breedFilter]);
   const parents = availableResult.rows;
@@ -374,7 +371,7 @@ app.post("/addPuppyImages", upload.array("puppyImageUpload"), async (req, res) =
   if (req.isAuthenticated()) {
     const newPuppy = req.body;
 
-    for (var i = 0; i < req.files.length; i++) {
+    for (let i = 0; i < req.files.length; i++) {
       await db.query(
         "INSERT INTO puppyimages (imageid, puppyid) SELECT $1, id FROM puppies WHERE name = $2",
         [req.files[i].key, newPuppy.puppyName]
@@ -390,7 +387,7 @@ app.post("/addParentImages", upload.array("parentImageUpload"), async (req, res)
   if (req.isAuthenticated()) {
     const newParent = req.body;
 
-    for (var i = 0; i < req.files.length; i++) {
+    for (let i = 0; i < req.files.length; i++) {
       await db.query(
         "INSERT INTO parentimages (imageid, parentid) SELECT $1, parentid FROM parents WHERE name = $2",
         [req.files[i].key, newParent.parentName]
@@ -463,7 +460,7 @@ app.post("/submitNewPuppy", upload.array("puppyImageUpload"), async (req, res) =
           akcRegistrable,
         ]
       );
-      for (var i = 0; i < req.files.length; i++) {
+      for (let i = 0; i < req.files.length; i++) {
         await db.query(
           "INSERT INTO puppyimages (imageid, puppyid) SELECT $1, id FROM puppies WHERE name = $2",
           [req.files[i].key, newPuppy.puppyName]
@@ -492,7 +489,7 @@ app.post("/submitNewParent", upload.array("parentImageUpload"), async (req, res)
         newParent.descriptionTextBox
       ]
     );
-    for (var i = 0; i < req.files.length; i++) {
+    for (let i = 0; i < req.files.length; i++) {
       await db.query(
         "INSERT INTO parentimages (imageid, parentid) SELECT $1, parentid FROM parents WHERE name = $2",
         [req.files[i].key, newParent.parentName]
