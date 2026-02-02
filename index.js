@@ -11,7 +11,13 @@ import passport from "passport";
 import { Strategy } from "passport-local";
 import session from "express-session";
 
-env.config();
+
+const envFile = process.env.NODE_ENV === 'development' ? '.env.development' : ".env"
+env.config({path:envFile});
+
+console.log(envFile)
+
+
 const app = express();
 const port = process.env.SERVER_PORT || 3000;
 const saltRounds = 15;

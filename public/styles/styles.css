@@ -89,3 +89,14 @@ body{
 .paypal-container{
     width: 350px;
 }
+
+.home-container{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.home-container h1{
+    font-size: 2rem;
+    text-align: center;
+}

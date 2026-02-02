@@ -1,38 +1,86 @@
 <%- include('./partials/header.ejs'); %>
-<div class="container">
-  <div class="px-4 my-5 text-center">
+<div class="container col-md-8">
+  <div class="home-container">
     <h1 class="display-5 fw-bold text-body-emphasis">
-      Welcome to Homestead Puppies
+      Homestead Puppies — Full-Stack System Showcase
     </h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">
-        Unfortunately Homestead Puppies is no longer is business and this
-        website is a showcase. I Built this website for my father
-        caring for puppies—a passion that fills each day with purpose and joy.
-        At Homestead Puppies, I pour my heart into ensuring every little bundle
-        of joy receives the love, attention, and early socialization they need
-        to flourish. <br /><br />
-        I specialize in raising Cavalier King Charles Spaniels, Shih Tzus,
-        Dachshunds, and Golden Retrievers. Additionally, I’m proud to be one of
-        the few breeders exclusively dedicated to the unique Obsidian
-        Retrievers—a breed celebrated for its distinctive beauty and gentle
-        nature. <br /><br />
-        Each day, I carefully select our breeding pairs to ensure that every
-        puppy inherits the best traits of its breed. Seeing them thrive and
-        eventually become cherished family members is the most rewarding part of
-        my work. <br /><br />
-        Thank you for considering Homestead Puppies. I look forward to helping
-        you welcome a new furry friend into your home!
-      </p>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">
-          Primary button
-        </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4">
-          Secondary
-        </button>
-      </div>
-    </div>
+
+    <p class="lead mb-3">
+      If you’re only interested in the technical architecture, feel free to skip
+      to the TL;DR stack summary below.
+    </p>
+
+    <p class="mb-4">
+      This project is personally meaningful to me. It started as a small website
+      for my dad’s retirement puppy breeding business — something simple to list
+      available puppies. It quickly grew into something much larger and
+      ultimately became the operational center of the business. Along the way,
+      it also became my first true full-stack production system and my largest
+      early Node.js project.
+    </p>
+
+    <p class="mb-4">
+      What began as “just a website” evolved into a complete application:
+      authentication, admin workflows, relational data modeling, media
+      pipelines, deployment automation, infrastructure hardening, and long-term
+      unattended operation. The system ran in production for over a year with
+      non-technical users managing everything through the admin panel without
+      needing code access.
+    </p>
+
+    <hr />
+
+    <h3>TL;DR — Technical Overview</h3>
+
+    <ul>
+      <li>
+        <strong>Backend:</strong> Node.js + Express application with server-side
+        rendering via EJS
+      </li>
+      <li>
+        <strong>Auth & Security:</strong> Passport authentication, bcrypt
+        password hashing, session management
+      </li>
+      <li>
+        <strong>Database:</strong> PostgreSQL with relational schema design and
+        enforced data relationships
+      </li>
+      <li>
+        <strong>Media Pipeline:</strong> File uploads via multer → stored in AWS
+        S3 → delivered through CloudFront CDN
+      </li>
+      <li>
+        <strong>Admin System:</strong> Full administrative panel with
+        rule-enforced workflows and dynamic calculations
+      </li>
+      <li>
+        <strong>Infrastructure:</strong> Linux VPS deployment behind Nginx
+        reverse proxy
+      </li>
+      <li>
+        <strong>Reliability:</strong> PM2 process manager with auto-restart on
+        crash or reboot
+      </li>
+      <li>
+        <strong>Deployment:</strong> GitHub Actions CI/CD auto-deploy on commit
+      </li>
+      <li>
+        <strong>Networking & TLS:</strong> Cloudflare DNS and certificate
+        management
+      </li>
+      <li>
+        <strong>Environment Management:</strong> Separate production and
+        development configurations
+      </li>
+    </ul>
+
+    <hr />
+
+    <p class="mb-4">
+      The admin interface remains fully functional, so public credentials are
+      not exposed. If a technical reviewer needs to explore the system, I can
+      provide temporary demonstration access.
+    </p>
   </div>
 </div>
 <%- include('./partials/footer.ejs'); %>
