@@ -145,12 +145,13 @@ app.get("/success", (req,res) =>{
 })
 
 app.get("/login", (req, res) => {
-  res.render("login.ejs", { passwordFailed: passwordFailed, userFailed:userFailed   });
-  passwordFailed = false;
-  userFailed = false;
+  const message = req.session.messages?.[0] || null;
+  req.session.messages = []; // clear it so it doesn't persist
+  res.render("login.ejs", { message });
 });
 
-app.get("/logout", (req, res) => {
+
+app.get("/logout", (req, res, next) => {
   req.logout(function (err) {
     if (err) {
       return next(err);
@@ -159,42 +160,10 @@ app.get("/logout", (req, res) => {
   });
 });
 
-//REGISTER
-
-// app.post("/register", async (req, res) => {
-//   const username = req.body.username;
-//   const password = req.body.password;
-//   try {
-//     const checkResult = await db.query("SELECT * FROM users WHERE username = $1", [
-//       username,
-//     ]);
-//     if (checkResult.rows.length > 0) {
-//       req.redirect("/login");
-//     } else {
-//       bcrypt.hash(password, saltRounds, async (err, hash) => {
-//         if (err) {
-//           console.error("Error hashing password:", err);
-//         } else {
-//           const result = await db.query(
-//             "INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *",
-//             [username, hash]
-//           );
-//           const user = result.rows[0];
-//           req.login(user, (err) => {
-//             console.log("success");
-//             res.redirect("/adminHome");
-//           });
-//         }
-//       });
-//     }
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
-
 app.post("/login", passport.authenticate("local", {
     successRedirect: "/adminHome",
     failureRedirect: "/login",
+    failureMessage: true
   })
 );
 
@@ -332,10 +301,6 @@ app.post("/deleteBreed", async (req,res) =>{
 
 app.post("/updatePuppy", async (req, res) => {
   if (req.isAuthenticated()) {
-    const currentDBPuppyRecord = await db.query(
-      "SELECT * FROM puppies WHERE id = $1",
-      [req.body.id]
-    );
     const id = req.body.id;
     const name = req.body.puppyName;
     const breed = req.body.puppyBreed;
@@ -401,10 +366,6 @@ app.post("/addParentImages", upload.array("parentImageUpload"), async (req, res)
 
 app.post("/updateParent", async (req, res) => {
   if (req.isAuthenticated()) {
-    const currentDBPuppyRecord = await db.query(
-      "SELECT * FROM puppies WHERE id = $1",
-      [req.body.id]
-    );
     const parentid = req.body.parentid;
     const name = req.body.parentName;
     const breed = req.body.parentBreed;
@@ -507,34 +468,24 @@ passport.use(
   new Strategy(async function verify(username, password, cb) {
     try {
       const result = await db.query(
-        "SELECT * FROM users WHERE username = $1 ",
+        "SELECT * FROM users WHERE username = $1",
         [username]
       );
-      if (result.rows.length > 0) {
-        const user = result.rows[0];
-        const storedHashedPassword = user.password;
-        bcrypt.compare(password, storedHashedPassword, (err, valid) => {
-          if (err) {
-            //Error with password check
-            console.error("Error comparing passwords:", err);
-            return cb(err);
-          } else {
-            if (valid) {
-              //Passed password check
-              return cb(null, user);
-            } else {
-              //Did not pass password check
-              passwordFailed = true;
-              return cb(null, false);
-            }
-          }
-        });
-      } else {
-        userFailed = true;
-        return cb(null, false);
+
+      if (result.rows.length === 0) {
+        return cb(null, false, { message: "Invalid username" });
       }
+
+      const user = result.rows[0];
+      const storedHashedPassword = user.password;
+
+      bcrypt.compare(password, storedHashedPassword, (err, valid) => {
+        if (err) return cb(err);
+        if (!valid) return cb(null, false, { message: "Invalid password" });
+        return cb(null, user);
+      });
     } catch (err) {
-      console.log(err);
+      return cb(err);
     }
   })
 );

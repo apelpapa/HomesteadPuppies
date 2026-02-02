@@ -3,11 +3,9 @@
 <div class="container col-8 py-5">
 
   <h2>Login</h2>
-  <% if(passwordFailed){ %>
-  <h3 style="color:red">Invalid Password</h3>
-  <% } else if(userFailed){ %>
-  <h3 style="color:red">Invalid Username</h3>
-  <% } %>
+<% if (message) { %>
+  <h3 style="color:red"><%= message %></h3>
+<% } %>
   <form class="col-lg-4 col-md-8" action="/login" method="post">
     <div class="mb-3 ">
       <label for="usernameInput" class="form-label">Username: </label>
@@ -17,10 +15,6 @@
     <div class="mb-3">
       <label for="passwordInput" class="form-label">Password</label>
       <input type="password" name="password" class="form-control" id="passwordInput">
-    </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="loginCheck">
-      <label class="form-check-label" for="loginCheck">Remember Me</label>
     </div>
     <button type="submit" class="btn btn-primary">Login</button>
   </form>
