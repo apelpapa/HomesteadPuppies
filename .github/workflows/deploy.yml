@@ -12,9 +12,9 @@ jobs:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.DROPLET_HOST }}
-          username: ${{ secrets.DROPLET_USER }}
-          key: ${{ secrets.DROPLET_SSH_KEY }}
+          host: ${{ SECRET.DROPLET_HOST }}
+          username: ${{ SECRET.DROPLET_USER }}
+          key: ${{ SECRET.DROPLET_SSH_KEY }}
           script: |
             set -e
             cd /home/deploy/HomesteadPuppies
