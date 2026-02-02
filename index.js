@@ -56,7 +56,6 @@ const db = new pg.Client({
   user: process.env.PGUSER,
   password: process.env.PGPASSWORD,
   ssl: process.env.PGSSL === "true" ? { rejectUnauthorized: false } : false,
-  ssl: true,
 });
 
 await db.connect();
