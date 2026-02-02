@@ -17,9 +17,6 @@ env.config({path:envFile});
 
 const app = express();
 const port = process.env.SERVER_PORT || 3000;
-const saltRounds = 15;
-let passwordFailed = false;
-let userFailed = false;
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const s3 = new S3Client();
@@ -41,7 +38,7 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
   })
 );
 
