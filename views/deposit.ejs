@@ -1,12 +1,14 @@
 <%- include('./partials/header.ejs'); %>
 
-<div class=" container paypal-container">
-<div id="paypal-container-T8P8TE6ENM58W"></div>
+<div class="container paypal-container">
+  <div id="paypal-container-T8P8TE6ENM58W"></div>
 </div>
 <script>
-  paypal.HostedButtons({
-    hostedButtonId: "T8P8TE6ENM58W",
-  }).render("#paypal-container-T8P8TE6ENM58W")
+  paypal
+    .HostedButtons({
+      hostedButtonId: "T8P8TE6ENM58W",
+    })
+    .render("#paypal-container-T8P8TE6ENM58W");
 </script>
 
 <%- include('./partials/footer.ejs'); %>
