@@ -50,6 +50,12 @@ app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 
 const db = new pg.Client({
+  host: process.env.PGHOST,
+  port: Number(process.env.PGPORT || 5432),
+  database: process.env.PGDATABASE,
+  user: process.env.PGUSER,
+  password: process.env.PGPASSWORD,
+  ssl: process.env.PGSSL === "true" ? { rejectUnauthorized: false } : false,
   ssl: true,
 });
 
