@@ -59,7 +59,7 @@ const db = new pg.Client({
   ssl: true,
 });
 
-db.connect();
+await db.connect();
 
 app.get("/", (req, res) => {
   res.render("index.ejs");
