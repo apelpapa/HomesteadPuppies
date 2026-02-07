@@ -109,7 +109,7 @@
                   <select class="form-select" aria-label="" id="puppyMother" name="puppyMother" required>
                     <option value="">Select Mother</option>
                     <% for(let j=0; mothers.length > j; j++){ %>
-                    <option value="<%= mothers[j].name %>" <%= puppies[i].mother === mothers[j].name ? 'selected' : '' %> ><%= mothers[j].name %></option>
+                    <option value="<%= mothers[j].name %>" <%= puppies[i].mother === mothers[j].name ? 'selected' : '' %>><%= mothers[j].name %></option>
                     <%}%>
                   </select>
                 </div>
@@ -118,7 +118,7 @@
                     <select class="form-select" aria-label="" id="puppyFather" name="puppyFather" required>
                      <option value="">Select Father</option>
                       <% for(let j=0; fathers.length > j; j++){ %>
-                    <option value="<%= fathers[j].name %>" <%= puppies[i].father === fathers[j].name ? 'selected' : '' %> ><%= fathers[j].name %></option>
+                    <option value="<%= fathers[j].name %>" <%= puppies[i].father === fathers[j].name ? 'selected' : '' %>><%= fathers[j].name %></option>
                     <%}%>
                     </select>
                     </div>
@@ -175,10 +175,11 @@
             <div class="col">
               <label for="puppyImageUpload" class="form-label">Add Images</label>
               <input class="form-control" type="file" name="puppyImageUpload" multiple>
-              <input type="hidden" name="puppyName" id="puppyName" value="<%= puppies[i].name %>">
+              <input type="hidden" name="puppyId" value="<%= puppies[i].id %>">
             </div>
             <button type="submit" class="btn btn-primary">Add Photos</button>
           </form>
+
           <% for(let j = 0; filteredURLs.length > j; j++ ) {%>
           <div class="container position-relative">
             <form action="/deletePuppyImage" method="post">
@@ -210,7 +211,7 @@
               <div class="modal-body">
                 <form action="/deletePuppy" method="post" class="row g-3">
                   <div class="col">
-                    <input type="hidden" name="id" id="id" value="<%= puppies[i].id %>"/>
+                    <input type="hidden" name="id" id="id" value="<%= puppies[i].id %>" />
                     <p class="py-1">(EDIT)It is recommended to mark puppies as sold and to not delete. This is Not Reversible and Will Delete all Images of This Puppy As Well.</p>
                     <button type="submit" class="btn btn-danger mb-2">DELETE</button>
                   </div>

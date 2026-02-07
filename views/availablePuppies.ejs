@@ -7,85 +7,111 @@
     <nav class="navbar bg-body-tertiary" id="filter-bar">
       <div class="container-fluid">
         <span class="navbar-brand mb-0 h1">Filters</span>
+
         <form class="d-flex align-items-center gap-3" action="/filterPuppies" method="post">
           <select class="form-select" name="breedFilter" id="breedFilter">
             <option>All Breeds</option>
-            <% for(let i = 0; i < breeds.length; i++) { %>
-            <option value="<%= breeds[i].breed %>" <%=  locals.breedFilter == breeds[i].breed ? 'selected' : '' %> ><%= breeds[i].breed %></option>
+            <% for (let i = 0; i < breeds.length; i++) { %>
+              <option value="<%= breeds[i].breed %>" <%= locals.breedFilter == breeds[i].breed ? 'selected' : '' %>>
+                <%= breeds[i].breed %>
+              </option>
             <% } %>
           </select>
+
           <select class="form-select" name="genderFilter" id="genderFilter">
             <option>All Genders</option>
-            <option value="Male" <%=  locals.genderFilter == 'Male' ? 'selected' : '' %> >Male</option>
+            <option value="Male" <%= locals.genderFilter == 'Male' ? 'selected' : '' %>>Male</option>
             <option value="Female" <%= locals.genderFilter == 'Female' ? 'selected' : '' %>>Female</option>
           </select>
+
           <button type="submit" class="btn btn-primary">Filter</button>
         </form>
       </div>
     </nav>
   </div>
 
-
   <div class="container col-md-8 text-center pt-2">
     <div class="row row-cols-1 row-cols-md-2 g-4">
 
-      <% for(let i=0; i < puppies.length; i++){ %>
-      <div class="col">
-        <div class="card" id="dog-card">
-          <h3><%= puppies[i].name %></h3>
-          <div id="<%= `${puppies[i].name}-carousel` %>" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <% let firstImageIndex = imageURLs.findIndex(finder => finder.puppyid === puppies[i].id) %>
-              <% if(firstImageIndex === -1){firstImageIndex = imageURLs.findIndex(finder => finder.puppyid === 0)}; %>
-              <div class="carousel-item active">
-                <img src="<%= `https://d3trlmj493rccc.cloudfront.net/${imageURLs[firstImageIndex].imageid}` %>" class="d-block w-100" alt="...">
+      <% for (let i = 0; i < puppies.length; i++) { %>
+        <div class="col">
+          <div class="card" id="dog-card">
+            <h3><%= puppies[i].name %></h3>
+
+            <!-- Use ID-based carousel IDs to avoid collisions when names repeat -->
+            <div id="puppy-carousel-<%= puppies[i].id %>" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <%
+                  // Get images for this puppy; fallback to placeholder images (puppyid === 0)
+                  const urlsForPuppy = imageURLs.filter(img => img.puppyid === puppies[i].id);
+                  const urlsToShow = urlsForPuppy.length > 0
+                    ? urlsForPuppy
+                    : imageURLs.filter(img => img.puppyid === 0);
+                %>
+
+                <% for (let j = 0; j < urlsToShow.length; j++) { %>
+                  <div class="carousel-item <%= j === 0 ? 'active' : '' %>">
+                    <img
+                      src="<%= `https://d3trlmj493rccc.cloudfront.net/${urlsToShow[j].imageid}` %>"
+                      class="d-block w-100"
+                      alt="<%= puppies[i].name %> photo <%= j + 1 %>"
+                    >
+                  </div>
+                <% } %>
               </div>
 
-              <% const filteredURLs = imageURLs.filter(finder => finder.puppyid === puppies[i].id);
-              filteredURLs.splice(0,1)
-              for(let j=0; j < filteredURLs.length; j++){ %>
-              <div class="carousel-item">
-                <img src="<%= `https://d3trlmj493rccc.cloudfront.net/${filteredURLs[j].imageid}` %>" class="d-block w-100" alt="...">
-              </div>
-              <%}%>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="<%= `#${puppies[i].name}-carousel` %>" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
+              <button class="carousel-control-prev" type="button" data-bs-target="#puppy-carousel-<%= puppies[i].id %>" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
               </button>
-              <button class="carousel-control-next" type="button" data-bs-target="<%= `#${puppies[i].name}-carousel` %>" data-bs-slide="next">
+
+              <button class="carousel-control-next" type="button" data-bs-target="#puppy-carousel-<%= puppies[i].id %>" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
+
             <div class="card-body">
               <button type="button" class="btn btn-outline-primary"><%= puppies[i].breed %></button>
+
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Gender: <%= puppies[i].gender %></li>
-                <% const dobInMS = Date.parse(puppies[i].dob)
-                  const todayInMS = Date.now()
-                  let ageInWeeks = Math.floor((todayInMS-dobInMS)/604800000)
-                  let ageInDays = Math.floor(((todayInMS-dobInMS)%604800000)/86400000)
-                  %>
+
+                <%
+                  const dobInMS = Date.parse(puppies[i].dob);
+                  const todayInMS = Date.now();
+                  let ageInWeeks = Math.floor((todayInMS - dobInMS) / 604800000);
+                  let ageInDays = Math.floor(((todayInMS - dobInMS) % 604800000) / 86400000);
+                %>
                 <li class="list-group-item">Age: <%= ageInWeeks %> Weeks and <%= ageInDays %> days</li>
-                <% if(locals.puppies[i].price){%>
-                <li class="list-group-item">Price: $<%= puppies[i].price %></li>
-                <%} else {%>
-                <li class="list-group-item">Price: Contact</li>
-                <%}%>
-                  <li class="list-group-item">Mother: <button type="button" class="btn"><%= puppies[i].mother %></button></li>
-                <li class="list-group-item">Father: <button type="button" class="btn"><%= puppies[i].father %></button></li>
+
+                <% if (puppies[i].price) { %>
+                  <li class="list-group-item">Price: $<%= puppies[i].price %></li>
+                <% } else { %>
+                  <li class="list-group-item">Price: Contact</li>
+                <% } %>
+
+                <li class="list-group-item">
+                  Mother: <button type="button" class="btn"><%= puppies[i].mother %></button>
+                </li>
+
+                <li class="list-group-item">
+                  Father: <button type="button" class="btn"><%= puppies[i].father %></button>
+                </li>
+
                 <li class="list-group-item"></li>
               </ul>
-              <div class="">
+
+              <div>
                 <button class="btn btn-primary" type="button">Bring <%= puppies[i].name %> Home</button>
               </div>
             </div>
           </div>
         </div>
-        <% } %>
-      </div>
+      <% } %>
+
     </div>
   </div>
+</div>
 
-  <%- include('./partials/footer.ejs'); %>
+<%- include('./partials/footer.ejs'); %>
