@@ -37,12 +37,9 @@
         <div class="col">
           <div class="card" id="dog-card">
             <h3><%= puppies[i].name %></h3>
-
-            <!-- Use ID-based carousel IDs to avoid collisions when names repeat -->
             <div id="puppy-carousel-<%= puppies[i].id %>" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <%
-                  // Get images for this puppy; fallback to placeholder images (puppyid === 0)
                   const urlsForPuppy = imageURLs.filter(img => img.puppyid === puppies[i].id);
                   const urlsToShow = urlsForPuppy.length > 0
                     ? urlsForPuppy

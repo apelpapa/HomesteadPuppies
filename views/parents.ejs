@@ -27,8 +27,6 @@
         <div class="col">
           <div class="card" id="dog-card">
             <h3><%= parents[i].name %></h3>
-
-            <!-- Carousel ID uses parentid to avoid collisions -->
             <div id="<%= `parent-carousel-${parents[i].parentid}` %>" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <% let firstImageIndex = imageURLs.findIndex(finder => finder.parentid === parents[i].parentid) %>
