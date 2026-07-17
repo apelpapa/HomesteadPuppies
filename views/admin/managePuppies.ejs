@@ -70,6 +70,7 @@
             </div>
             <div class="modal-body">
               <form action="/updatePuppy" method="post" class="row g-3">
+                <%- include('../partials/csrf.ejs'); %>
                 <input type="hidden" name="id" id="id" value="<%= puppies[i].id %>" />
                 <div class="col">
                   <label for="puppyName" class="form-label">Name</label>
@@ -172,6 +173,7 @@
         </div>
         <div class="modal-body">
           <form action="/addPuppyImages" method="post" enctype="multipart/form-data" class="row g-3">
+            <%- include('../partials/csrf.ejs'); %>
             <div class="col">
               <label for="puppyImageUpload" class="form-label">Add Images</label>
               <input class="form-control" type="file" name="puppyImageUpload" multiple>
@@ -183,6 +185,7 @@
           <% for(let j = 0; filteredURLs.length > j; j++ ) {%>
           <div class="container position-relative">
             <form action="/deletePuppyImage" method="post">
+              <%- include('../partials/csrf.ejs'); %>
               <img src="<%=`https://d3trlmj493rccc.cloudfront.net/${filteredURLs[j].imageid}`%>" class="img-thumbnail" alt="...">
               <input type="hidden" name="photoDeleteID" id="photoDeleteID" value="<%= filteredURLs[j].imageid %>">
               <button type="submit" class="btn btn-danger position-absolute bottom-0 end-0 m-1 mx-3">
@@ -210,6 +213,7 @@
               </div>
               <div class="modal-body">
                 <form action="/deletePuppy" method="post" class="row g-3">
+                  <%- include('../partials/csrf.ejs'); %>
                   <div class="col">
                     <input type="hidden" name="id" id="id" value="<%= puppies[i].id %>" />
                     <p class="py-1">(EDIT)It is recommended to mark puppies as sold and to not delete. This is Not Reversible and Will Delete all Images of This Puppy As Well.</p>

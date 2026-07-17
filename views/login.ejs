@@ -7,14 +7,15 @@
   <h3 style="color:red"><%= message %></h3>
 <% } %>
   <form class="col-lg-4 col-md-8" action="/login" method="post">
+    <%- include('./partials/csrf.ejs'); %>
     <div class="mb-3 ">
       <label for="usernameInput" class="form-label">Username: </label>
-      <input type="text" name="username" class="form-control" id="usernameInput" aria-describedby="userHelp">
+      <input type="text" name="username" class="form-control" id="usernameInput" aria-describedby="userHelp" autocomplete="username" required>
       <div id="userHelp" class="form-text">Contact Support for Username and Password Issues</div>
     </div>
     <div class="mb-3">
       <label for="passwordInput" class="form-label">Password</label>
-      <input type="password" name="password" class="form-control" id="passwordInput">
+      <input type="password" name="password" class="form-control" id="passwordInput" autocomplete="current-password" required>
     </div>
     <button type="submit" class="btn btn-primary">Login</button>
   </form>

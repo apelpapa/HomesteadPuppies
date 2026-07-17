@@ -4,6 +4,7 @@
 <div class="container text-left col-6 pt-2">
     <h2>Add a Puppy</h2>
   <form action="/submitNewPuppy" method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+    <%- include('../partials/csrf.ejs'); %>
 
     <div class="col-md-4">
       <label for="puppyName" class="form-label">Name</label>

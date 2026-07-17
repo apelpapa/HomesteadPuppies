@@ -63,6 +63,7 @@
             </div>
             <div class="modal-body">
               <form action="/updateParent" method="post" class="row g-3">
+                <%- include('../partials/csrf.ejs'); %>
                 <input type="hidden" name="parentid" id="parentid" value="<%= parents[i].parentid %>" />
                 <div class="col">
                   <label for="parentName" class="form-label">Name</label>
@@ -144,6 +145,7 @@
             </div>
             <div class="modal-body">
               <form action="/addParentImages" method="post" enctype="multipart/form-data" class="row g-3">
+                <%- include('../partials/csrf.ejs'); %>
                 <div class="col">
                   <label for="parentImageUpload" class="form-label">Add Images</label>
                   <input class="form-control" type="file" name="parentImageUpload" multiple>
@@ -156,6 +158,7 @@
               <% for(let j = 0; filteredURLs.length > j; j++ ) {%>
               <div class="container position-relative">
                 <form action="/deleteParentImage" method="post">
+                  <%- include('../partials/csrf.ejs'); %>
                   <img src="<%=`https://d3trlmj493rccc.cloudfront.net/${filteredURLs[j].imageid}`%>" class="img-thumbnail" alt="...">
                   <input type="hidden" name="photoDeleteID" id="photoDeleteID" value="<%= filteredURLs[j].imageid %>">
                   <button type="submit" class="btn btn-danger position-absolute bottom-0 end-0 m-1 mx-3">
@@ -183,6 +186,7 @@
                   </div>
                   <div class="modal-body">
                     <form action="/deleteParent" method="post" class="row g-3">
+                      <%- include('../partials/csrf.ejs'); %>
                       <div class="col">
                         <input type="hidden" name="parentid" id="parentid" value="<%= parents[i].parentid %>" />
                         <p class="py-1">(EDIT)It is recommended to mark parents as transferred or deceased and to not delete. This is Not Reversible and Will Delete all Images of This Parent As Well.</p>

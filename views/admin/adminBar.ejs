@@ -30,7 +30,10 @@
               </ul>
             </li>
             <li class="nav-item ms-auto">
-              <a class="btn btn-outline-dark" href="/logout" role="button">Logout</a>
+              <form action="/logout" method="post">
+                <%- include('../partials/csrf.ejs'); %>
+                <button class="btn btn-outline-dark" type="submit">Logout</button>
+              </form>
             </li>
           </ul>
         </div>

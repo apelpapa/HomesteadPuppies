@@ -52,6 +52,10 @@
                       src="<%= `https://d3trlmj493rccc.cloudfront.net/${urlsToShow[j].imageid}` %>"
                       class="d-block w-100"
                       alt="<%= puppies[i].name %> photo <%= j + 1 %>"
+                      loading="<%= i === 0 && j === 0 ? 'eager' : 'lazy' %>"
+                      decoding="async"
+                      width="1620"
+                      height="1080"
                     >
                   </div>
                 <% } %>
