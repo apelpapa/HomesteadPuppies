@@ -30,6 +30,76 @@ body{
     width: 60px;
 }
 
+.legacy-site-notice{
+    margin-top: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.legacy-site-notice__content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    color: #fffaf5;
+    background: #473E33;
+    border-left: 6px solid #B1D1DC;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.5rem 1.25rem rgba(71, 62, 51, 0.16);
+}
+
+.legacy-site-notice__eyebrow{
+    margin: 0 0 0.25rem;
+    color: #B1D1DC;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.legacy-site-notice h2{
+    margin: 0 0 0.35rem;
+    color: #fff;
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    font-weight: 750;
+}
+
+.legacy-site-notice p:last-child{
+    max-width: 52rem;
+    margin: 0;
+    color: #f2e8de;
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+
+.legacy-site-notice__link{
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.7rem 1rem;
+    color: #1d3239;
+    background: #B1D1DC;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 800;
+    text-decoration: none;
+    transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.legacy-site-notice__link:hover{
+    color: #111f24;
+    background: #d5e8ef;
+    transform: translateY(-1px);
+}
+
+.legacy-site-notice__link:focus-visible{
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+}
+
 .header-container{
     flex-direction: row-reverse;
 }
@@ -99,4 +169,30 @@ body{
 .home-container h1{
     font-size: 2rem;
     text-align: center;
+}
+
+@media (max-width: 767.98px){
+    .legacy-site-notice{
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+        padding-right: 0.75rem;
+        padding-left: 0.75rem;
+    }
+
+    .legacy-site-notice__content{
+        align-items: stretch;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .legacy-site-notice__link{
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .legacy-site-notice__link{
+        transition: none;
+    }
 }
