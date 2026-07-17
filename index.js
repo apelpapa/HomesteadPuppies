@@ -29,6 +29,7 @@ const port = process.env.SERVER_PORT || 3000;
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const isProduction = process.env.NODE_ENV !== "development";
 const uploadDirectory = "/tmp/homestead-puppies-uploads";
+const publicImageBaseUrl = "https://d3trlmj493rccc.cloudfront.net";
 
 await mkdir(uploadDirectory, { recursive: true });
 
@@ -180,6 +181,119 @@ app.use(
     maxAge: "7d",
   }),
 );
+
+const publicApiLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  limit: 300,
+  standardHeaders: "draft-8",
+  legacyHeaders: false,
+  keyGenerator: (req) =>
+    ipKeyGenerator(req.get("CF-Connecting-IP") || req.ip || "127.0.0.1"),
+  message: { error: "Too many requests. Please try again shortly." },
+});
+
+function publicImageUrl(imageId) {
+  if (!imageId || typeof imageId !== "string") return null;
+
+  const encodedKey = imageId
+    .split("/")
+    .map((segment) => encodeURIComponent(segment))
+    .join("/");
+
+  return `${publicImageBaseUrl}/${encodedKey}`;
+}
+
+function groupPublicImages(rows, ownerKey, fallbackOwnerId = 0) {
+  const grouped = new Map();
+
+  for (const row of rows) {
+    const url = publicImageUrl(row.imageid);
+    if (!url) continue;
+
+    const ownerId = Number(row[ownerKey]);
+    if (!grouped.has(ownerId)) grouped.set(ownerId, []);
+    grouped.get(ownerId).push(url);
+  }
+
+  const fallback = grouped.get(fallbackOwnerId) || [];
+  return { grouped, fallback };
+}
+
+function publicDate(value) {
+  if (!value) return null;
+  const date = value instanceof Date ? value : new Date(value);
+  return Number.isNaN(date.getTime()) ? null : date.toISOString().slice(0, 10);
+}
+
+app.use("/api/v1", publicApiLimiter);
+
+app.get("/api/v1/puppies", async (req, res) => {
+  const [puppyResult, imageResult] = await Promise.all([
+    db.query(`
+      SELECT id, name, TRIM(breed) AS breed, gender, dob, mother, father,
+             akcregistrable, price
+      FROM puppies
+      WHERE id > 0
+        AND LOWER(COALESCE(sold, 'available')) = 'available'
+        AND dob >= CURRENT_DATE - INTERVAL '2 years'
+        AND (price IS NULL OR price BETWEEN 0 AND 10000)
+      ORDER BY dob DESC, id ASC
+    `),
+    db.query("SELECT puppyid, imageid FROM puppyimages ORDER BY puppyid, imageid"),
+  ]);
+
+  const { grouped, fallback } = groupPublicImages(
+    imageResult.rows,
+    "puppyid",
+  );
+  const puppies = puppyResult.rows.map((puppy) => ({
+    id: Number(puppy.id),
+    name: puppy.name?.trim() || "Puppy",
+    breed: puppy.breed?.trim() || "Mixed breed",
+    gender: puppy.gender?.trim() || null,
+    dateOfBirth: publicDate(puppy.dob),
+    mother: puppy.mother?.trim() || null,
+    father: puppy.father?.trim() || null,
+    akcRegistrable: Boolean(puppy.akcregistrable),
+    price: puppy.price == null ? null : Number(puppy.price),
+    images: grouped.get(Number(puppy.id)) || fallback,
+  }));
+
+  res.set("Cache-Control", "public, max-age=60, stale-while-revalidate=300");
+  res.json({ puppies });
+});
+
+app.get("/api/v1/parents", async (req, res) => {
+  const [parentResult, imageResult] = await Promise.all([
+    db.query(`
+      SELECT parentid, name, TRIM(breed) AS breed, gender, dob,
+             akcregistered, description, championbloodline
+      FROM parents
+      WHERE parentid > 0
+      ORDER BY name ASC, parentid ASC
+    `),
+    db.query("SELECT parentid, imageid FROM parentimages ORDER BY parentid, imageid"),
+  ]);
+
+  const { grouped, fallback } = groupPublicImages(
+    imageResult.rows,
+    "parentid",
+  );
+  const parents = parentResult.rows.map((parent) => ({
+    id: Number(parent.parentid),
+    name: parent.name?.trim() || "Parent",
+    breed: parent.breed?.trim() || "Mixed breed",
+    gender: parent.gender?.trim() || null,
+    dateOfBirth: publicDate(parent.dob),
+    akcRegistered: Boolean(parent.akcregistered),
+    championBloodline: Boolean(parent.championbloodline),
+    description: parent.description?.trim() || null,
+    images: grouped.get(Number(parent.parentid)) || fallback,
+  }));
+
+  res.set("Cache-Control", "public, max-age=60, stale-while-revalidate=300");
+  res.json({ parents });
+});
 
 app.use(
   session({
