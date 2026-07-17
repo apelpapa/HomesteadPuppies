@@ -1,86 +1,124 @@
 <%- include('./partials/header.ejs'); %>
-<div class="container col-md-8">
-  <div class="home-container">
-    <h1 class="display-5 fw-bold text-body-emphasis">
-      Homestead Puppies — Full-Stack System Showcase
-    </h1>
 
-    <p class="lead mb-3">
-      If you’re only interested in the technical architecture, feel free to skip
-      to the TL;DR stack summary below.
-    </p>
+<main class="home-showcase container col-lg-8">
+  <section class="home-hero" aria-labelledby="home-title">
+    <div class="home-hero__copy">
+      <p class="home-eyebrow">A production system with a personal beginning</p>
+      <h1 id="home-title">A simple puppy website that grew into a complete business platform.</h1>
+      <p class="home-hero__lead">
+        Homestead Puppies began as a small project for my dad’s retirement breeding business. What started as a way
+        to list available puppies became the day-to-day system behind the operation—and my first full-stack production
+        application.
+      </p>
+      <div class="home-actions" aria-label="Homepage actions">
+        <a class="home-button home-button--primary" href="/availablePuppies">See available puppies</a>
+        <a class="home-button home-button--secondary" href="https://homesteadpuppies.org">View the React rebuild</a>
+      </div>
+    </div>
 
-    <p class="mb-4">
-      This project is personally meaningful to me. It started as a small website
-      for my dad’s retirement puppy breeding business — something simple to list
-      available puppies. It quickly grew into something much larger and
-      ultimately became the operational center of the business. Along the way,
-      it also became my first true full-stack production system and my largest
-      early Node.js project.
-    </p>
+    <aside class="home-hero__summary" aria-label="Project highlights">
+      <p class="home-hero__summary-label">Built to work in the real world</p>
+      <div class="home-stat">
+        <strong>1+ year</strong>
+        <span>running in production</span>
+      </div>
+      <div class="home-stat">
+        <strong>One admin panel</strong>
+        <span>for puppies, parents, breeds, images, and availability</span>
+      </div>
+      <div class="home-stat">
+        <strong>Two frontends</strong>
+        <span>powered by one shared backend</span>
+      </div>
+    </aside>
+  </section>
 
-    <p class="mb-4">
-      What began as “just a website” evolved into a complete application:
-      authentication, admin workflows, relational data modeling, media
-      pipelines, deployment automation, infrastructure hardening, and long-term
-      unattended operation. The system ran in production for over a year with
-      non-technical users managing everything through the admin panel without
-      needing code access.
-    </p>
+  <section class="home-story" aria-labelledby="story-title">
+    <div>
+      <p class="home-section-number" aria-hidden="true">01</p>
+      <h2 id="story-title">From side project to operational tool</h2>
+    </div>
+    <div class="home-story__copy">
+      <p>
+        The goal was initially modest: give families a clear place to see available puppies. As the business grew, the
+        website grew with it—adding secure administration, structured records, media handling, deposits, and deployment
+        automation.
+      </p>
+      <p>
+        Non-technical users could manage the public website without touching the code. That made the project more than
+        a portfolio exercise: it became dependable software serving a real business and real customers.
+      </p>
+    </div>
+  </section>
 
-    <hr />
+  <section class="home-capabilities" aria-labelledby="capabilities-title">
+    <div class="home-section-heading">
+      <p class="home-section-number" aria-hidden="true">02</p>
+      <div>
+        <h2 id="capabilities-title">What the system handles</h2>
+        <p>A complete workflow behind a straightforward customer experience.</p>
+      </div>
+    </div>
 
-    <h3>TL;DR — Technical Overview</h3>
+    <div class="home-capability-grid">
+      <article class="home-capability-card">
+        <p class="home-capability-card__label">Customer experience</p>
+        <h3>Finding the right puppy</h3>
+        <p>Live puppy and parent listings, breed details, image galleries, contact information, and hosted deposits.</p>
+      </article>
 
-    <ul>
-      <li>
-        <strong>Backend:</strong> Node.js + Express application with server-side
-        rendering via EJS
-      </li>
-      <li>
-        <strong>Auth & Security:</strong> Passport authentication, bcrypt
-        password hashing, session management
-      </li>
-      <li>
-        <strong>Database:</strong> PostgreSQL with relational schema design and
-        enforced data relationships
-      </li>
-      <li>
-        <strong>Media Pipeline:</strong> File uploads via multer → stored in AWS
-        S3 → delivered through CloudFront CDN
-      </li>
-      <li>
-        <strong>Admin System:</strong> Full administrative panel with
-        rule-enforced workflows and dynamic calculations
-      </li>
-      <li>
-        <strong>Infrastructure:</strong> Linux VPS deployment behind Nginx
-        reverse proxy
-      </li>
-      <li>
-        <strong>Reliability:</strong> PM2 process manager with auto-restart on
-        crash or reboot
-      </li>
-      <li>
-        <strong>Deployment:</strong> GitHub Actions CI/CD auto-deploy on commit
-      </li>
-      <li>
-        <strong>Networking & TLS:</strong> Cloudflare DNS and certificate
-        management
-      </li>
-      <li>
-        <strong>Environment Management:</strong> Separate production and
-        development configurations
-      </li>
+      <article class="home-capability-card">
+        <p class="home-capability-card__label">Business operations</p>
+        <h3>Managing the catalog</h3>
+        <p>Authenticated tools for puppies, parents, breeds, pricing, availability, and image uploads.</p>
+      </article>
+
+      <article class="home-capability-card">
+        <p class="home-capability-card__label">Production platform</p>
+        <h3>Staying reliable</h3>
+        <p>Automated deployment, process recovery, TLS, CDN delivery, database-backed sessions, and hardened hosting.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="home-architecture" aria-labelledby="architecture-title">
+    <div class="home-architecture__intro">
+      <p class="home-section-number" aria-hidden="true">03</p>
+      <div>
+        <h2 id="architecture-title">The stack at a glance</h2>
+        <p>
+          The original interface is server-rendered with EJS. A public API now lets the modern React frontend use the
+          same production data without replacing the working business tools behind it.
+        </p>
+      </div>
+    </div>
+    <ul class="home-stack" aria-label="Technology stack">
+      <li>Node.js</li>
+      <li>Express</li>
+      <li>EJS</li>
+      <li>React</li>
+      <li>PostgreSQL</li>
+      <li>Passport</li>
+      <li>AWS S3</li>
+      <li>CloudFront</li>
+      <li>Nginx</li>
+      <li>PM2</li>
+      <li>Cloudflare</li>
+      <li>GitHub Actions</li>
     </ul>
+  </section>
 
-    <hr />
-
-    <p class="mb-4">
-      The admin interface remains fully functional, so public credentials are
-      not exposed. If a technical reviewer needs to explore the system, I can
-      provide temporary demonstration access.
+  <section class="home-closing" aria-labelledby="closing-title">
+    <p class="home-eyebrow">The migration story</p>
+    <h2 id="closing-title">One backend. Two generations of frontend.</h2>
+    <p>
+      Keeping this original site online alongside the React rebuild shows both sides of the work: maintaining a proven
+      system and modernizing it incrementally without interrupting the business it supports.
     </p>
-  </div>
-</div>
+    <a class="home-text-link" href="https://homesteadpuppies.org">
+      Continue to the modern experience <span aria-hidden="true">→</span>
+    </a>
+  </section>
+</main>
+
 <%- include('./partials/footer.ejs'); %>
