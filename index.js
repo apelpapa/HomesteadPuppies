@@ -63,9 +63,44 @@ const dbConfig = {
   ssl: process.env.PGSSL === "true" ? { rejectUnauthorized: false } : false,
 };
 
+const db = new pg.Pool({
+  ...dbConfig,
+  max: Number(process.env.PGPOOL_MAX || 10),
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 5000,
+});
+
+db.on("error", (error) => {
+  console.error("Unexpected idle PostgreSQL client error:", error);
+});
+
+await db.query("SELECT 1");
+
+async function withTransaction(callback) {
+  const client = await db.connect();
+  let discardClient = false;
+
+  try {
+    await client.query("BEGIN");
+    const result = await callback(client);
+    await client.query("COMMIT");
+    return result;
+  } catch (error) {
+    try {
+      await client.query("ROLLBACK");
+    } catch (rollbackError) {
+      discardClient = true;
+      console.error("PostgreSQL rollback failed:", rollbackError);
+    }
+    throw error;
+  } finally {
+    client.release(discardClient);
+  }
+}
+
 const PostgreSqlStore = connectPgSimple(session);
 const sessionStore = new PostgreSqlStore({
-  conObject: dbConfig,
+  pool: db,
   createTableIfMissing: true,
   tableName: "user_sessions",
   ttl: 8 * 60 * 60,
@@ -311,10 +346,6 @@ async function optimizeAndUploadImages(files = []) {
     throw error;
   }
 }
-
-const db = new pg.Client(dbConfig);
-
-await db.connect();
 
 app.get("/", (req, res) => {
   res.render("index.ejs");
@@ -581,20 +612,18 @@ app.post("/deleteParentImage", requireAuth, requireCsrf, async (req, res) => {
 
 app.post("/deletePuppy", requireAuth, requireCsrf, async (req, res) => {
   if (req.isAuthenticated()) {
-    const imageResult = await db.query(
-      "SELECT imageid FROM puppyimages WHERE puppyid = $1",
-      [req.body.id],
-    );
-    try {
-      await db.query("BEGIN");
-      await db.query("DELETE FROM puppyimages WHERE puppyid=$1", [req.body.id]);
-      await db.query("DELETE FROM puppies WHERE id=$1", [req.body.id]);
-      await db.query("COMMIT");
-    } catch (error) {
-      await db.query("ROLLBACK");
-      throw error;
-    }
-    await deleteS3Keys(imageResult.rows.map((row) => row.imageid));
+    const imageKeys = await withTransaction(async (client) => {
+      const imageResult = await client.query(
+        "SELECT imageid FROM puppyimages WHERE puppyid = $1",
+        [req.body.id],
+      );
+      await client.query("DELETE FROM puppyimages WHERE puppyid=$1", [
+        req.body.id,
+      ]);
+      await client.query("DELETE FROM puppies WHERE id=$1", [req.body.id]);
+      return imageResult.rows.map((row) => row.imageid);
+    });
+    await deleteS3Keys(imageKeys);
     res.redirect("/managePuppies");
   } else {
     res.redirect("/login");
@@ -603,24 +632,20 @@ app.post("/deletePuppy", requireAuth, requireCsrf, async (req, res) => {
 
 app.post("/deleteParent", requireAuth, requireCsrf, async (req, res) => {
   if (req.isAuthenticated()) {
-    const imageResult = await db.query(
-      "SELECT imageid FROM parentimages WHERE parentid = $1",
-      [req.body.parentid],
-    );
-    try {
-      await db.query("BEGIN");
-      await db.query("DELETE FROM parentimages WHERE parentid=$1", [
+    const imageKeys = await withTransaction(async (client) => {
+      const imageResult = await client.query(
+        "SELECT imageid FROM parentimages WHERE parentid = $1",
+        [req.body.parentid],
+      );
+      await client.query("DELETE FROM parentimages WHERE parentid=$1", [
         req.body.parentid,
       ]);
-      await db.query("DELETE FROM parents WHERE parentid=$1", [
+      await client.query("DELETE FROM parents WHERE parentid=$1", [
         req.body.parentid,
       ]);
-      await db.query("COMMIT");
-    } catch (error) {
-      await db.query("ROLLBACK");
-      throw error;
-    }
-    await deleteS3Keys(imageResult.rows.map((row) => row.imageid));
+      return imageResult.rows.map((row) => row.imageid);
+    });
+    await deleteS3Keys(imageKeys);
     res.redirect("/manageParents");
   } else {
     res.redirect("/login");
@@ -677,7 +702,6 @@ app.post(
   requireCsrf,
   async (req, res) => {
     let optimizedFiles = [];
-    let transactionStarted = false;
 
     try {
       const puppyId = Number(req.body.puppyId);
@@ -687,20 +711,17 @@ app.post(
       }
 
       optimizedFiles = await optimizeAndUploadImages(req.files);
-      await db.query("BEGIN");
-      transactionStarted = true;
-      for (const file of optimizedFiles) {
-        await db.query(
-          "INSERT INTO puppyimages (imageid, puppyid) VALUES ($1, $2)",
-          [file.key, puppyId],
-        );
-      }
-      await db.query("COMMIT");
-      transactionStarted = false;
+      await withTransaction(async (client) => {
+        for (const file of optimizedFiles) {
+          await client.query(
+            "INSERT INTO puppyimages (imageid, puppyid) VALUES ($1, $2)",
+            [file.key, puppyId],
+          );
+        }
+      });
 
       return res.redirect("/managePuppies");
     } catch (err) {
-      if (transactionStarted) await db.query("ROLLBACK");
       await cleanupLocalFiles(req.files);
       await deleteS3Keys(optimizedFiles.map((file) => file.key)).catch(() =>
         undefined,
@@ -719,7 +740,6 @@ app.post(
   requireCsrf,
   async (req, res) => {
     let optimizedFiles = [];
-    let transactionStarted = false;
 
     try {
       const parentId = Number(req.body.parentid);
@@ -729,19 +749,16 @@ app.post(
       }
 
       optimizedFiles = await optimizeAndUploadImages(req.files);
-      await db.query("BEGIN");
-      transactionStarted = true;
-      for (const file of optimizedFiles) {
-        await db.query(
-          "INSERT INTO parentimages (imageid, parentid) VALUES ($1, $2)",
-          [file.key, parentId],
-        );
-      }
-      await db.query("COMMIT");
-      transactionStarted = false;
+      await withTransaction(async (client) => {
+        for (const file of optimizedFiles) {
+          await client.query(
+            "INSERT INTO parentimages (imageid, parentid) VALUES ($1, $2)",
+            [file.key, parentId],
+          );
+        }
+      });
       return res.redirect("/manageParents");
     } catch (err) {
-      if (transactionStarted) await db.query("ROLLBACK");
       await cleanupLocalFiles(req.files);
       await deleteS3Keys(optimizedFiles.map((file) => file.key)).catch(() =>
         undefined,
@@ -799,7 +816,6 @@ app.post(
   requireCsrf,
   async (req, res) => {
     let optimizedFiles = [];
-    let transactionStarted = false;
 
     try {
       const newPuppy = req.body;
@@ -807,42 +823,37 @@ app.post(
       const price = newPuppy.price ? Number(newPuppy.price) : 0;
       optimizedFiles = await optimizeAndUploadImages(req.files);
 
-      // Use a transaction so puppy + images either both succeed or both fail
-      await db.query("BEGIN");
-      transactionStarted = true;
-
-      // Insert puppy and get its generated id back
-      const insertResult = await db.query(
-        `INSERT INTO puppies (name, breed, gender, dob, price, mother, father, akcRegistrable)
+      await withTransaction(async (client) => {
+        // Insert puppy and get its generated id back
+        const insertResult = await client.query(
+          `INSERT INTO puppies (name, breed, gender, dob, price, mother, father, akcRegistrable)
        VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
        RETURNING id`,
-        [
-          newPuppy.puppyName,
-          newPuppy.puppyBreed,
-          newPuppy.genderSelect,
-          newPuppy.dob,
-          price,
-          newPuppy.puppyMother,
-          newPuppy.puppyFather,
-          akcRegistrable,
-        ],
-      );
-
-      const puppyId = insertResult.rows[0].id;
-
-      // Attach uploaded images directly to the new puppy id
-      for (const file of optimizedFiles) {
-        await db.query(
-          "INSERT INTO puppyimages (imageid, puppyid) VALUES ($1, $2)",
-          [file.key, puppyId],
+          [
+            newPuppy.puppyName,
+            newPuppy.puppyBreed,
+            newPuppy.genderSelect,
+            newPuppy.dob,
+            price,
+            newPuppy.puppyMother,
+            newPuppy.puppyFather,
+            akcRegistrable,
+          ],
         );
-      }
 
-      await db.query("COMMIT");
-      transactionStarted = false;
+        const puppyId = insertResult.rows[0].id;
+
+        // Attach uploaded images directly to the new puppy id
+        for (const file of optimizedFiles) {
+          await client.query(
+            "INSERT INTO puppyimages (imageid, puppyid) VALUES ($1, $2)",
+            [file.key, puppyId],
+          );
+        }
+      });
+
       return res.redirect("/managePuppies");
     } catch (err) {
-      if (transactionStarted) await db.query("ROLLBACK");
       await cleanupLocalFiles(req.files);
       await deleteS3Keys(optimizedFiles.map((file) => file.key)).catch(() =>
         undefined,
@@ -861,45 +872,40 @@ app.post(
   requireCsrf,
   async (req, res) => {
     let optimizedFiles = [];
-    let transactionStarted = false;
 
     try {
       const newParent = req.body;
       const akcRegistered = newParent.akcRegistered === "true";
       optimizedFiles = await optimizeAndUploadImages(req.files);
 
-      await db.query("BEGIN");
-      transactionStarted = true;
-
-      // Insert parent and get generated parentid back
-      const insertResult = await db.query(
-        `INSERT INTO parents (name, breed, gender, dob, akcRegistered, description)
+      await withTransaction(async (client) => {
+        // Insert parent and get generated parentid back
+        const insertResult = await client.query(
+          `INSERT INTO parents (name, breed, gender, dob, akcRegistered, description)
        VALUES ($1,$2,$3,$4,$5,$6)
        RETURNING parentid`,
-        [
-          newParent.parentName,
-          newParent.parentBreed,
-          newParent.genderSelect,
-          newParent.dob,
-          akcRegistered,
-          newParent.descriptionTextBox,
-        ],
-      );
-
-      const parentId = insertResult.rows[0].parentid;
-
-      for (const file of optimizedFiles) {
-        await db.query(
-          "INSERT INTO parentimages (imageid, parentid) VALUES ($1, $2)",
-          [file.key, parentId],
+          [
+            newParent.parentName,
+            newParent.parentBreed,
+            newParent.genderSelect,
+            newParent.dob,
+            akcRegistered,
+            newParent.descriptionTextBox,
+          ],
         );
-      }
 
-      await db.query("COMMIT");
-      transactionStarted = false;
+        const parentId = insertResult.rows[0].parentid;
+
+        for (const file of optimizedFiles) {
+          await client.query(
+            "INSERT INTO parentimages (imageid, parentid) VALUES ($1, $2)",
+            [file.key, parentId],
+          );
+        }
+      });
+
       return res.redirect("/manageParents");
     } catch (err) {
-      if (transactionStarted) await db.query("ROLLBACK");
       await cleanupLocalFiles(req.files);
       await deleteS3Keys(optimizedFiles.map((file) => file.key)).catch(() =>
         undefined,
