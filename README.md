@@ -1,90 +1,59 @@
 # Homestead Puppies
 
-A full-stack web application built to manage a small breeding business end-to-end.
+A full-stack application built for a family breeding business, with a public catalog and an authenticated administration interface for puppies, parents, breeds, images, and availability. What began as a static site grew into a Node.js, Express, and PostgreSQL system used by non-technical family members to manage the business.
 
-This project began as a simple static website and evolved into a production application with authentication, database-backed content management, and cloud-based media storage.
+[Original EJS site](https://homestead-puppies.com/) · [Modern React site](https://homesteadpuppies.org/) · [React source](https://github.com/apelpapa/homestead-puppies-modern)
 
----
+![Original Homestead Puppies website and its link to the modern frontend](docs/images/homestead-original.png)
 
-## Overview
+## One backend, two frontends
 
-Homestead Puppies is a Node.js + Express application that provides:
+This repository contains the original server-rendered EJS application, the admin tools, and the shared backend. The separate React frontend reads the same catalog through a versioned, read-only `/api/v1` API. Both public interfaces remain online.
 
-- Public-facing website for viewing available puppies
-- Admin authentication
-- Full CRUD management for:
-  - Puppies
-  - Breeds
-  - Parents
-- Image uploads stored in AWS S3
-- PostgreSQL-backed data persistence
-- Server-side rendering with EJS
-- Reverse-proxied production deployment (Nginx → Node)
+```mermaid
+flowchart LR
+    EJS[Original EJS website] --> Express[Node.js / Express]
+    React[Separate React frontend] --> API[Read-only catalog API]
+    API --> Express
+    Admin[Authenticated admin interface] --> Express
+    Express --> DB[PostgreSQL]
+    Express --> S3[AWS S3: uploaded images]
+    S3 --> CDN[CloudFront: image delivery]
+```
 
-This application ran in production and supported real users.
+Keeping the original admin workflow while adding the React interface demonstrates incremental modernization around an existing application and data model.
 
----
+## Features
 
-## Tech Stack
+- Public puppy and parent listings with breed filters, images, and availability.
+- Passport local authentication with bcrypt password checks and PostgreSQL-backed sessions.
+- Admin creation, updates, and deletion for catalog records and associated images.
+- Multipart image uploads, image processing with Sharp, and AWS S3 storage.
+- A versioned JSON catalog API shared with the modern frontend.
+- CSRF checks for state-changing routes, login/API rate limits, and Helmet response headers.
+- Nginx reverse proxying and a GitHub Actions deployment workflow that restarts the app with PM2.
 
-### Backend
-- Node.js
-- Express
-- PostgreSQL (`pg`)
-- Passport (Local Strategy)
-- bcrypt
-- express-session
+## Stack
 
-### Templating
-- EJS
+| Layer | Technologies |
+| --- | --- |
+| Application | Node.js 24, Express, EJS |
+| Data | PostgreSQL, `pg`, `connect-pg-simple` |
+| Authentication | Passport Local, bcrypt, express-session |
+| Media | Multer, Sharp, AWS SDK for S3, CloudFront |
+| Hosting | Linux, Nginx, PM2, Cloudflare, GitHub Actions |
 
-### File Uploads
-- Multer
-- Multer-S3
-- AWS S3
+## Repository map
 
-### Deployment
-- Nginx reverse proxy
-- SSL via Cloudflare origin certificates
-- Linux VPS hosting
+| Path | Purpose |
+| --- | --- |
+| `index.js` | Express routes, API responses, authentication, data access, and image handling |
+| `views/` | Public EJS pages and authenticated administration templates |
+| `public/` | Styles and permanent site assets |
+| `ops/nginx/` | Cloudflare client-IP forwarding configuration |
+| `scripts/update-image-metadata.js` | Media metadata maintenance utility |
+| `.github/workflows/deploy.yml` | Deployment automation |
 
----
+## License
 
-## Key Features
-
-### Authentication
-Admin panel protected using Passport Local strategy and session-based authentication.
-
-### Content Management
-Custom-built admin interface allowing non-technical users to:
-- Add/edit/remove puppies
-- Upload multiple images per puppy
-- Manage breed and parent records
-
-### Media Handling
-Images are uploaded directly to AWS S3 and referenced in the PostgreSQL database.
-
-### Production Architecture
-
-Requests flow through:
-
-Cloudflare → Nginx → Node → Express → PostgreSQL / AWS S3
-
-Upload size limits and reverse proxy configuration are handled at both the multer and Nginx layer.
-
----
-
-## What This Project Demonstrates
-
-- Building a real-world CRUD system
-- Authentication and session management
-- File upload handling in production
-- Integration with external cloud services (S3)
-- Reverse proxy configuration and debugging
-- Managing environment variables and deployment concerns
-
----
-
-## Status
-
-This project was used in production and later retired. It remains as a representative full-stack application demonstrating backend architecture, authentication, file handling, and deployment.
+GNU General Public License, version 3. See [LICENSE](LICENSE).

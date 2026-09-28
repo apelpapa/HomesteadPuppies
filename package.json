@@ -17,7 +17,7 @@
     "url": "git+https://github.com/apelpapa/HomesteadPuppies.git"
   },
   "author": "Abel Papazian",
-  "license": "ISC",
+  "license": "GPL-3.0-only",
   "bugs": {
     "url": "https://github.com/apelpapa/HomesteadPuppies/issues"
   },
